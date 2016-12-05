@@ -14,6 +14,23 @@
       <version>3.8.1</version>
       <scope>test</scope>
     </dependency>
+    <!-- Linking Backend project with front end -->
+    <dependency>
+     <groupId>com.niit</groupId>
+ 	 <artifactId>ecomm-backend</artifactId>
+  		<version>0.0.1-SNAPSHOT</version>
+ 
+    </dependency>
+    
+    <!-- JAVA EE API -->
+ 
+ 	<dependency>
+    	<groupId>javax</groupId>
+    	<artifactId>javaee-api</artifactId>
+    	<version>7.0</version>
+    	<scope>provided</scope>
+</dependency>
+    
   </dependencies>
   <build>
     <finalName>ecom-ecart</finalName>
