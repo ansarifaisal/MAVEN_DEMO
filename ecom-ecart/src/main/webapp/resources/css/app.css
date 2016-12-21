@@ -1,0 +1,98 @@
+body {
+	padding-top: 60px;
+}
+
+.nopadding{
+	padding:0px;
+}
+
+.wrapper {
+	min-height: 500px;
+	
+}
+.test{
+	text-align: center;
+}
+
+.footer{
+	font-size: 0.75em;
+	/* max-height: 300px; */
+}
+.actions{
+	text-align: right;
+	padding: 5px 0px 5px 0px;
+	font-size:12px;
+	word-spacing:50px;
+	line-height: 11px;
+}
+
+ #search{
+	padding:20px;	
+}
+
+#btn-search{
+	padding:3px;
+} 
+
+.carousel-control.right {
+  right: 0;
+  left: auto;
+  background-image: none;
+  background-image: none;
+  background-image: none;
+  background-image: none;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#00000000', endColorstr='#80000000', GradientType=1);
+  background-repeat: repeat-x;
+}
+
+.carousel-control.left {
+  background-image: none;
+  background-image: none;
+  background-image: none;
+  background-image: none;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#80000000', endColorstr='#00000000', GradientType=1);
+  background-repeat: repeat-x;
+}
+
+.carousel-control {
+  width: 5%;
+}
+
+.img-resize{
+	display:block;
+	max-height: 230px;
+	max-width: 95px;
+	width: auto;
+	height: auto;
+}
+
+
+.fa {
+  display: inline-block;
+  font: normal normal normal 14px/1 FontAwesome;
+  font-size: inherit;
+  text-rendering: auto;
+  color:gray;
+  font-size:40px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.fa-chevron-circle-left, 
+.fa-chevron-circle-right{
+  position: absolute;
+  top: 50%;
+  z-index: 5;
+  display: inline-block;
+  margin-top: -10px;
+}
+
+.fa-chevron-circle-left{
+  left: 33%;
+  margin-right: -10px;
+}
+
+.fa-chevron-circle-right{
+  right: 33%;
+  margin-left: -10px;
+}

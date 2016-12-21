@@ -1,0 +1,23 @@
+{
+  "name": "MAVEN_DEMO",
+  "homepage": "https://github.com/ansarifaisal/MAVEN_DEMO",
+  "authors": [
+    "Ansari Faisal <ansarifaisal480@gmail.com>"
+  ],
+  "description": "",
+  "main": "",
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "^3.3.7",
+    "angular": "^1.6.0",
+    "font-awesome": "fontawesome#^4.7.0"
+  }
+}
