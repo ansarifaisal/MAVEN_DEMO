@@ -1,5 +1,20 @@
 $(document).ready(function(){
-	$('#feature').carousel({
-		 interval: 30000
-	});
+
+	switch (hoverMenu) {
+	case 'About Us':
+			$('#about').addClass('active');
+		break;
+	case 'Contact Us':
+		$('#contact').addClass('active');
+	break;
+	case 'Login':
+		$("#login").addClass('active')
+		break;
+	case 'Register':
+		$("#register").addClass('active')
+		break;
+	default:
+		break;
+	}
+
 });

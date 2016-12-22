@@ -31,9 +31,9 @@
 				<div class="carousel slide media-carousel" id="media-1">
 					<div class="carousel-inner">
 						<div class="item active">
-							<div class="col-md-3">
+							<div class="col-md-3 ">
 								<div class="thumbnail">
-									<img alt="#image" src="${images}/moto.jpeg" class="img-resize"/>
+									<img alt="#image" src="${images}/moto.jpeg" class="img-resize zoom"/>
 									<div class="caption">
 										<p class="title">
 											<a href="#title">Title</a>
@@ -44,7 +44,7 @@
 							</div>
 							<div class="col-md-3">
 								<div class="thumbnail">
-							<img alt="#image" src="${images}/moto.jpeg" class="img-resize"/>
+							<img alt="#image" src="${images}/moto.jpeg" class="img-resize zoom"/>
 									<div class="caption">
 										<span class="title">
 											<a href="#title">Title</a>
@@ -636,7 +636,7 @@
 						class="right carousel-control" role="button"><span
 						class="fa fa-chevron-circle-right" aria-hidden="true"></span></a>
 				</div>
-				<!-- Carousel -->
+				<!-- /Carousel -->
 			</div>
 			<!-- /col-md -->
 		</div>

@@ -31,10 +31,12 @@
 
 			</ul>
 			<ul class="nav navbar-nav navbar-right">
-				<li><a href="${contextPath}/about">About Us</a></li>
-				<li><a href="${contextPath}/contact">Contact Us</a></li>
-				<li><a href="#login"><span
+				<li id = "about"><a href="${contextPath}/about">About Us</a></li>
+				<li id = "contact"><a href="${contextPath}/contact">Contact Us</a></li>
+				<li id = "login"><a href="${contextPath}/login"><span
 						class="glyphicon glyphicon-log-in"></span> Login</a></li>
+						<li id = "regitser"><a href="${contextPath}/register"><span
+						class="glyphicon glyphicon-log-in"></span> Sign Up</a></li>
 				<li class="dropdown"><a href="#admin" class="dropdown-toggle"
 					data-toggle="dropdown" role="button" aria-haspopup="true"
 					aria-expanded="false">Admin<span class="caret"></span></a>

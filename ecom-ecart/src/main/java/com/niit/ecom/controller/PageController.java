@@ -81,7 +81,29 @@ public class PageController {
 		modelAndView.addObject("products", productDAO.list());
 		return modelAndView;
 	}
-
+	
+	/*
+	 * to access Login Page
+	 */
+	@RequestMapping(value = { "/login" })
+	public ModelAndView login() {
+		ModelAndView modelAndView = new ModelAndView("page");
+		modelAndView.addObject("title", "Login");
+		modelAndView.addObject("ifUserClickedLogin", true);
+		return modelAndView;
+	}
+	
+	/*
+	 * to access Register page
+	 */
+	@RequestMapping(value = { "/register" })
+	public ModelAndView register() {
+		ModelAndView modelAndView = new ModelAndView("page");
+		modelAndView.addObject("title", "Register");
+		modelAndView.addObject("ifUserClickedRegister", true);
+		return modelAndView;
+	}
+	
 	/*
 	 * This page is for test
 	 */

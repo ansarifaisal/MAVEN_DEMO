@@ -8,7 +8,10 @@
 <html>
 <head>
 <title>E-Cart - ${title}</title>
-<link href="${css}/bootstrap.css" rel="stylesheet" type="text/css">
+<script type="text/javascript">
+	window.hoverMenu = '${title}';
+</script>
+<link href="${css}/bootstrap-paper.css" rel="stylesheet" type="text/css">
 <link href="${css}/bootstrap-theme.css" rel="stylesheet" type="text/css">
 <link href="${css}/font-awesome.css" rel="stylesheet" type="text/css">
 <link href="${css}/app.css" rel="stylesheet" type="text/css">
@@ -36,17 +39,27 @@
 			<c:if test="${ifUserClickedCart == true}">
 				<%@include file="cart.jsp"%>
 			</c:if>
-				<%-- if user clicks on cart--%>
+				<%-- Click On Single Product--%>
 			<c:if test="${ifUserClickedProduct == true}">
 				<%@include file="product.jsp"%>
 				</c:if>
-					<%-- if user clicks on cart--%>
+					<%-- Search for all products--%>
 			<c:if test="${ifUserClickedProductList == true}">
 				<%@include file="productList.jsp"%>
 			</c:if>
+					<%-- if user clicks on Login--%>
+			<c:if test="${ifUserClickedLogin == true}">
+				<%@include file="login.jsp"%>
+			</c:if>
+			<%-- if user clicks on Register--%>
+			<c:if test="${ifUserClickedRegister == true}">
+				<%@include file="register.jsp"%>
+			</c:if>
+	
+		<%@include file="./shared/footer.jsp"%>
+		
 		</div>
 		
-		<%@include file="./shared/footer.jsp"%>
 	<script type="text/javascript" src="${js}/jquery.js"></script>
 	<script type="text/javascript" src="${js}/bootstrap.js"></script>
 	<script type="text/javascript" src="${js}/angular.js"></script>
