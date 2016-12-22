@@ -13,12 +13,31 @@
 </head>
 <body>
 
-<h1>fa fa-chevron-circle-right</h1>
-
-<i class="fa fa-chevron-circle-right"></i>
-<i class="fa fa-chevron-circle-right" style="font-size:24px"></i>
-<i class="fa fa-chevron-circle-right" style="font-size:36px"></i>
-<i class="fa fa-chevron-circle-right" style="font-size:48px"></i>
+<nav class="navbar navbar-default navbar-fixed-top">
+	<div class="container">
+		<div class="navbar-header">
+			<button class="navbar-toggle collapsed" data-toggle="collapse"
+				data-target="#collapse-1" aria-expanded="false">
+				<span class="sr-only">Toggle navigation</span> <span
+					class="icon-bar"></span> <span class="icon-bar"></span> <span
+					class="icon-bar"></span>
+			</button>
+			<a class="navbar-brand" href="${contextPath}/index">E-Cart</a>
+		</div>
+			<div class="collapse navbar-collapse" id="collapse-1">
+				<form class="navbar-form">
+					<div class="form-group">
+						<div class="input-group col-md-12">
+							<input type="text" class="form-control"
+								placeholder="Search for products"> <span
+								class="input-group-btn">
+								<button class="btn btn-default" type="button">
+									<span class="glyphicon glyphicon-search" id="btn-search"
+										aria-hidden="true"></span>
+								</button>
+							</span>
+						</div>
+						</div></form></div></div></nav>
 	<script type="text/javascript" src="${js}/jquery.js"></script>
 	<script type="text/javascript" src="${js}/bootstrap.js"></script>
 	<script type="text/javascript" src="${js}/angular.js"></script>

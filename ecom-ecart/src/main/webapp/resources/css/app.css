@@ -1,39 +1,28 @@
+/* for Body */
 body {
 	padding-top: 60px;
 }
-
+/* To apply no padding on element */
 .nopadding{
 	padding:0px;
 }
 
-.wrapper {
-	min-height: 500px;
-	
-}
 .test{
 	text-align: center;
 }
 
+/* Styling footer*/
 .footer{
 	font-size: 0.75em;
 	/* max-height: 300px; */
 }
-.actions{
-	text-align: right;
-	padding: 5px 0px 5px 0px;
-	font-size:12px;
-	word-spacing:50px;
-	line-height: 11px;
-}
 
- #search{
-	padding:20px;	
-}
-
+/* Styling Search Button */
 #btn-search{
 	padding:3px;
 } 
 
+/* removing the background of the right control of carousel*/
 .carousel-control.right {
   right: 0;
   left: auto;
@@ -45,6 +34,7 @@ body {
   background-repeat: repeat-x;
 }
 
+/* removing the background of the left control of carousel*/
 .carousel-control.left {
   background-image: none;
   background-image: none;
@@ -54,10 +44,12 @@ body {
   background-repeat: repeat-x;
 }
 
+/* reducing the background of carousel controls*/
 .carousel-control {
   width: 5%;
 }
 
+/* Re-sizing image*/
 .img-resize{
 	display:block;
 	max-height: 230px;
@@ -66,7 +58,7 @@ body {
 	height: auto;
 }
 
-
+/* Styling the arrows of the carousel control*/
 .fa {
   display: inline-block;
   font: normal normal normal 14px/1 FontAwesome;
@@ -78,6 +70,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+/* setting up carousel control in middle*/
 .fa-chevron-circle-left, 
 .fa-chevron-circle-right{
   position: absolute;
@@ -87,12 +80,38 @@ body {
   margin-top: -10px;
 }
 
+/* setting up the carousel left control at the edge*/
 .fa-chevron-circle-left{
   left: 33%;
   margin-right: -10px;
 }
 
+/* setting up the carousel right control at the edge*/
 .fa-chevron-circle-right{
   right: 33%;
   margin-left: -10px;
+}
+
+
+/* styling the title of the product*/
+.title{
+	text-align: center;
+	font-size: 20px;
+}
+
+/* styling anchor tag of the product title*/
+.title a{
+	text-align: center;
+	color:black;
+}
+
+/* styling anchor tag of the product title at hover*/
+.title a:hover{
+	text-decoration:none;
+	color:black;
+}
+
+/* styling the price of the product*/
+.price{
+	text-align:center;
 }

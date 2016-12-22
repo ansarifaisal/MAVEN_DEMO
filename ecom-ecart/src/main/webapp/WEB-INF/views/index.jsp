@@ -35,10 +35,10 @@
 								<div class="thumbnail">
 									<img alt="#image" src="${images}/moto.jpeg" class="img-resize"/>
 									<div class="caption">
-										<p id="title">
+										<p class="title">
 											<a href="#title">Title</a>
 										</p>
-										<h5 class="text-muted">Now at &#8377;123</h5>
+										<h5 class="text-muted price">Now at &#8377;123</h5>
 									</div>
 								</div>
 							</div>
@@ -46,10 +46,10 @@
 								<div class="thumbnail">
 							<img alt="#image" src="${images}/moto.jpeg" class="img-resize"/>
 									<div class="caption">
-										<p id="title">
+										<span class="title">
 											<a href="#title">Title</a>
-										</p>
-										<h5 class="text-muted">Now at &#8377;123</h5>
+									</span>
+										<h5 class="text-muted price">Now at &#8377;123</h5>
 									</div>
 								</div>
 							</div>
@@ -57,10 +57,10 @@
 								<div class="thumbnail">
 										<img alt="#image" src="${images}/moto.jpeg" class="img-resize"/>
 									<div class="caption">
-										<p id="title">
+										<p class="title">
 											<a href="#title">Title</a>
 										</p>
-										<h5 class="text-muted">Now at &#8377;123</h5>
+										<h5 class="text-muted price">Now at &#8377;123</h5>
 									</div>
 								</div>
 							</div>
@@ -68,10 +68,10 @@
 								<div class="thumbnail">
 										<img alt="#image" src="${images}/moto.jpeg" class="img-resize"/>
 									<div class="caption">
-										<p id="title">
+										<p class="title">
 											<a href="#title">Title</a>
 										</p>
-										<h5 class="text-muted">Now at &#8377;123</h5>
+										<h5 class="text-muted price">Now at &#8377;123</h5>
 									</div>
 								</div>
 							</div>
@@ -82,10 +82,10 @@
 								<div class="thumbnail">
 								<img alt="#image" src="${images}/moto.jpeg" class="img-resize"/>
 									<div class="caption">
-										<p id="title">
+										<p class="title">
 											<a href="#title">Title</a>
 										</p>
-										<h5 class="text-muted">Now at &#8377;123</h5>
+										<h5 class="text-muted price">Now at &#8377;123</h5>
 									</div>
 								</div>
 							</div>
@@ -93,10 +93,10 @@
 								<div class="thumbnail">
 										<img alt="#image" src="${images}/moto.jpeg" class="img-resize"/>
 									<div class="caption">
-										<p id="title">
+										<p class="title">
 											<a href="#title">Title</a>
 										</p>
-										<h5 class="text-muted">Now at &#8377;123</h5>
+										<h5 class="text-muted price">Now at &#8377;123</h5>
 									</div>
 								</div>
 							</div>
@@ -104,10 +104,10 @@
 								<div class="thumbnail">
 										<img alt="#image" src="${images}/moto.jpeg" class="img-resize"/>
 									<div class="caption">
-										<p id="title">
+										<p class="title">
 											<a href="#title">Title</a>
 										</p>
-										<h5 class="text-muted">Now at &#8377;123</h5>
+										<h5 class="text-muted price">Now at &#8377;123</h5>
 									</div>
 								</div>
 							</div>
@@ -115,10 +115,10 @@
 								<div class="thumbnail">
 										<img alt="#image" src="${images}/moto.jpeg" class="img-resize"/>
 									<div class="caption">
-										<p id="title">
+										<p class="title">
 											<a href="#title">Title</a>
 										</p>
-										<h5 class="text-muted">Now at &#8377;123</h5>
+										<h5 class="text-muted price">Now at &#8377;123</h5>
 									</div>
 								</div>
 							</div>
@@ -161,10 +161,10 @@
 								<div class="thumbnail">
 									<img alt="" src="${images}/1.png" />
 									<div class="caption">
-										<p id="title">
+										<p class="title">
 											<a href="#title">Title</a>
 										</p>
-										<h5 class="text-muted">Now at &#8377;123</h5>
+										<h5 class="text-muted price">Now at &#8377;123</h5>
 									</div>
 								</div>
 							</div>
@@ -172,10 +172,10 @@
 								<div class="thumbnail">
 									<img alt="" src="${images}/1.png" />
 									<div class="caption">
-										<p id="title">
+										<p class="title">
 											<a href="#title">Title</a>
 										</p>
-										<h5 class="text-muted">Now at &#8377;123</h5>
+										<h5 class="text-muted price">Now at &#8377;123</h5>
 									</div>
 								</div>
 							</div>
@@ -183,10 +183,10 @@
 								<div class="thumbnail">
 									<img alt="" src="${images}/1.png" />
 									<div class="caption">
-										<p id="title">
+										<p class="title">
 											<a href="#title">Title</a>
 										</p>
-										<h5 class="text-muted">Now at &#8377;123</h5>
+										<h5 class="text-muted price">Now at &#8377;123</h5>
 									</div>
 								</div>
 							</div>
@@ -194,10 +194,10 @@
 								<div class="thumbnail">
 									<img alt="" src="${images}/1.png" />
 									<div class="caption">
-										<p id="title">
+										<p class="title">
 											<a href="#title">Title</a>
 										</p>
-										<h5 class="text-muted">Now at &#8377;123</h5>
+										<h5 class="text-muted price">Now at &#8377;123</h5>
 									</div>
 								</div>
 							</div>
@@ -208,10 +208,10 @@
 								<div class="thumbnail">
 									<img alt="" src="${images}/1.png" />
 									<div class="caption">
-										<p id="title">
+										<p class="title">
 											<a href="#title">Title</a>
 										</p>
-										<h5 class="text-muted">Now at &#8377;123</h5>
+										<h5 class="text-muted price">Now at &#8377;123</h5>
 									</div>
 								</div>
 							</div>
@@ -219,10 +219,10 @@
 								<div class="thumbnail">
 									<img alt="" src="${images}/1.png" />
 									<div class="caption">
-										<p id="title">
+										<p class="title">
 											<a href="#title">Title</a>
 										</p>
-										<h5 class="text-muted">Now at &#8377;123</h5>
+										<h5 class="text-muted price">Now at &#8377;123</h5>
 									</div>
 								</div>
 							</div>
@@ -230,10 +230,10 @@
 								<div class="thumbnail">
 									<img alt="" src="${images}/1.png" />
 									<div class="caption">
-										<p id="title">
+										<p class="title">
 											<a href="#title">Title</a>
 										</p>
-										<h5 class="text-muted">Now at &#8377;123</h5>
+										<h5 class="text-muted price">Now at &#8377;123</h5>
 									</div>
 								</div>
 							</div>
@@ -241,10 +241,10 @@
 								<div class="thumbnail">
 									<img alt="" src="${images}/1.png" />
 									<div class="caption">
-										<p id="title">
+										<p class="title">
 											<a href="#title">Title</a>
 										</p>
-										<h5 class="text-muted">Now at &#8377;123</h5>
+										<h5 class="text-muted price">Now at &#8377;123</h5>
 									</div>
 								</div>
 							</div>
@@ -253,10 +253,10 @@
 					</div>
 					<!-- Carousel inner -->
 					<a data-slide="prev" href="#media-2" class="left carousel-control"
-						role="button"><span class="glyphicon glyphicon-chevron-left"
+						role="button"><span class="fa fa-chevron-circle-left"
 						aria-hidden="true"></span></a> <a data-slide="next" href="#media-2"
 						class="right carousel-control" role="button"><span
-						class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span></a>
+						class="fa fa-chevron-circle-right" aria-hidden="true"></span></a>
 				</div>
 				<!-- Carousel -->
 			</div>
@@ -287,10 +287,10 @@
 								<div class="thumbnail">
 									<img alt="" src="${images}/1.png" />
 									<div class="caption">
-										<p id="title">
+										<p class="title">
 											<a href="#title">Title</a>
 										</p>
-										<h5 class="text-muted">Now at &#8377;123</h5>
+										<h5 class="text-muted price">Now at &#8377;123</h5>
 									</div>
 								</div>
 							</div>
@@ -298,10 +298,10 @@
 								<div class="thumbnail">
 									<img alt="" src="${images}/1.png" />
 									<div class="caption">
-										<p id="title">
+										<p class="title">
 											<a href="#title">Title</a>
 										</p>
-										<h5 class="text-muted">Now at &#8377;123</h5>
+										<h5 class="text-muted price">Now at &#8377;123</h5>
 									</div>
 								</div>
 							</div>
@@ -309,10 +309,10 @@
 								<div class="thumbnail">
 									<img alt="" src="${images}/1.png" />
 									<div class="caption">
-										<p id="title">
+										<p class="title">
 											<a href="#title">Title</a>
 										</p>
-										<h5 class="text-muted">Now at &#8377;123</h5>
+										<h5 class="text-muted price">Now at &#8377;123</h5>
 									</div>
 								</div>
 							</div>
@@ -320,10 +320,10 @@
 								<div class="thumbnail">
 									<img alt="" src="${images}/1.png" />
 									<div class="caption">
-										<p id="title">
+										<p class="title">
 											<a href="#title">Title</a>
 										</p>
-										<h5 class="text-muted">Now at &#8377;123</h5>
+										<h5 class="text-muted price">Now at &#8377;123</h5>
 									</div>
 								</div>
 							</div>
@@ -334,10 +334,10 @@
 								<div class="thumbnail">
 									<img alt="" src="${images}/1.png" />
 									<div class="caption">
-										<p id="title">
+										<p class="title">
 											<a href="#title">Title</a>
 										</p>
-										<h5 class="text-muted">Now at &#8377;123</h5>
+										<h5 class="text-muted price">Now at &#8377;123</h5>
 									</div>
 								</div>
 							</div>
@@ -345,10 +345,10 @@
 								<div class="thumbnail">
 									<img alt="" src="${images}/1.png" />
 									<div class="caption">
-										<p id="title">
+										<p class="title">
 											<a href="#title">Title</a>
 										</p>
-										<h5 class="text-muted">Now at &#8377;123</h5>
+										<h5 class="text-muted price">Now at &#8377;123</h5>
 									</div>
 								</div>
 							</div>
@@ -356,10 +356,10 @@
 								<div class="thumbnail">
 									<img alt="" src="${images}/1.png" />
 									<div class="caption">
-										<p id="title">
+										<p class="title">
 											<a href="#title">Title</a>
 										</p>
-										<h5 class="text-muted">Now at &#8377;123</h5>
+										<h5 class="text-muted price">Now at &#8377;123</h5>
 									</div>
 								</div>
 							</div>
@@ -367,10 +367,10 @@
 								<div class="thumbnail">
 									<img alt="" src="${images}/1.png" />
 									<div class="caption">
-										<p id="title">
+										<p class="title">
 											<a href="#title">Title</a>
 										</p>
-										<h5 class="text-muted">Now at &#8377;123</h5>
+										<h5 class="text-muted price">Now at &#8377;123</h5>
 									</div>
 								</div>
 							</div>
@@ -379,10 +379,10 @@
 					</div>
 					<!-- Carousel inner -->
 					<a data-slide="prev" href="#media-3" class="left carousel-control"
-						role="button"><span class="glyphicon glyphicon-chevron-left"
+						role="button"><span class="fa fa-chevron-circle-left"
 						aria-hidden="true"></span></a> <a data-slide="next" href="#media-3"
 						class="right carousel-control" role="button"><span
-						class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span></a>
+						class="fa fa-chevron-circle-right" aria-hidden="true"></span></a>
 				</div>
 				<!-- Carousel -->
 			</div>
@@ -413,10 +413,10 @@
 								<div class="thumbnail">
 									<img alt="" src="${images}/1.png" />
 									<div class="caption">
-										<p id="title">
+										<p class="title">
 											<a href="#title">Title</a>
 										</p>
-										<h5 class="text-muted">Now at &#8377;123</h5>
+										<h5 class="text-muted price">Now at &#8377;123</h5>
 									</div>
 								</div>
 							</div>
@@ -424,10 +424,10 @@
 								<div class="thumbnail">
 									<img alt="" src="${images}/1.png" />
 									<div class="caption">
-										<p id="title">
+										<p class="title">
 											<a href="#title">Title</a>
 										</p>
-										<h5 class="text-muted">Now at &#8377;123</h5>
+										<h5 class="text-muted price">Now at &#8377;123</h5>
 									</div>
 								</div>
 							</div>
@@ -435,10 +435,10 @@
 								<div class="thumbnail">
 									<img alt="" src="${images}/1.png" />
 									<div class="caption">
-										<p id="title">
+										<p class="title">
 											<a href="#title">Title</a>
 										</p>
-										<h5 class="text-muted">Now at &#8377;123</h5>
+										<h5 class="text-muted price">Now at &#8377;123</h5>
 									</div>
 								</div>
 							</div>
@@ -446,10 +446,10 @@
 								<div class="thumbnail">
 									<img alt="" src="${images}/1.png" />
 									<div class="caption">
-										<p id="title">
+										<p class="title">
 											<a href="#title">Title</a>
 										</p>
-										<h5 class="text-muted">Now at &#8377;123</h5>
+										<h5 class="text-muted price">Now at &#8377;123</h5>
 									</div>
 								</div>
 							</div>
@@ -460,10 +460,10 @@
 								<div class="thumbnail">
 									<img alt="" src="${images}/1.png" />
 									<div class="caption">
-										<p id="title">
+										<p class="title">
 											<a href="#title">Title</a>
 										</p>
-										<h5 class="text-muted">Now at &#8377;123</h5>
+										<h5 class="text-muted price">Now at &#8377;123</h5>
 									</div>
 								</div>
 							</div>
@@ -471,10 +471,10 @@
 								<div class="thumbnail">
 									<img alt="" src="${images}/1.png" />
 									<div class="caption">
-										<p id="title">
+										<p class="title">
 											<a href="#title">Title</a>
 										</p>
-										<h5 class="text-muted">Now at &#8377;123</h5>
+										<h5 class="text-muted price">Now at &#8377;123</h5>
 									</div>
 								</div>
 							</div>
@@ -482,10 +482,10 @@
 								<div class="thumbnail">
 									<img alt="" src="${images}/1.png" />
 									<div class="caption">
-										<p id="title">
+										<p class="title">
 											<a href="#title">Title</a>
 										</p>
-										<h5 class="text-muted">Now at &#8377;123</h5>
+										<h5 class="text-muted price">Now at &#8377;123</h5>
 									</div>
 								</div>
 							</div>
@@ -493,10 +493,10 @@
 								<div class="thumbnail">
 									<img alt="" src="${images}/1.png" />
 									<div class="caption">
-										<p id="title">
+										<p class="title">
 											<a href="#title">Title</a>
 										</p>
-										<h5 class="text-muted">Now at &#8377;123</h5>
+										<h5 class="text-muted price">Now at &#8377;123</h5>
 									</div>
 								</div>
 							</div>
@@ -505,10 +505,10 @@
 					</div>
 					<!-- Carousel inner -->
 					<a data-slide="prev" href="#media-4" class="left carousel-control"
-						role="button"><span class="glyphicon glyphicon-chevron-left"
+						role="button"><span class="fa fa-chevron-circle-left"
 						aria-hidden="true"></span></a> <a data-slide="next" href="#media-4"
 						class="right carousel-control" role="button"><span
-						class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span></a>
+						class="fa fa-chevron-circle-right" aria-hidden="true"></span></a>
 				</div>
 				<!-- Carousel -->
 			</div>
@@ -539,10 +539,10 @@
 								<div class="thumbnail">
 									<img alt="" src="${images}/1.png" />
 									<div class="caption">
-										<p id="title">
+										<p class="title">
 											<a href="#title">Title</a>
 										</p>
-										<h5 class="text-muted">Now at &#8377;123</h5>
+										<h5 class="text-muted price">Now at &#8377;123</h5>
 									</div>
 								</div>
 							</div>
@@ -550,10 +550,10 @@
 								<div class="thumbnail">
 									<img alt="" src="${images}/1.png" />
 									<div class="caption">
-										<p id="title">
+										<p class="title">
 											<a href="#title">Title</a>
 										</p>
-										<h5 class="text-muted">Now at &#8377;123</h5>
+										<h5 class="text-muted price">Now at &#8377;123</h5>
 									</div>
 								</div>
 							</div>
@@ -561,10 +561,10 @@
 								<div class="thumbnail">
 									<img alt="" src="${images}/1.png" />
 									<div class="caption">
-										<p id="title">
+										<p class="title">
 											<a href="#title">Title</a>
 										</p>
-										<h5 class="text-muted">Now at &#8377;123</h5>
+										<h5 class="text-muted price">Now at &#8377;123</h5>
 									</div>
 								</div>
 							</div>
@@ -572,10 +572,10 @@
 								<div class="thumbnail">
 									<img alt="" src="${images}/1.png" />
 									<div class="caption">
-										<p id="title">
+										<p class="title">
 											<a href="#title">Title</a>
 										</p>
-										<h5 class="text-muted">Now at &#8377;123</h5>
+										<h5 class="text-muted price">Now at &#8377;123</h5>
 									</div>
 								</div>
 							</div>
@@ -586,10 +586,10 @@
 								<div class="thumbnail">
 									<img alt="" src="${images}/1.png" />
 									<div class="caption">
-										<p id="title">
+										<p class="title">
 											<a href="#title">Title</a>
 										</p>
-										<h5 class="text-muted">Now at &#8377;123</h5>
+										<h5 class="text-muted price">Now at &#8377;123</h5>
 									</div>
 								</div>
 							</div>
@@ -597,10 +597,10 @@
 								<div class="thumbnail">
 									<img alt="" src="${images}/1.png" />
 									<div class="caption">
-										<p id="title">
+										<p class="title">
 											<a href="#title">Title</a>
 										</p>
-										<h5 class="text-muted">Now at &#8377;123</h5>
+										<h5 class="text-muted price">Now at &#8377;123</h5>
 									</div>
 								</div>
 							</div>
@@ -608,10 +608,10 @@
 								<div class="thumbnail">
 									<img alt="" src="${images}/1.png" />
 									<div class="caption">
-										<p id="title">
+										<p class="title">
 											<a href="#title">Title</a>
 										</p>
-										<h5 class="text-muted">Now at &#8377;123</h5>
+										<h5 class="text-muted price">Now at &#8377;123</h5>
 									</div>
 								</div>
 							</div>
@@ -619,10 +619,10 @@
 								<div class="thumbnail">
 									<img alt="" src="${images}/1.png" />
 									<div class="caption">
-										<p id="title">
+										<p class="title">
 											<a href="#title">Title</a>
 										</p>
-										<h5 class="text-muted">Now at &#8377;123</h5>
+										<h5 class="text-muted price">Now at &#8377;123</h5>
 									</div>
 								</div>
 							</div>
@@ -631,10 +631,10 @@
 					</div>
 					<!-- Carousel inner -->
 					<a data-slide="prev" href="#media-5" class="left carousel-control"
-						role="button"><span class="glyphicon glyphicon-chevron-left"
+						role="button"><span class="fa fa-chevron-circle-left"
 						aria-hidden="true"></span></a> <a data-slide="next" href="#media-5"
 						class="right carousel-control" role="button"><span
-						class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span></a>
+						class="fa fa-chevron-circle-right" aria-hidden="true"></span></a>
 				</div>
 				<!-- Carousel -->
 			</div>

@@ -20,13 +20,19 @@
       <version>3.8.1</version>
       <scope>test</scope>
     </dependency>
+    
+    <!-- Adding JSTL -->
+    <dependency>
+     <groupId>jstl</groupId>
+ 	 <artifactId>jstl</artifactId>
+  		<version>1.2</version>
+    </dependency>
+    
     <!-- Linking Backend project with front end -->
-
     <dependency>
      <groupId>com.niit</groupId>
  	 <artifactId>ecomm-backend</artifactId>
   		<version>0.0.1-SNAPSHOT</version>
- 
     </dependency>
     
     <!-- JAVA EE API -->
@@ -44,7 +50,6 @@
     	<artifactId>spring-webmvc</artifactId>
     	<version>${spring.version}</version>
 </dependency>
-    
   </dependencies>
   <build>
     <finalName>ecom-ecart</finalName>
