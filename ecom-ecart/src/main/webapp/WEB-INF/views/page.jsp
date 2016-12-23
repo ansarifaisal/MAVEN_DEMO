@@ -55,14 +55,13 @@
 			<c:if test="${ifUserClickedRegister == true}">
 				<%@include file="register.jsp"%>
 			</c:if>
-	
+			
 		<%@include file="./shared/footer.jsp"%>
-		
 		</div>
+
 		
 	<script type="text/javascript" src="${js}/jquery.js"></script>
 	<script type="text/javascript" src="${js}/bootstrap.js"></script>
-	<script type="text/javascript" src="${js}/angular.js"></script>
 	<script type="text/javascript" src="${js}/myScript.js"></script>
 
 </body>

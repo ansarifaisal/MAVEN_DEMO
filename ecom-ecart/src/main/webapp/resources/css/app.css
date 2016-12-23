@@ -54,6 +54,7 @@ body {
 /* Re-sizing image*/
 .img-resize {
 	display: block;
+	padding-top:10px;
 	max-height: 230px;
 	max-width: 95px;
 	width: auto;
@@ -83,30 +84,33 @@ body {
 
 /* setting up the carousel left control at the edge*/
 .fa-chevron-circle-left {
-	left: 33%;
+	left: -40%;
 	margin-right: -10px;
 }
 
 /* setting up the carousel right control at the edge*/
 .fa-chevron-circle-right {
-	right: 33%;
+	right: -45%;
 	margin-left: -10px;
 }
 
 /* styling the title of the product*/
-.title {
+.thumbnail-setting {
+	text-decoration:none;
 	text-align: center;
-	font-size: 20px;
+	font-size: 14px;
 }
 
 /* styling anchor tag of the product title*/
-.title a {
+.thumbnail-setting a {
+	text-decoration:none;
 	text-align: center;
 	color: black;
+	line-height: 14px;
 }
 
 /* styling anchor tag of the product title at hover*/
-.title a:hover {
+.thumbnail-setting a:hover {
 	text-decoration: none;
 	color: black;
 }

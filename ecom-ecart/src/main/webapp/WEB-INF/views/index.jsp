@@ -31,114 +31,114 @@
 				<div class="carousel slide media-carousel" id="media-1">
 					<div class="carousel-inner">
 						<div class="item active">
-							<div class="col-md-3 ">
+							<div class="col-md-3 thumbnail-setting">
 								<div class="thumbnail">
-									<img alt="#image" src="${images}/moto.jpeg" class="img-resize zoom"/>
-									<div class="caption">
-										<p class="title">
-											<a href="#title">Title</a>
-										</p>
-										<h5 class="text-muted price">Now at &#8377;123</h5>
-									</div>
-								</div>
-							</div>
-							<div class="col-md-3">
-								<div class="thumbnail">
-							<img alt="#image" src="${images}/moto.jpeg" class="img-resize zoom"/>
-									<div class="caption">
-										<span class="title">
-											<a href="#title">Title</a>
-									</span>
-										<h5 class="text-muted price">Now at &#8377;123</h5>
-									</div>
-								</div>
-							</div>
-							<div class="col-md-3">
-								<div class="thumbnail">
-										<img alt="#image" src="${images}/moto.jpeg" class="img-resize"/>
-									<div class="caption">
-										<p class="title">
-											<a href="#title">Title</a>
-										</p>
-										<h5 class="text-muted price">Now at &#8377;123</h5>
-									</div>
-								</div>
-							</div>
-							<div class="col-md-3">
-								<div class="thumbnail">
-										<img alt="#image" src="${images}/moto.jpeg" class="img-resize"/>
-									<div class="caption">
-										<p class="title">
-											<a href="#title">Title</a>
-										</p>
-										<h5 class="text-muted price">Now at &#8377;123</h5>
-									</div>
+									<a href=""><img alt="#image"
+										src="${images}/moto.jpeg" class="img-resize zoom" />
+										<div class="caption">
+											<p>Title</p></a>
+									<h6 class="text-muted price">Now at
+										&#8377;123</h6>
 								</div>
 							</div>
 						</div>
-						<!-- /item -->
-						<div class="item">
-							<div class="col-md-3">
+						<div class="col-md-3 thumbnail-setting">
 								<div class="thumbnail">
-								<img alt="#image" src="${images}/moto.jpeg" class="img-resize"/>
-									<div class="caption">
-										<p class="title">
-											<a href="#title">Title</a>
-										</p>
-										<h5 class="text-muted price">Now at &#8377;123</h5>
-									</div>
-								</div>
-							</div>
-							<div class="col-md-3">
-								<div class="thumbnail">
-										<img alt="#image" src="${images}/moto.jpeg" class="img-resize"/>
-									<div class="caption">
-										<p class="title">
-											<a href="#title">Title</a>
-										</p>
-										<h5 class="text-muted price">Now at &#8377;123</h5>
-									</div>
-								</div>
-							</div>
-							<div class="col-md-3">
-								<div class="thumbnail">
-										<img alt="#image" src="${images}/moto.jpeg" class="img-resize"/>
-									<div class="caption">
-										<p class="title">
-											<a href="#title">Title</a>
-										</p>
-										<h5 class="text-muted price">Now at &#8377;123</h5>
-									</div>
-								</div>
-							</div>
-							<div class="col-md-3">
-								<div class="thumbnail">
-										<img alt="#image" src="${images}/moto.jpeg" class="img-resize"/>
-									<div class="caption">
-										<p class="title">
-											<a href="#title">Title</a>
-										</p>
-										<h5 class="text-muted price">Now at &#8377;123</h5>
-									</div>
+									<a href=""><img alt="#image"
+										src="${images}/moto.jpeg" class="img-resize zoom" />
+										<div class="caption">
+											<p>Title</p></a>
+									<h6 class="text-muted price">Now at
+										&#8377;123</h6>
 								</div>
 							</div>
 						</div>
-						<!-- /item -->
+						<div class="col-md-3 thumbnail-setting">
+								<div class="thumbnail">
+									<a href=""><img alt="#image"
+										src="${images}/moto.jpeg" class="img-resize zoom" />
+										<div class="caption">
+											<p>Title</p></a>
+									<h6 class="text-muted price">Now at
+										&#8377;123</h6>
+								</div>
+							</div>
+						</div>
+					<div class="col-md-3 thumbnail-setting">
+								<div class="thumbnail">
+									<a href=""><img alt="#image"
+										src="${images}/moto.jpeg" class="img-resize zoom" />
+										<div class="caption">
+											<p>Title</p></a>
+									<h6 class="text-muted price">Now at
+										&#8377;123</h6>
+								</div>
+							</div>
+						</div>
 					</div>
-					<!-- Carousel inner -->
-					<a data-slide="prev" href="#media-1" class="left carousel-control"
-						role="button"><span class="fa fa-chevron-circle-left"
-						aria-hidden="true"></span></a> <a data-slide="next" href="#media-1"
-						class="right carousel-control" role="button"><span
-						class="fa fa-chevron-circle-right" aria-hidden="true"></span></a>
+					<!-- /item -->
+					<div class="item">
+						<div class="col-md-3 thumbnail-setting">
+								<div class="thumbnail">
+									<a href=""><img alt="#image"
+										src="${images}/moto.jpeg" class="img-resize zoom" />
+										<div class="caption">
+											<p>Title</p></a>
+									<h6 class="text-muted price">Now at
+										&#8377;123</h6>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-3 thumbnail-setting">
+								<div class="thumbnail">
+									<a href=""><img alt="#image"
+										src="${images}/moto.jpeg" class="img-resize zoom" />
+										<div class="caption">
+											<p>Title</p></a>
+									<h6 class="text-muted price">Now at
+										&#8377;123</h6>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-3 thumbnail-setting">
+								<div class="thumbnail">
+									<a href=""><img alt="#image"
+										src="${images}/moto.jpeg" class="img-resize zoom" />
+										<div class="caption">
+											<p>Title</p></a>
+									<h6 class="text-muted price">Now at
+										&#8377;123</h6>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-3 thumbnail-setting">
+								<div class="thumbnail">
+									<a href=""><img alt="#image"
+										src="${images}/moto.jpeg" class="img-resize zoom" />
+										<div class="caption">
+											<p>Title</p></a>
+									<h6 class="text-muted price">Now at
+										&#8377;123</h6>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- /item -->
 				</div>
-				<!-- Carousel -->
+				<!-- Carousel inner -->
+				<a data-slide="prev" href="#media-1" class="left carousel-control"
+					role="button"><span class="fa fa-chevron-circle-left"
+					aria-hidden="true"></span></a> <a data-slide="next" href="#media-1"
+					class="right carousel-control" role="button"><span
+					class="fa fa-chevron-circle-right" aria-hidden="true"></span></a>
 			</div>
-			<!-- /col-md -->
+			<!-- Carousel -->
 		</div>
-		<!-- panel-body -->
+		<!-- /col-md -->
 	</div>
-	<!-- panel -->
+	<!-- panel-body -->
+</div>
+<!-- panel -->
 </div>
 <!-- /row -->
 

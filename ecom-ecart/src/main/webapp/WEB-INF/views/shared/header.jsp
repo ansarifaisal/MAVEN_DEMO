@@ -7,7 +7,7 @@
 					class="icon-bar"></span> <span class="icon-bar"></span> <span
 					class="icon-bar"></span>
 			</button>
-			<a class="navbar-brand" href="${contextPath}/index">E-Cart</a>
+			<a class="navbar-brand" href="${contextPath}/">E-Cart</a>
 		</div>
 		<div class="collapse navbar-collapse" id="collapse-1">
 			<form class="navbar-form navbar-left">
@@ -31,11 +31,13 @@
 
 			</ul>
 			<ul class="nav navbar-nav navbar-right">
-				<li id = "about"><a href="${contextPath}/about">About Us</a></li>
-				<li id = "contact"><a href="${contextPath}/contact">Contact Us</a></li>
-				<li id = "login"><a href="${contextPath}/login"><span
+			<li id="about"><a href="${contextPath}/product/all">All Products</a></li>
+				<li id="about"><a href="${contextPath}/about">About Us</a></li>
+				<li id="contact"><a href="${contextPath}/contact">Contact
+						Us</a></li>
+				<li id="login"><a href="${contextPath}/login"><span
 						class="glyphicon glyphicon-log-in"></span> Login</a></li>
-						<li id = "regitser"><a href="${contextPath}/register"><span
+				<li id="register"><a href="${contextPath}/register"><span
 						class="glyphicon glyphicon-log-in"></span> Sign Up</a></li>
 				<li class="dropdown"><a href="#admin" class="dropdown-toggle"
 					data-toggle="dropdown" role="button" aria-haspopup="true"

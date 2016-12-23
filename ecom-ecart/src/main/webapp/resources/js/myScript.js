@@ -8,10 +8,10 @@ $(document).ready(function(){
 		$('#contact').addClass('active');
 	break;
 	case 'Login':
-		$("#login").addClass('active')
+		$("#login").addClass('active');
 		break;
 	case 'Register':
-		$("#register").addClass('active')
+		$("#register").addClass('active');
 		break;
 	default:
 		break;

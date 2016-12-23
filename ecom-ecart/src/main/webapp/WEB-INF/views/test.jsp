@@ -9,37 +9,30 @@
 <link href="${css}/bootstrap.css" rel="stylesheet" type="text/css">
 <link href="${css}/bootstrap-theme.css" rel="stylesheet" type="text/css">
 <link href="${css}/style.css" rel="stylesheet" type="text/css">
-<link rel="stylesheet" href="${css}/font-awesome.min.css" type="text/css">
+<link rel="stylesheet" href="${css}/font-awesome.min.css"
+	type="text/css">
 </head>
 <body>
-
-<nav class="navbar navbar-default navbar-fixed-top">
 	<div class="container">
-		<div class="navbar-header">
-			<button class="navbar-toggle collapsed" data-toggle="collapse"
-				data-target="#collapse-1" aria-expanded="false">
-				<span class="sr-only">Toggle navigation</span> <span
-					class="icon-bar"></span> <span class="icon-bar"></span> <span
-					class="icon-bar"></span>
-			</button>
-			<a class="navbar-brand" href="${contextPath}/index">E-Cart</a>
+		<div class="row">
+			<div class="thumbnail thumbnail-setting col-md-3">
+				<a href=""><img alt="#image" src="${images}/${product.image}"
+					class="img-resize zoom" /></a>
+				<div class="caption">
+					<p>${product.name}</p>
+					<h6 class="text-muted price">Now at &#8377;${product.price}</h6>
+				</div>
+			</div>
+
+			<div class="thumbnail thumbnail-setting col-md-3">
+				<a href=""><img alt="#image" src="${images}/${product.image}"
+					class="img-resize zoom" /></a>
+				<div class="caption">
+					<p>${product.name}</p>
+					<h6 class="text-muted price">Now at &#8377;${product.price}</h6>
+				</div>
+			</div>
 		</div>
-			<div class="collapse navbar-collapse" id="collapse-1">
-				<form class="navbar-form">
-					<div class="form-group">
-						<div class="input-group col-md-12">
-							<input type="text" class="form-control"
-								placeholder="Search for products"> <span
-								class="input-group-btn">
-								<button class="btn btn-default" type="button">
-									<span class="glyphicon glyphicon-search" id="btn-search"
-										aria-hidden="true"></span>
-								</button>
-							</span>
-						</div>
-						</div></form></div></div></nav>
-	<script type="text/javascript" src="${js}/jquery.js"></script>
-	<script type="text/javascript" src="${js}/bootstrap.js"></script>
-	<script type="text/javascript" src="${js}/angular.js"></script>
+	</div>
 </body>
 </html>

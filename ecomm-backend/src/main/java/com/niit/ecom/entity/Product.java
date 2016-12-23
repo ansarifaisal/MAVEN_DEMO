@@ -7,28 +7,35 @@ public class Product {
 	private int id;
 	private int price;
 	private String name;
-	public int getId() {
-		return id;
-	}
+	private String image;
 	
+	/*
+	 * Default constructor to provide default values
+	 * */
 	public Product() {
-		this(0,0,null);
+		this(0,0,null, null);
 	}
 
 
-
-	public Product(int id, int price, String name) {
+	/*
+	 * Parameterized Constructor to provide the values provided by the user
+	 * */
+	public Product(int id, int price, String name, String image) {
 		super();
 		this.id = id;
 		this.price = price;
 		this.name = name;
+		this.image = image;
 	}
-
 
 
 	/*
 	 * Accessors/Getter and Mutators/Setter
 	 * */
+	
+	public int getId() {
+		return id;
+	}
 	
 	public void setId(int id) {
 		this.id = id;
@@ -46,10 +53,21 @@ public class Product {
 		this.name = name;
 	}
 
+	public String getImage() {
+		return image;
+	}
+
+
+	public void setImage(String image) {
+		this.image = image;
+	}
+	
+	
+	
 	/*
 	 * Overriding toString method for debugging
 	 * */
-	
+
 	@Override
 	public String toString() {
 		return "ProductDAOImpl [id=" + id + ", price=" + price + ", name=" + name + "]";

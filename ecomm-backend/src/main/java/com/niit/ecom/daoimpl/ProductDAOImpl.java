@@ -15,9 +15,10 @@ public class ProductDAOImpl implements ProductDAO {
 	
 	public ProductDAOImpl() {
 		products = new ArrayList<>();
-		products.add(new Product(1,2000,"Mobile"));
-		products.add(new Product(2,7000,"TVs"));
-		products.add(new Product(3,10000,"Mobile"));
+		products.add(new Product(1,2000,"SAMSUNG Galaxy On Nxt (Gold, 32 GB)", "moto.jpeg"));
+		products.add(new Product(2,7000,"TVs", "moto.jpeg"));
+		products.add(new Product(3,10000,"Mobile", "moto.jpeg"));
+		
 	}
 	@Override
 	public Product get(int id) {
