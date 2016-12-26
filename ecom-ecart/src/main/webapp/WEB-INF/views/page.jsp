@@ -12,7 +12,7 @@
 	window.hoverMenu = '${title}';
 </script>
 <link href="${css}/bootstrap-paper.css" rel="stylesheet" type="text/css">
-<link href="${css}/bootstrap-theme.css" rel="stylesheet" type="text/css">
+<%-- <link href="${css}/bootstrap-theme.css" rel="stylesheet" type="text/css"> --%>
 <link href="${css}/font-awesome.css" rel="stylesheet" type="text/css">
 <link href="${css}/app.css" rel="stylesheet" type="text/css">
 </head>

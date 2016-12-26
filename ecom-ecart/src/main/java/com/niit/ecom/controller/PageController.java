@@ -65,7 +65,7 @@ public class PageController {
 	public ModelAndView product(@PathVariable("id") int id) {
 		ModelAndView modelAndView = new ModelAndView("page");
 		modelAndView.addObject("title", "Product");
-		modelAndView.addObject("id", id);
+		modelAndView.addObject("product", productDAO.get(1));
 		modelAndView.addObject("ifUserClickedProduct", true);
 		return modelAndView;
 	}

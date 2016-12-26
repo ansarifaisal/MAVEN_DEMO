@@ -14,6 +14,8 @@ body {
 /* Styling footer*/
 .footer {
 	font-size: 0.75em;
+	width: 100%;
+	min-height: 10px;
 	/* max-height: 300px; */
 }
 
@@ -125,4 +127,8 @@ body {
 	-moz-transform: scale(1.1);
 	-webkit-transform: scale(1.1);
 	transform: scale(1.1);
+}
+
+.navbar-inverse .navbar-nav > li > a {
+  color: #fff;
 }

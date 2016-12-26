@@ -1,4 +1,4 @@
-<nav class="navbar navbar-default navbar-fixed-top">
+<nav class="navbar navbar-inverse navbar-fixed-top">
 	<div class="container">
 		<div class="navbar-header">
 			<button class="navbar-toggle collapsed" data-toggle="collapse"
@@ -31,7 +31,7 @@
 
 			</ul>
 			<ul class="nav navbar-nav navbar-right">
-			<li id="about"><a href="${contextPath}/product/all">All Products</a></li>
+			<li id="allProduct"><a href="${contextPath}/product/all">All Products</a></li>
 				<li id="about"><a href="${contextPath}/about">About Us</a></li>
 				<li id="contact"><a href="${contextPath}/contact">Contact
 						Us</a></li>

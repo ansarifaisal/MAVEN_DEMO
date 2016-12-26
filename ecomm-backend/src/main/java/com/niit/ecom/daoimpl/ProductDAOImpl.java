@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Repository;
 
+
 import com.niit.ecom.dao.ProductDAO;
 import com.niit.ecom.entity.Product;
 
@@ -24,6 +25,7 @@ public class ProductDAOImpl implements ProductDAO {
 	public Product get(int id) {
 		for(Product product : products){
 			if(product.getId() == id){
+				System.out.println(product);
 				return product;
 			}
 		}

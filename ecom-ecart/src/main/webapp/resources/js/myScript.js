@@ -13,6 +13,8 @@ $(document).ready(function(){
 	case 'Register':
 		$("#register").addClass('active');
 		break;
+	case 'All Products':
+		$("#allProduct").addClass('active');
 	default:
 		break;
 	}
