@@ -15,8 +15,8 @@ body {
 .footer {
 	font-size: 0.75em;
 	width: 100%;
-	min-height: 10px;
-	/* max-height: 300px; */
+	bottom:0px;
+	position:static;
 }
 
 /* Styling Search Button */
@@ -131,4 +131,8 @@ body {
 
 .navbar-inverse .navbar-nav > li > a {
   color: #fff;
+}
+
+#con{
+	
 }
