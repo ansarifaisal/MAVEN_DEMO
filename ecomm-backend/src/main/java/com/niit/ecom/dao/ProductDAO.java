@@ -8,4 +8,5 @@ public interface ProductDAO {
 	Product get(int id);
 	List<Product> list();
 	double price(int id);
+	boolean add(Product product);
 }

@@ -4,12 +4,12 @@
 			<li data-target="#carousel" data-slide-to="0" class="active"></li>
 			<li data-target="#carousel" data-slide-to="1"></li>
 		</ol>
-		<div class="carousel-inner" role="listbox">
-			<div class="item active">
-				<img src="${images}/1.jpg" alt="image-1">
+		<div class="carousel-inner" role="listbox" >
+			<div class="item active" >
+				<img src="${images}/1.jpg" alt="image-1" style="width:100%">
 			</div>
 			<div class="item">
-				<img src="${images}/2.jpg" alt="image-2">
+				<img src="${images}/2.jpg" alt="image-2" style="width:100%">
 			</div>
 		</div>
 	</div>

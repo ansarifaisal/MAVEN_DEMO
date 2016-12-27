@@ -55,7 +55,8 @@
 			<c:if test="${ifUserClickedRegister == true}">
 				<%@include file="register.jsp"%>
 			</c:if>
-			
+			</div>
+		<div class="container-fluid">
 		<%@include file="./shared/footer.jsp"%>
 		</div>
 

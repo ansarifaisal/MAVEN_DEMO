@@ -1,9 +1,24 @@
 package com.niit.ecom.entity;
 
-public class Product {
+import java.io.Serializable;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+	
+@Entity
+@Table(name="product_temp")
+public class Product implements Serializable {
+	
+	private static final long serialVersionUID = 3325393496966672911L;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	/*
 	 *  Private fields
 	 * */	
+	
 	private int id;
 	private int price;
 	private String name;
