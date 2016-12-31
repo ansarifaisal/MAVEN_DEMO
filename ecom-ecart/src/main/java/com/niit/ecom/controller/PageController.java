@@ -47,16 +47,6 @@ public class PageController {
 		return modelAndView;
 	}
 
-	/*
-	 * to access cart page
-	 */
-	@RequestMapping(value = { "/cart" })
-	public ModelAndView cart() {
-		ModelAndView modelAndView = new ModelAndView("page");
-		modelAndView.addObject("title", "Cart");
-		modelAndView.addObject("ifUserClickedCart", true);
-		return modelAndView;
-	}
 
 	/*
 	 * to access single product

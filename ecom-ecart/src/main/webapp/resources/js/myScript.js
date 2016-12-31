@@ -1,5 +1,4 @@
 $(document).ready(function(){
-
 	switch (hoverMenu) {
 	case 'About Us':
 			$('#about').addClass('active');
@@ -8,15 +7,30 @@ $(document).ready(function(){
 		$('#contact').addClass('active');
 	break;
 	case 'Login':
-		$("#login").addClass('active');
+		$('#login').addClass('active');
 		break;
 	case 'Register':
-		$("#register").addClass('active');
+		$('#register').addClass('active');
 		break;
 	case 'All Products':
-		$("#allProduct").addClass('active');
+		$('#allProduct').addClass('active');
+		
+	case 'Wish List':
+		$('#wishList').addClass('active');
+	
+	case 'Personal Information':
+		$('#personalInformation').addClass('active');
+		
+	case 'Change Password':
+		$('#changePassword').addClass('active');
+		
+	case 'Addresses':
+		$('#addresses').addClass('active');
+		
+	case 'Update':
+		$('#update').addClass('active');
+		
 	default:
 		break;
 	}
-
 });
