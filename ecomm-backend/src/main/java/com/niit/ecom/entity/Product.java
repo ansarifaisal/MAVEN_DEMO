@@ -2,91 +2,93 @@ package com.niit.ecom.entity;
 
 import java.io.Serializable;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Table;
-	
-@Entity
-@Table(name="product_temp")
+
+import org.springframework.stereotype.Component;
+
+@Entity(name = "PRODUCTS")
+@Component
 public class Product implements Serializable {
-	
-	private static final long serialVersionUID = 3325393496966672911L;
+
+	private static final long serialVersionUID = 5692323758045144458L;
+
+	/*
+	 * Private Fields For Products
+	 */
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	/*
-	 *  Private fields
-	 * */	
-	
+	@Column(name = "PRODUCT_ID")
 	private int id;
-	private int price;
-	private String name;
-	private String image;
-	
-	/*
-	 * Default constructor to provide default values
-	 * */
-	public Product() {
-		this(0,0,null, null);
-	}
-
-
-	/*
-	 * Parameterized Constructor to provide the values provided by the user
-	 * */
-	public Product(int id, int price, String name, String image) {
-		super();
-		this.id = id;
-		this.price = price;
-		this.name = name;
-		this.image = image;
-	}
-
+	@Column(name = "PRODUCT_NAME")
+	private String productName;
+	@Column(name = "PRODUCT_DESCRIPTION")
+	private String description;
+	@Column(name = "PRODUCT_PRICE")
+	private double price;
+	@Column(name = "PRODUCT_QUANTITY")
+	private int quantity;
+	@Column(name = "CATEGORY_ID")
+	private int categoryId;
 
 	/*
-	 * Accessors/Getter and Mutators/Setter
-	 * */
-	
+	 * Getters And Setters / Accessors And Mutators
+	 */
 	public int getId() {
 		return id;
 	}
-	
+
 	public void setId(int id) {
 		this.id = id;
 	}
-	public int getPrice() {
+
+	public String getProductName() {
+		return productName;
+	}
+
+	public void setProductName(String productName) {
+		this.productName = productName;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+	public double getPrice() {
 		return price;
 	}
-	public void setPrice(int price) {
+
+	public void setPrice(double price) {
 		this.price = price;
 	}
-	public String getName() {
-		return name;
-	}
-	public void setName(String name) {
-		this.name = name;
+
+	public int getQuantity() {
+		return quantity;
 	}
 
-	public String getImage() {
-		return image;
+	public void setQuantity(int quantity) {
+		this.quantity = quantity;
 	}
 
-
-	public void setImage(String image) {
-		this.image = image;
+	public int getCategoryId() {
+		return categoryId;
 	}
-	
-	
-	
+
+	public void setCategoryId(int categoryId) {
+		this.categoryId = categoryId;
+	}
+
 	/*
 	 * Overriding toString method for debugging
-	 * */
-
+	 */
 	@Override
 	public String toString() {
-		return "ProductDAOImpl [id=" + id + ", price=" + price + ", name=" + name + "]";
+		return "Product [id=" + id + ", productName=" + productName + ", description=" + description + ", price="
+				+ price + ", quantity=" + quantity + ", categoryId=" + categoryId + "]";
 	}
-	
-	
+
 }

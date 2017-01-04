@@ -1,12 +1,13 @@
 package com.niit.ecom.daoimpl;
 
-import java.util.ArrayList;
 import java.util.List;
 
+import javax.transaction.Transactional;
+
 import org.hibernate.SessionFactory;
+import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-import org.springframework.transaction.annotation.Transactional;
 
 import com.niit.ecom.dao.ProductDAO;
 import com.niit.ecom.entity.Product;
@@ -16,43 +17,62 @@ public class ProductDAOImpl implements ProductDAO {
 
 	@Autowired
 	private SessionFactory sessionFactory;
-	
-	List<Product> products;
-	
-	public ProductDAOImpl() {
-		products = new ArrayList<>();
-		products.add(new Product(1,2000,"SAMSUNG Galaxy On Nxt (Gold, 32 GB)", "moto.jpeg"));
-		products.add(new Product(2,7000,"TVs", "moto.jpeg"));
-		products.add(new Product(3,10000,"Mobile", "moto.jpeg"));
-		
-	}
-	@Override
-	public Product get(int id) {
-		for(Product product : products){
-			if(product.getId() == id){
-				return product;
-			}
-		}
-		return null;
-	}
 
-	@Override
-	public List<Product> list() {
-		return products;
-	}
-
-	@Override
-	public double price(int id) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-	
 	@Override
 	@Transactional
-	public boolean add(Product product) {
-		
-		sessionFactory.getCurrentSession().persist(product);
-		
-		return true;
+	public Product get(int id) {
+		return (Product) sessionFactory.getCurrentSession().get(Product.class, id);
 	}
+
+	@Override
+	@Transactional
+	public List<Product> list() {
+		String hql = "FROM PRODUCTS";
+		Query query = sessionFactory.getCurrentSession().createQuery(hql);
+		return query.list();
+	}
+
+	@Override
+	@Transactional
+	public boolean addProduct(Product product) {
+		try {
+			sessionFactory.getCurrentSession().save(product);
+			return true;
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+			return false;
+		}
+	}
+
+	@Override
+	@Transactional
+	public boolean updateProduct(Product product) {
+		try {
+			sessionFactory.getCurrentSession().update(product);
+			return true;
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+			return false;
+		}
+		
+	}
+
+	@Override
+	@Transactional
+	public boolean deleteProduct(Product product) {
+		try {
+			sessionFactory.getCurrentSession().delete(product);
+			return true;
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+			return false;
+		}
+	}
+
+	@Override
+	@Transactional
+	public Product getByCategory(int categoryId) {
+		return (Product) sessionFactory.getCurrentSession().get(Product.class, categoryId);
+	}
+
 }

@@ -1,4 +1,3 @@
-
 <div class="panel panel-primary">
 
 	<div class="panel-heading" style="font-size: 20px;">Cart(0)</div>
@@ -66,8 +65,8 @@
 								&#8377;123</div>
 						</td>
 					</tr>
-					
-						<tr>
+
+					<tr>
 						<%--item column --%>
 						<td class="col-md-7">
 							<div class="col-md-1" style="padding: 0px;">
@@ -117,7 +116,7 @@
 								&#8377;123</div>
 						</td>
 					</tr>
-					
+
 				</tbody>
 			</table>
 		</div>
@@ -132,14 +131,15 @@
 		</div>			
 	</div>
  --%>
-		<div class="text-right well" style="margin-top: -20px; font-size:25px;">Amount
-			Payable: &ensp;&#8377;123</div>
+		<div class="text-right well"
+			style="margin-top: -20px; font-size: 25px;">Amount Payable:
+			&ensp;&#8377;123</div>
 		<div class="text-right">
-			<input type="submit" class="btn-lg btn-default" value="< Continue Shopping" onclick="window.location='${contextPath}/'">
-			<input type="submit" class="btn-lg btn-warning" value="Place Order" onclick="window.location='${contextPath}/'">
+			<input type="submit" class="btn-lg btn-default"
+				value="< Continue Shopping"
+				onclick="window.location='${contextPath}/'"> <input
+				type="submit" class="btn-lg btn-warning" value="Place Order"
+				onclick="window.location='${contextPath}/'">
 		</div>
 	</div>
-
 </div>
-
-

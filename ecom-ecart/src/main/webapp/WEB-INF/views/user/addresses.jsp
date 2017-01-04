@@ -24,7 +24,8 @@
 											id="label-text-area">Address Line 1</label></td>
 										<td>
 											<div class="form-group">
-												<input type="text" class="form-control" name="line1" id="line1" placeholder="Enter Address Line 1">
+												<input type="text" class="form-control" name="line1"
+													id="line1" placeholder="Enter Address Line 1">
 											</div>
 										</td>
 									</tr>
@@ -33,7 +34,8 @@
 											id="label-text-area">Address Line 2</label></td>
 										<td>
 											<div class="form-group">
-												<input type="text" class="form-control" name="line2" id="line2" placeholder="Enter Address Line 2">
+												<input type="text" class="form-control" name="line2"
+													id="line2" placeholder="Enter Address Line 2">
 											</div>
 										</td>
 									</tr>
@@ -86,7 +88,8 @@
 									<tr>
 										<td colspan="2">
 											<div class="form-group">
-												<input type="submit" class="btn btn-primary col-md-offset-3 col-sm-offset-3 col-xs-offset-3"
+												<input type="submit"
+													class="btn btn-primary col-md-offset-3 col-sm-offset-3 col-xs-offset-3"
 													id="saveAddress" value="Add Address">
 											</div>
 										</td>
@@ -113,7 +116,7 @@
 									title="Phone">Ph:</abbr> (123) 456-7890
 							</address>
 							<input type="radio" name="default" id="default">Default
-							Address<br><a href="#edit">Edit</a> | <a href="#delete">Delete</a>
+							Address<br> <a href="#edit">Edit</a> | <a href="#delete">Delete</a>
 						</div>
 					</div>
 				</div>
