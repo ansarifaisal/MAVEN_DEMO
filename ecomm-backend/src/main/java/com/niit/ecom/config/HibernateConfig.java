@@ -63,5 +63,4 @@ public class HibernateConfig {
 		HibernateTransactionManager transactionManager = new HibernateTransactionManager(sessionFactory);
 		return transactionManager;
 	}
-	
 }

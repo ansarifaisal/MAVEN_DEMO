@@ -7,6 +7,13 @@ body {
 	padding: 0px;
 }
 
+.tenpadding{
+	padding-top:10px;
+}
+
+.twentypadding{
+	padding-top:20px;
+}
 .test {
 	text-align: center;
 }
@@ -195,4 +202,8 @@ textarea{
 .navbar-fixed-top .navbar-collapse,
 .navbar-fixed-bottom .navbar-collapse {
   max-height: 340px;
+}
+
+.label-size{
+	font-size:16px;
 }

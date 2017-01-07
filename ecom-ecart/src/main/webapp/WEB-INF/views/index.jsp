@@ -18,20 +18,20 @@
 <div class="row">
 	<div class="panel panel-default col-md-12 col-sm-12 col-xs-12">
 		<div class="panel-body">
-			<div class="col-md-2 col-sm-2 col-xs-2">
+			<div class="col-md-2 col-sm-2">
 				<br>
 				<h3>Mobile</h3>
 				<br>
 				<div class="btn-group">
 					<button class="btn btn-primary">View All</button>
 				</div>
-			</div>
+			</div><br>
 
 			<div class="col-md-10 col-sm-10 col-xs-10">
 				<div class="carousel slide media-carousel" id="media-1">
 					<div class="carousel-inner">
 						<div class="item active">
-							<div class="col-md-3 col-sm-3 col-xs-3 thumbnail-setting">
+							<div class="col-md-3 col-sm-3 col-xs-12 thumbnail-setting">
 								<div class="thumbnail">
 									<a href=""><img alt="#image"
 										src="${images}/moto.jpeg" class="img-resize zoom" />
@@ -42,7 +42,7 @@
 								</div>
 							</div>
 						</div>
-						<div class="col-md-3 col-sm-3 col-xs-3 thumbnail-setting">
+						<div class="col-md-3 col-sm-3 hidden-xs thumbnail-setting">
 								<div class="thumbnail">
 									<a href=""><img alt="#image"
 										src="${images}/moto.jpeg" class="img-resize zoom" />
@@ -53,7 +53,7 @@
 								</div>
 							</div>
 						</div>
-						<div class="col-md-3 col-sm-3 col-xs-3 thumbnail-setting">
+						<div class="col-md-3 col-sm-3 hidden-xs thumbnail-setting">
 								<div class="thumbnail">
 									<a href=""><img alt="#image"
 										src="${images}/moto.jpeg" class="img-resize zoom" />
@@ -64,7 +64,7 @@
 								</div>
 							</div>
 						</div>
-					<div class="col-md-3 col-sm-3 col-xs-3 thumbnail-setting">
+					<div class="col-md-3 col-sm-3 hidden-xs thumbnail-setting">
 								<div class="thumbnail">
 									<a href=""><img alt="#image"
 										src="${images}/moto.jpeg" class="img-resize zoom" />

@@ -1,12 +1,12 @@
 <nav class="navbar navbar-inverse navbar-fixed-top">
 	<div class="container">
 		<div class="navbar-header">
-				<button class="navbar-toggle collapsed " data-toggle="collapse"
-					data-target="#collapse-1" aria-expanded="false">
-					<span class="sr-only">Toggle navigation</span> <span
-						class="icon-bar"></span> <span class="icon-bar"></span> <span
-						class="icon-bar"></span>
-				</button>
+			<button class="navbar-toggle collapsed " data-toggle="collapse"
+				data-target="#collapse-1" aria-expanded="false">
+				<span class="sr-only">Toggle navigation</span> <span
+					class="icon-bar"></span> <span class="icon-bar"></span> <span
+					class="icon-bar"></span>
+			</button>
 			<a class="navbar-brand" href="${contextPath}/">E-Cart</a>
 		</div>
 		<div class="collapse navbar-collapse" id="collapse-1">
@@ -24,6 +24,12 @@
 					</div>
 				</div>
 			</form>
+			<ul class="nav navbar-nav">
+				<li><a href="${contextPath}/user/cart"><span
+						class="glyphicon glyphicon-shopping-cart"></span> Cart <span
+						class="badge">1</span></a></li>
+
+			</ul>
 			<ul class="nav navbar-nav navbar-right">
 				<li id="allProduct"><a href="${contextPath}/product/all">All
 						Products</a></li>
@@ -39,9 +45,11 @@
 						<li><a href="#allproducts">All Products</a></li>
 						<li><a href="#allsuppliers">All Suppliers</a></li>
 						<li class="divider" role="separator"></li>
-						<li><a href="#addproduct">Add Product</a></li>
-						<li><a href="#addsupplier">Add Supplier</a></li>
-						<li><a href="#addcategory">Add Category</a></li>
+						<li><a href="${contextPath}/admin/addproduct">Add Product</a></li>
+						<li><a href="${contextPath}/admin/addsupplier">Add
+								Supplier</a></li>
+						<li><a href="${contextPath}/admin/addcategory">Add
+								Category</a></li>
 						<li class="divider" role="separator"></li>
 						<li><a href="#logout">Logout</a>
 					</ul></li>

@@ -1,8 +1,13 @@
 package com.niit.ecom.controller;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
+
+import com.niit.ecom.entity.User;
 
 @Controller
 @RequestMapping(value = { "/user" })
@@ -53,6 +58,11 @@ public class UserController {
 		modelAndView.addObject("title", "Addresses");
 		modelAndView.addObject("ifUserClickedAddresses", true);
 		return modelAndView;
+	}
+	
+	@RequestMapping(value="user.do")
+	public String doAction(@ModelAttribute User user, BindingResult result, @RequestParam String action ){
+		return "user";
 	}
 	
 }

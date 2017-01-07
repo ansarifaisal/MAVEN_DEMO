@@ -38,19 +38,20 @@ public class UserDAOTestCases {
 	}*/
 
 	/*
-	 * Test to add the product
+	 * Test to get user by its id
 	 */
 	
-	/*@Test
-	public void getUserTest(){
-		userDAO.getUser(1);
-	}*/
-	
 	@Test
+	public void getUserTest(){
+		user = userDAO.getUser(1);
+		Assert.assertEquals("This is Valid", user.getId(),userDAO.getUser(1).getId());
+	}	
+	
+	/*@Test
 	public void getAllUserTest(){
 		int size = userDAO.list().size();
 		Assert.assertEquals(1, size);
-	}
+	}*/
 	
 	/*@Test
 	public void updateUserTest(){

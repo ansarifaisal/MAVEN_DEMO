@@ -21,7 +21,7 @@ public class ProductDAOTestCases {
 	AnnotationConfigApplicationContext context;
 	
 	/*
-	 * Default Constructor for intialization
+	 * Default Constructor for initialization
 	 */
 	public ProductDAOTestCases(){
 		context = new AnnotationConfigApplicationContext();
@@ -32,14 +32,22 @@ public class ProductDAOTestCases {
 	}
 	
 	/*
+	 *Test to get product by id 
+	 */
+		@Test
+		public void getByIdTest(){
+			product = productDAO.get(1);
+			Assert.assertEquals("This is valid!",product.getId(), productDAO.get(1).getId());
+		}
+	/*
 	 *Test to get all the product 
 	 */
-	@Test
+	/*@Test
 	public void getAllProductTest(){
 		int size = productDAO.list().size();
 		Assert.assertEquals(1, size);
 	}
-	
+	*/
 	/*
 	 *Test to delete the product 
 	 */
