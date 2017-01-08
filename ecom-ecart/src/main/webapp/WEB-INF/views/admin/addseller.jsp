@@ -6,7 +6,7 @@
 		<div class="panel-body">
 			<div class="col-md-offset-3 col-sm-offset-3 col-md-6">
 				<form:form method="POST" action="${contextPath}/admin/saveProduct"
-						class="form" role="form" modelAttribute="product">
+					class="form" role="form" >
 					<div class="form-group">
 						<label for="productName"
 							class="control-label label-size text-primary">Name</label>
@@ -31,7 +31,7 @@
 							name="productQuantity" id="productQuantity"
 							placeholder="Enter Product Quantity" value="${product.quantity }" />
 					</div>
-					<div class="form-group">
+				<%-- 	<div class="form-group">
 						<label for="productCategory"
 							class="control-label label-size text-primary">Category</label>
 						<form:select path="categoryId" class="form-control">
@@ -39,7 +39,7 @@
 								<form:option value="${category.id}">${category.name}</form:option>
 							</c:forEach>
 						</form:select>
-					</div>
+					</div> --%>
 					<!-- 	<div class="form-group">
 						<label for="uploadImage"
 							class="control-label label-size text-primary">Upload
@@ -62,54 +62,4 @@
 			</div>
 		</div>
 	</div>
-	<div class="panel">
-		<div class="panel-primary">
-			<div class="panel-heading">
-				<div class="panel-title">Products</div>
-			</div>
-		</div>
-	</div>
-	<table class="table table-hover" id="no-border">
-		<thead>
-			<tr>
-				<td align="center" colspan="4">
-					<div class="form-group">
-						<div class="input-group">
-							<input type="text" class="form-control"
-								placeholder="Search for products"> <span
-								class="input-group-btn">
-								<button class="btn btn-default" type="button">
-									<span class="glyphicon glyphicon-search" id="btn-search"
-										aria-hidden="true"></span>
-								</button>
-							</span>
-						</div>
-					</div>
-				</td>
-				</xtr>
-			<tr>
-				<td><strong>Name</strong></td>
-				<td><strong>Price</strong></td>
-				<td><strong>Seller</strong></td>
-				<td><strong>Action</strong></td>
-			</tr>
-		</thead>
-		<tbody>
-			<c:forEach items="${products}" var="product">
-				<tr>
-					<td>${product.productName}</td>
-					<td>${product.price }</td>
-					<td></td>
-					<td><button type="submit" class=" btn btn-info"
-							onclick="window.location='${contextPath}/admin/update/product/${product.id}';">
-							<span class="glyphicon glyphicon-pencil" style="font-size: 20px;"></span>
-						</button>
-						<button type="submit" class="btn btn-danger"
-							onclick="window.location='${contextPath}/admin/delete/product/${product.id}';">
-							<span class="glyphicon glyphicon-trash" style="font-size: 20px;"></span>
-						</button></td>
-				</tr>
-			</c:forEach>
-		</tbody>
-	</table>
 </div>

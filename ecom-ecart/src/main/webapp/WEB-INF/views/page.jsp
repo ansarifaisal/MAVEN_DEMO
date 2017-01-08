@@ -1,7 +1,7 @@
 <%-- All the tag will be here --%>
 <%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
+<%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <spring:url value="/resources/images" var="images" />
 <spring:url value="/resources/css" var="css" />
 <spring:url value="/resources/js" var="js" />
@@ -69,24 +69,39 @@
 		<c:if test="${ifUserClickedUpdateEmailMobile == true }">
 			<%@include file="user/account.jsp"%>
 		</c:if>
-		
+
 		<%--if user clicks on Addresses--%>
 		<c:if test="${ifUserClickedAddresses == true }">
 			<%@include file="user/account.jsp"%>
 		</c:if>
-		
+
 		<%--if user clicks on Add Product--%>
 		<c:if test="${ifUserClickedAddProduct == true }">
 			<%@include file="admin/admin.jsp"%>
 		</c:if>
-		
+
 		<%--if user clicks on Add Category--%>
 		<c:if test="${ifUserClickedAddCategory == true }">
 			<%@include file="admin/admin.jsp"%>
 		</c:if>
-		
+
 		<%--if user clicks on Add Supplier--%>
-		<c:if test="${ifUserClickedAddSupplier == true }">
+		<c:if test="${ifUserClickedAddSeller == true }">
+			<%@include file="admin/admin.jsp"%>
+		</c:if>
+
+		<%--if user clicks on Update Category--%>
+		<c:if test="${ifUserClickedUpdateCategory == true }">
+			<%@include file="admin/admin.jsp"%>
+		</c:if>
+		
+		<%--if user clicks on Update Category--%>
+		<c:if test="${ifUserClickedUpdateProduct == true }">
+			<%@include file="admin/admin.jsp"%>
+		</c:if>
+		
+		<%--if user clicks on add seller--%>
+		<c:if test="${ifUserClickedUpdateProduct == true }">
 			<%@include file="admin/admin.jsp"%>
 		</c:if>
 

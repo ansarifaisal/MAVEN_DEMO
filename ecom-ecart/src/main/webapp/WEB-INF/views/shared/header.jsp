@@ -43,11 +43,11 @@
 					aria-expanded="false">Admin<span class="caret"></span></a>
 					<ul class="dropdown-menu">
 						<li><a href="#allproducts">All Products</a></li>
-						<li><a href="#allsuppliers">All Suppliers</a></li>
+						<li><a href="#allsuppliers">All Sellers</a></li>
 						<li class="divider" role="separator"></li>
 						<li><a href="${contextPath}/admin/addproduct">Add Product</a></li>
-						<li><a href="${contextPath}/admin/addsupplier">Add
-								Supplier</a></li>
+						<li><a href="${contextPath}/seller/addseller">Add
+								Seller</a></li>
 						<li><a href="${contextPath}/admin/addcategory">Add
 								Category</a></li>
 						<li class="divider" role="separator"></li>

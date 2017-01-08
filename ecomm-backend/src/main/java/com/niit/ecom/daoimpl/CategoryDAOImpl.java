@@ -2,12 +2,11 @@ package com.niit.ecom.daoimpl;
 
 import java.util.List;
 
-import javax.transaction.Transactional;
-
 import org.hibernate.Query;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.niit.ecom.dao.CategoryDAO;
 import com.niit.ecom.entity.Category;
@@ -44,10 +43,10 @@ public class CategoryDAOImpl implements CategoryDAO {
 	@Transactional
 	public boolean addCategory(Category category) {
 		try {
-			sessionFactory.getCurrentSession().save(category);
+			sessionFactory.getCurrentSession().persist(category);
 			return true;
 		} catch (Exception e) {
-			System.out.println(e.getMessage());
+			e.printStackTrace();
 			return false;
 		}
 	}

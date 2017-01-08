@@ -31,6 +31,7 @@ public class UserController {
 	@RequestMapping(value = {"/changepassword"})
 	public ModelAndView changePassword(){
 		ModelAndView modelAndView = new ModelAndView("page");
+		modelAndView.addObject("user", new User());
 		modelAndView.addObject("title", "Change Password");
 		modelAndView.addObject("ifUserClickedChangePassword",true);
 		return modelAndView;
@@ -61,7 +62,7 @@ public class UserController {
 	}
 	
 	@RequestMapping(value="user.do")
-	public String doAction(@ModelAttribute User user, BindingResult result, @RequestParam String action ){
+	public String doAction(@ModelAttribute User user, BindingResult result, @RequestParam String action){
 		return "user";
 	}
 	

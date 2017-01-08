@@ -7,8 +7,17 @@
 		<c:if test = "${ifUserClickedAddCategory == true}">
 			<%@include file = "addcategory.jsp" %>
 		</c:if>
-		<c:if test = "${ifUserClickedAddSupplier == true}">
-			<%@include file = "addsupplier.jsp" %>
+		
+		<c:if test = "${ifUserClickedUpdateCategory == true}">
+			<%@include file = "addcategory.jsp" %>
+		</c:if>
+		
+		<c:if test = "${ifUserClickedUpdateProduct == true}">
+			<%@include file = "addproduct.jsp" %>
+		</c:if>
+		
+		<c:if test = "${ifUserClickedAddSeller == true}">
+			<%@include file = "addseller.jsp" %>
 		</c:if>
 	</div>
 </div>

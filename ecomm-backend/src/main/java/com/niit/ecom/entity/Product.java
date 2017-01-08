@@ -5,8 +5,10 @@ import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Transient;
 
 import org.springframework.stereotype.Component;
+import org.springframework.web.multipart.MultipartFile;
 
 @Entity(name = "PRODUCTS")
 @Component
@@ -28,12 +30,23 @@ public class Product implements Serializable {
 	private double price;
 	@Column(name = "PRODUCT_QUANTITY")
 	private int quantity;
+	@Transient
+	private MultipartFile image;
+	
 	@Column(name = "CATEGORY_ID")
 	private int categoryId;
 
 	/*
 	 * Getters And Setters / Accessors And Mutators
 	 */
+	public MultipartFile getImage() {
+		return image;
+	}
+
+	public void setImage(MultipartFile image) {
+		this.image = image;
+	}
+	
 	public int getId() {
 		return id;
 	}

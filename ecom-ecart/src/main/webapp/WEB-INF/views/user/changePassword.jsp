@@ -6,7 +6,7 @@
 
 		<div
 			class="panel-body col-md-offset-3 col-sm-offset-3">
-			<form>
+			<form:form class="form">
 				<div class="col-md-9 col-sm-12 col-xs-12">
 					<label for="oldPassword" class="text-primary">Old Password</label>
 					<div class="form-group">
@@ -31,7 +31,7 @@
 							value="Save">
 					</div>
 				</div>
-			</form>
+			</form:form>
 		</div>
 	</div>
 </div>

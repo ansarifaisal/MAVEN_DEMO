@@ -2,12 +2,11 @@ package com.niit.ecom.daoimpl;
 
 import java.util.List;
 
-import javax.transaction.Transactional;
-
 import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.niit.ecom.dao.ProductDAO;
 import com.niit.ecom.entity.Product;
@@ -36,7 +35,7 @@ public class ProductDAOImpl implements ProductDAO {
 	@Transactional
 	public boolean addProduct(Product product) {
 		try {
-			sessionFactory.getCurrentSession().save(product);
+			sessionFactory.getCurrentSession().persist(product);
 			return true;
 		} catch (Exception e) {
 			System.out.println(e.getMessage());

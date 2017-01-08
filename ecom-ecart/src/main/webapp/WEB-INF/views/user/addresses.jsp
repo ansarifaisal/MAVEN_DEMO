@@ -5,7 +5,7 @@
 		</div>
 		<div class="panel-body ">
 			<div class="col-md-offset-2 col-sm-offset-2">
-				<form:form class="form" role="form">
+				<form:form class="form" role="form" modelAttribute = "">
 					<label for="name" class="control-label text-primary">Name</label>
 					<div class="form-group">
 					<form:input path="" class="form-control" id="name"
@@ -79,7 +79,7 @@
 							class="btn btn-primary col-md-offset-3 col-sm-offset-3"
 							id="saveAddress" value="Add Address">
 					</div>
-				</form>
+				</form:form>
 			</div>
 			<div class="col-md-12 col-sm-12 col-xs-12">
 				<h6>

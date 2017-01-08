@@ -4,7 +4,7 @@
 			<a href="${contextPath}/product/${product.id}"><img alt="#image" src="${images}/${product.image}"
 				class="img-resize zoom" /></a>
 			<div class="caption">
-					<p><a href="">${product.name}</a></p>
+					<p><a href="">${product.productName}</a></p>
 				<h6 class="text-muted price">Now at &#8377;${product.price}</h6>
 			</div>
 		</div>
