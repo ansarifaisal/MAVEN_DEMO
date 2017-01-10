@@ -33,4 +33,8 @@ $(document).ready(function(){
 	default:
 		break;
 	}
+
+	/*Initializing tooltip*/
+	$('[data-toggle="tooltip"]').tooltip();
 });
+

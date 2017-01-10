@@ -95,11 +95,6 @@
 			<%@include file="admin/admin.jsp"%>
 		</c:if>
 		
-		<%--if user clicks on Update Category--%>
-		<c:if test="${ifUserClickedUpdateProduct == true }">
-			<%@include file="admin/admin.jsp"%>
-		</c:if>
-		
 		<%--if user clicks on add seller--%>
 		<c:if test="${ifUserClickedUpdateProduct == true }">
 			<%@include file="admin/admin.jsp"%>

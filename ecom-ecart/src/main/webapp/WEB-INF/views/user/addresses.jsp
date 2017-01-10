@@ -5,73 +5,62 @@
 		</div>
 		<div class="panel-body ">
 			<div class="col-md-offset-2 col-sm-offset-2">
-				<form:form class="form" role="form" modelAttribute = "">
-					<label for="name" class="control-label text-primary">Name</label>
+				<form:form action="${contextPath}/user/address/save" class="form"
+					role="form" modelAttribute="address">
 					<div class="form-group">
-					<form:input path="" class="form-control" id="name"
-							placeholder="Enter Name" required="required"/>
-						<!-- <input type="text" class="form-control" id="name"
-							placeholder="Enter Name" required="required"> -->
+						<label for="firstName" class="control-label text-primary">First
+							Name</label>
+						<form:input path="firstName" class="form-control"
+							placeholder="Enter Name" required="required" />
+						<form:hidden path="id" class="form-control"/>
+						<form:hidden path="userId" class="form-control"/>
 					</div>
 
-					<label for="lineOne" class="control-label text-primary"
-						id="label-text-area">Address Line 1</label>
 					<div class="form-group">
-					<form:input path = "" class="form-control" name="line1" id="line1"
-							placeholder="Enter Address Line 1" required="required"/>
-						<!-- <input type="text" class="form-control" name="line1" id="line1"
-							placeholder="Enter Address Line 1" required="required"> -->
+						<label for="lastName" class="control-label text-primary">Last
+							Name</label>
+						<form:input path="lastName" class="form-control"
+							placeholder="Enter Name" required="required" />
+					</div>
+					<div class="form-group">
+						<label for="lineOne" class="control-label text-primary"
+							id="label-text-area">Address Line 1</label>
+						<form:input path="lineOne" class="form-control"
+							placeholder="Enter Address Line 1" required="required" />
+					</div>
+					<div class="form-group">
+						<label for="lineTwo" class="control-label text-primary"
+							id="label-text-area">Address Line 2</label>
+						<form:input path="lineTwo" class="form-control"
+							placeholder="Enter Address Line 2" required="required" />
+					</div>
+					<div class="form-group">
+						<label for="landmark" class="control-label text-primary">Landmark</label>
+						<form:input path="landmark" class="form-control" id="landmark"
+							placeholder="Enter Landmark" required="required" />
+					</div>
+					<div class="form-group">
+						<label for="city" class="control-label text-primary">City</label>
+						<form:input path="city" class="form-control" id="city"
+							placeholder="Enter City" required="required" />
+					</div>
+					<div class="form-group">
+						<label for="state" class="control-label text-primary">State</label>
+						<form:input path="state" class="form-control" id="state"
+							placeholder="Enter State" required="required" />
+					</div>
+					<div class="form-group">
+						<label for="pincode" class="control-label text-primary">Pincode</label>
+						<form:input path="pincode" class="form-control" id="pincode"
+							placeholder="Enter Pincode" required="required" />
 					</div>
 
-					<label for="lineTwo" class="control-label text-primary"
-						id="label-text-area">Address Line 2</label>
 					<div class="form-group">
-					<form:input path="" class="form-control" name="line2" id="line2"
-							placeholder="Enter Address Line 2" required="required"/>
-						<!-- <input type="text" class="form-control" name="line2" id="line2"
-							placeholder="Enter Address Line 2" required="required"> -->
-					</div>
-
-					<label for="landmark" class="control-label text-primary">Landmark</label>
-
-					<div class="form-group">
-					<form:input path="" class="form-control" id="landmark"
-							placeholder="Enter Landmark" required="required"/>
-						<!-- <input type="text" class="form-control" id="landmark"
-							placeholder="Enter Landmark" required="required"> -->
-					</div>
-
-					<label for="city" class="control-label text-primary">City</label>
-					<div class="form-group">
-					<form:input path="" class="form-control" id="city"
-							placeholder="Enter City" required="required"/>
-						<!-- <input type="text" class="form-control" id="city"
-							placeholder="Enter City" required="required"> -->
-					</div>
-
-					<label for="state" class="control-label text-primary">State</label>
-					<div class="form-group">
-					<form:input path="" class="form-control" id="state"
-							placeholder="Enter State" required="required"/>
-						<!-- <input type="text" class="form-control" id="state"
-							placeholder="Enter State" required="required"> -->
-					</div>
-
-					<label for="pincode" class="control-label text-primary">Pincode</label>
-					<div class="form-group">
-					<form:input path="" class="form-control" id="pincode"
-							placeholder="Enter Pincode" required="required"/>
-						<!-- <input type="text" class="form-control" id="pincode"
-							placeholder="Enter Pincode" required="required"> -->
-					</div>
-
-					<label for="phoneNumber" class="control-label text-primary">Phone
-						Number</label>
-					<div class="form-group">
-					<form:input path="" class="form-control" id="phoneNumber"
-							placeholder="Enter Phone Number" required="required"/>
-						<!-- <input type="text" class="form-control" id="phoneNumber"
-							placeholder="Enter Phone Number" required="required"> -->
+						<label for="mobileNumber" class="control-label text-primary">Phone
+							Number</label>
+						<form:input path="mobileNumber" class="form-control"
+							id="phoneNumber" placeholder="Enter Phone Number"
+							required="required" />
 					</div>
 
 					<div class="form-group">

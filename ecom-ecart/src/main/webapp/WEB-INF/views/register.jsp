@@ -52,7 +52,17 @@
 					</div>
 				</div>
 				<%--End of Gender Fields --%>
-
+				
+					<%-- <div class="form-group">
+					<label for="As A" class="text-primary">Gender</label>
+					<div class="radio">
+						<label class="radio-inline"><input type="radio"
+							name="gender" id="male">Male</label> <label class="radio-inline"><input
+							type="radio" name="gender" id="female">Female</label>
+					</div>
+				</div>
+				End of Gender Fields
+ --%>
 				<div class="form-group nopadding">
 					<label for="mobileNumber" class="text-primary">Mobile
 						Number</label> <input type="text" class="form-control" id="mobileNumber"

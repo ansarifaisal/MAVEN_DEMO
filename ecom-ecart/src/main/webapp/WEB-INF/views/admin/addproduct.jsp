@@ -4,18 +4,19 @@
 			<div class="panel-title">Add Product</div>
 		</div>
 		<div class="panel-body">
+			<c:if test="${!empty msg}"> ${msg}</c:if>
+
 			<div class="col-md-offset-3 col-sm-offset-3 col-md-6">
 				<form:form method="POST" action="${contextPath}/admin/saveProduct"
-						class="form" role="form" modelAttribute="product">
+					class="form" role="form" modelAttribute="product">
 					<div class="form-group">
 						<label for="productName"
 							class="control-label label-size text-primary">Name</label>
 						<form:input path="productName" class="form-control"
 							name="productName" id="productName"
 							placeholder="Enter Product Name" value="${product.productName}" />
-						<form:hidden path="id" class="form-control" name="productId"
-							id="productId" placeholder="Enter Product Id"
-							value="${product.id}" />
+						<form:hidden path="id" class="form-control" id="productId"
+							placeholder="Enter Product Id" value="${product.id}" />
 					</div>
 					<div class="form-group">
 						<label for="productPrice"
@@ -100,14 +101,13 @@
 					<td>${product.productName}</td>
 					<td>${product.price }</td>
 					<td></td>
-					<td><button type="submit" class=" btn btn-info"
-							onclick="window.location='${contextPath}/admin/update/product/${product.id}';">
-							<span class="glyphicon glyphicon-pencil" style="font-size: 20px;"></span>
-						</button>
-						<button type="submit" class="btn btn-danger"
-							onclick="window.location='${contextPath}/admin/delete/product/${product.id}';">
-							<span class="glyphicon glyphicon-trash" style="font-size: 20px;"></span>
-						</button></td>
+					<td><a
+						href="${contextPath}/admin/update/product/${product.id}"
+						class="btn btn-info" data-toggle="tooltip" title="Edit"><span
+							class="glyphicon glyphicon-pencil" style="font-size: 20px;"></span></a>
+						<a href="${contextPath}/admin/delete/product/${product.id}"
+						data-toggle="tooltip" title="Delete" class="btn btn-danger"><span
+							class="glyphicon glyphicon-trash" style="font-size: 20px;"></span></a></td>
 				</tr>
 			</c:forEach>
 		</tbody>

@@ -49,21 +49,4 @@ public class UserController {
 		return modelAndView;
 	}
 	
-	/*
-	 * To Access Address Page
-	 * */
-	
-	@RequestMapping(value = {"/addresses"})
-	public ModelAndView addresses(){
-		ModelAndView modelAndView = new ModelAndView("page");
-		modelAndView.addObject("title", "Addresses");
-		modelAndView.addObject("ifUserClickedAddresses", true);
-		return modelAndView;
-	}
-	
-	@RequestMapping(value="user.do")
-	public String doAction(@ModelAttribute User user, BindingResult result, @RequestParam String action){
-		return "user";
-	}
-	
 }

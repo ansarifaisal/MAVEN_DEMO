@@ -8,31 +8,25 @@
 <title>Insert title here</title>
 <link href="${css}/bootstrap.css" rel="stylesheet" type="text/css">
 <link href="${css}/bootstrap-theme.css" rel="stylesheet" type="text/css">
-<link href="${css}/style.css" rel="stylesheet" type="text/css">
+<link href="${css}/app.css" rel="stylesheet" type="text/css">
 <link rel="stylesheet" href="${css}/font-awesome.min.css"
 	type="text/css">
+	<script type = "text/javascript" src="${js}/jquery.js"></script>
+<script type="text/javascript" src="${js}/bootstrap.js"></script>
+
+<script type="text/javascript">
+$(function () {
+	  $('[data-toggle="tooltip"]').tooltip()
+	})
+</script>
 </head>
+
 <body>
 	<div class="container">
-		<div class="row">
-			<div class="thumbnail thumbnail-setting col-md-3">
-				<a href=""><img alt="#image" src="${images}/${product.image}"
-					class="img-resize zoom" /></a>
-				<div class="caption">
-					<p>${product.name}</p>
-					<h6 class="text-muted price">Now at &#8377;${product.price}</h6>
-				</div>
-			</div>
-
-			<div class="thumbnail thumbnail-setting col-md-3">
-				<a href=""><img alt="#image" src="${images}/${product.image}"
-					class="img-resize zoom" /></a>
-				<div class="caption">
-					<p>${product.name}</p>
-					<h6 class="text-muted price">Now at &#8377;${product.price}</h6>
-				</div>
-			</div>
-		</div>
+		<a href="#" data-toggle="tooltip" title="Some tooltip text!">Hover
+			over me</a>
+			
+			<button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="left" title="Tooltip on left">Tooltip on left</button>
 	</div>
 </body>
 </html>

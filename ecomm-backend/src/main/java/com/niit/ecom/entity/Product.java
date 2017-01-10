@@ -4,6 +4,8 @@ import java.io.Serializable;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Transient;
 
@@ -20,6 +22,7 @@ public class Product implements Serializable {
 	 * Private Fields For Products
 	 */
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "PRODUCT_ID")
 	private int id;
 	@Column(name = "PRODUCT_NAME")

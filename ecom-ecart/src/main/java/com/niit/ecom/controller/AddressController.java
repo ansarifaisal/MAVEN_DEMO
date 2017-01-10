@@ -5,16 +5,19 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
-@RequestMapping(value = { "/seller" })
-public class SellerController {
-	
+@RequestMapping(value = {"/user"})
+public class AddressController {
 
-	@RequestMapping(value = { "/addseller" })
-	public ModelAndView getAddSupplierPage() {
+	/*
+	 * To Access Address Page
+	 * */
+	
+	@RequestMapping(value = {"/addresses"})
+	public ModelAndView addresses(){
 		ModelAndView modelAndView = new ModelAndView("page");
-		modelAndView.addObject("title", "Add Supplier");
-		modelAndView.addObject("ifUserClickedAddSeller", true);
+		modelAndView.addObject("title", "Addresses");
+		modelAndView.addObject("ifUserClickedAddresses", true);
 		return modelAndView;
 	}
-
+	
 }
