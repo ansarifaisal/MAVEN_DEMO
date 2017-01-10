@@ -12,7 +12,8 @@
 							<label for="categoryName"
 								class="control-label label-size text-primary">Name</label>
 							<form:input path="name" class="form-control" name="categoryName"
-								id="categoryName" placeholder="Enter Category Name" value="${category.name}"/>
+								id="categoryName" placeholder="Enter Category Name"
+								value="${category.name}" />
 							<form:hidden path="id" class="form-control" name="categoryId"
 								id="categoryId" placeholder="Category Id" value="${category.id}" />
 						</div>
@@ -20,7 +21,8 @@
 							<label for="categoryDescription"
 								class="control-label label-size text-primary">Description</label>
 							<form:textarea path="description" rows="5" cols="25"
-								class="form-control" placeholder="Enter Description" value = "${category.description}"/>
+								class="form-control" placeholder="Enter Description"
+								value="${category.description}" />
 						</div>
 						<br>
 						<div class="form-groups">
@@ -53,12 +55,14 @@
 				<tr>
 					<td>${category.name}</td>
 					<td>${category.description}</td>
-					<td>
-						<button type="submit" class=" btn btn-info"
-							onclick="window.location='${contextPath}/admin/update/category/${category.id}';">Edit</button>
-						<input type="submit" class="btn btn-danger" value="Remove"
-						onclick="window.location='${contextPath}/admin/delete/category/${category.id}';">
-					</td>
+					<td><a
+						href="${contextPath}/admin/update/category/${category.id}"
+						class="btn btn-primary"> <span class="glyphicon glyphicon-pencil"
+							style="font-size: 20px;"></span>
+					</a> <a href="${contextPath}/admin/delete/category/${category.id}"
+						class="btn btn-danger"> <span class="glyphicon glyphicon-trash"
+							style="font-size: 20px;"></span>
+					</a></td>
 				</tr>
 			</c:forEach>
 		</tbody>
