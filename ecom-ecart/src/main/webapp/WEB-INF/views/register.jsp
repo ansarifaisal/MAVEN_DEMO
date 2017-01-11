@@ -7,39 +7,50 @@
 		<!-- Panel Body Created with padding-top 10px -->
 		<div class="panel-body .tenpadding">
 			<!-- Login Form Started from here -->
-			<form id="loginForm" class="col-md-offset-2 col-md-8" role="form">
-				<div class="form-groups">
-					<div class="col-md-6 col-sm-6 nopadding">
-						<label for="firstName" class="text-primary">First Name</label> <input
-							type="text" class="form-control" id="firstName" name="firstName"
-							placeholder="Enter First Name" required="required">
+			<form id="registerForm" class="col-md-offset-2 col-md-8" role="form">
+				<div class="form-group">
+					<label for="firstName" class="text-primary control-label">First
+						Name</label>
+					<div class="validate">
+						<input type="text" class="form-control" id="firstName"
+							name="firstName" placeholder="Enter First Name">
 					</div>
-					<div class="col-md-6 col-sm-6">
-						<label for="lastName" class="text-primary">Last Name</label> <input
-							type="text" class="form-control" id="lastName" name="lastName"
-							placeholder="Enter Last Name" required="required">
+				</div>
+				<div class="form-group">
+					<label for="lastName" class="text-primary control-label">Last
+						Name</label>
+					<div class="validate">
+						<input type="text" class="form-control" id="lastName"
+							name="lastName" placeholder="Enter Last Name">
 					</div>
 				</div>
 				<%-- End of LastName and FirstName --%>
-				<div class="form-group tenpadding">
-					<label for="email" class="text-primary">Email Address</label> <input
-						type="email" class="form-control" id="email" name="email"
-						placeholder="Enter Email Address" required="required">
+				<div class="form-group">
+					<label for="email" class="text-primary control-label">Email
+						Address</label>
+					<div class="validate">
+						<input type="email" class="form-control" id="email" name="email"
+							placeholder="Enter Email Address">
+					</div>
 				</div>
 				<%--End Of Email Field --%>
 
-				<div class="form-group nopadding">
-					<label for="email" class="text-primary">Password</label> <input
-						type="password" class="form-control" id="password" name="password"
-						placeholder="Enter Password" required="required">
+				<div class="form-group">
+					<label for="password" class="text-primary control-label">Password</label>
+					<div class="validate">
+						<input type="password" class="form-control" id="password"
+							name="password" placeholder="Enter Password">
+					</div>
 				</div>
 				<%-- End of Password Field --%>
 
-				<div class="form-group nopadding">
-					<label for="email" class="text-primary">Re-Enter Password</label> <input
-						type="password" class="form-control" id="rePassword"
-						name="rePassword" placeholder="Re-Enter Password"
-						required="required">
+				<div class="form-group">
+					<label for="rePassword" class="text-primary control-label">Re-Enter
+						Password</label>
+					<div class="validate">
+						<input type="password" class="form-control" id="rePassword"
+							name="rePassword" placeholder="Re-Enter Password">
+					</div>
 				</div>
 				<%-- End of Re-Type Password Field --%>
 
@@ -52,8 +63,10 @@
 					</div>
 				</div>
 				<%--End of Gender Fields --%>
-				
-					<%-- <div class="form-group">
+
+				<%--
+				For supplier
+				 <div class="form-group">
 					<label for="As A" class="text-primary">Gender</label>
 					<div class="radio">
 						<label class="radio-inline"><input type="radio"
@@ -63,23 +76,25 @@
 				</div>
 				End of Gender Fields
  --%>
-				<div class="form-group nopadding">
+				<div class="form-group">
 					<label for="mobileNumber" class="text-primary">Mobile
-						Number</label> <input type="text" class="form-control" id="mobileNumber"
-						name="mobileNumber" placeholder="Enter Mobile Number"
-						required="required">
+						Number</label>
+					<div class="validate">
+						<input type="text" class="form-control" id="mobileNumber"
+							name="mobileNumber" placeholder="Enter Mobile Number">
+					</div>
 				</div>
 				<%--End of Mobile Number Field --%>
 
 				<div class="form-group col-md-offset-1">
 					<div class="checkbox">
-						<input type="checkbox"> Agree With The Terms and
-						Conditions
+							<input type="checkbox" id="terms"> Agree With The Terms
+							and Conditions
 					</div>
 				</div>
 				<%--End of Terms And Condition --%>
 				<div class="form-group">
-				 	<button type="submit" class="btn btn-success col-md-3">Sign
+					<button type="submit" class="btn btn-success col-md-3">Sign
 						Up</button>
 					<button type="Reset"
 						class="btn btn-warning col-md-offset-1 col-md-3">Reset</button>

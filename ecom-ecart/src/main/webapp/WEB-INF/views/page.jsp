@@ -12,6 +12,15 @@
 <script type="text/javascript">
 	window.hoverMenu = '${title}';
 </script>
+
+<!-- import JS Files -->
+<script type="text/javascript" src="${js}/jquery.js"></script>
+<script type="text/javascript" src="${js}/jquery.validate.js"></script>
+<script type="text/javascript" src="${js}/bootstrap.js"></script>
+<script type="text/javascript" src="${js}/myScript.js"></script>
+
+
+<!-- Import CSS Files -->
 <link href="${css}/bootstrap-paper.css" rel="stylesheet" type="text/css">
 <link href="${css}/font-awesome.css" rel="stylesheet" type="text/css">
 <link href="${css}/app.css" rel="stylesheet" type="text/css">
@@ -94,7 +103,7 @@
 		<c:if test="${ifUserClickedUpdateCategory == true }">
 			<%@include file="admin/admin.jsp"%>
 		</c:if>
-		
+
 		<%--if user clicks on add seller--%>
 		<c:if test="${ifUserClickedUpdateProduct == true }">
 			<%@include file="admin/admin.jsp"%>
@@ -104,11 +113,5 @@
 	<div class="container-fluid">
 		<%@include file="./shared/footer.jsp"%>
 	</div>
-
-
-	<script type="text/javascript" src="${js}/jquery.js"></script>
-	<script type="text/javascript" src="${js}/bootstrap.js"></script>
-	<script type="text/javascript" src="${js}/myScript.js"></script>
-
 </body>
 </html>

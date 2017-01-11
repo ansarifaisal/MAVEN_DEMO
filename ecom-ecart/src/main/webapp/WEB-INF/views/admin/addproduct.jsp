@@ -12,46 +12,59 @@
 					<div class="form-group">
 						<label for="productName"
 							class="control-label label-size text-primary">Name</label>
-						<form:input path="productName" class="form-control"
-							name="productName" id="productName"
-							placeholder="Enter Product Name" value="${product.productName}" />
-						<form:hidden path="id" class="form-control" id="productId"
-							placeholder="Enter Product Id" value="${product.id}" />
+						<div class="validate">
+							<form:input path="productName" class="form-control"
+								placeholder="Enter Product Name" value="${product.productName}" />
+						</div>
+						<div class="validate">
+							<form:hidden path="id" class="form-control"
+								placeholder="Enter Product Id" value="${product.id}" />
+						</div>
 					</div>
 					<div class="form-group">
 						<label for="productPrice"
 							class="control-label label-size text-primary">Price</label>
-						<form:input path="price" class="form-control" name="productPrice"
-							id="productPrice" placeholder="Enter Product Price"
-							value="${product.price}" />
+						<div class="validate">
+							<form:input path="price" class="form-control"
+								placeholder="Enter Product Price" value="${product.price}" />
+						</div>
 					</div>
 					<div class="form-group">
 						<label for="productQuantity"
 							class="control-label label-size text-primary">Quantity</label>
-						<form:input path="quantity" class="form-control"
-							name="productQuantity" id="productQuantity"
-							placeholder="Enter Product Quantity" value="${product.quantity }" />
+						<div class="validate">
+							<form:input path="quantity" class="form-control"
+								placeholder="Enter Product Quantity"
+								value="${product.quantity }" />
+						</div>
 					</div>
 					<div class="form-group">
 						<label for="productCategory"
 							class="control-label label-size text-primary">Category</label>
-						<form:select path="categoryId" class="form-control">
-							<c:forEach items="${categories}" var="category">
-								<form:option value="${category.id}">${category.name}</form:option>
-							</c:forEach>
-						</form:select>
+						<div class="validate">
+							<form:select path="categoryId" class="form-control">
+								<c:forEach items="${categories}" var="category">
+									<form:option value="${category.id}">${category.name}</form:option>
+								</c:forEach>
+							</form:select>
+						</div>
 					</div>
 					<!-- 	<div class="form-group">
 						<label for="uploadImage"
 							class="control-label label-size text-primary">Upload
-							Image</label> <input type="file" name="uploadImage" id="uploadImage">
+							Image</label> 
+												<div class="validate">
+							<input type="file" name="uploadImage" id="uploadImage">
+							</div>
 					</div> -->
 					<div class="form-group">
 						<label for="productDescription"
 							class="control-label label-size text-primary">Description</label>
-						<form:textarea path="description" rows="5" cols="25"
-							class="form-control" placeholder="Enter Description"
-							value="${product.description}" />
+						<div class="validate">
+							<form:textarea path="description" rows="5" cols="25"
+								class="form-control" placeholder="Enter Description"
+								value="${product.description}" />
+						</div>
 					</div>
 					<br>
 					<div class="form-group">
@@ -74,20 +87,22 @@
 		<thead>
 			<tr>
 				<td align="center" colspan="4">
-					<div class="form-group">
-						<div class="input-group">
-							<input type="text" class="form-control"
-								placeholder="Search for products"> <span
-								class="input-group-btn">
-								<button class="btn btn-default" type="button">
+					<form action="" class="form" role="form" id="searchProduct">
+						<div class="form-group">
+							<div class="validate col-sm-11">
+								<input type="text" class="form-control"
+									placeholder="Search for products" id="search" name="search">
+							</div>
+							<span class="input-group-btn">
+								<button class="btn btn-default" type="submit">
 									<span class="glyphicon glyphicon-search" id="btn-search"
 										aria-hidden="true"></span>
 								</button>
 							</span>
 						</div>
-					</div>
+					</form>
 				</td>
-				</xtr>
+			</tr>
 			<tr>
 				<td><strong>Name</strong></td>
 				<td><strong>Price</strong></td>

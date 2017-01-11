@@ -9,20 +9,22 @@
 					<form:form method="POST" action="${contextPath}/admin/saveCategory"
 						class="form" role="form" modelAttribute="category">
 						<div class="form-groups">
-							<label for="categoryName"
+							<label for="Name"
 								class="control-label label-size text-primary">Name</label>
-							<form:input path="name" class="form-control" name="categoryName"
-								id="categoryName" placeholder="Enter Category Name"
-								value="${category.name}" />
-							<form:hidden path="id" class="form-control" name="categoryId"
-								id="categoryId" placeholder="Category Id" value="${category.id}" />
+							<div class="validate">
+								<form:input path="name" class="form-control" placeholder="Enter Category Name"
+									value="${category.name}" />
+							</div>
+							<form:hidden path="id" class="form-control" placeholder="Category Id" value="${category.id}" />
 						</div>
 						<div class="form-groups">
-							<label for="categoryDescription"
+							<label for="Description"
 								class="control-label label-size text-primary">Description</label>
-							<form:textarea path="description" rows="5" cols="25"
-								class="form-control" placeholder="Enter Description"
-								value="${category.description}" />
+							<div class="validate">
+								<form:textarea path="description" rows="5" cols="25"
+									class="form-control" placeholder="Enter Description"
+									value="${category.description}" />
+							</div>
 						</div>
 						<br>
 						<div class="form-groups">
@@ -57,11 +59,11 @@
 					<td>${category.description}</td>
 					<td><a
 						href="${contextPath}/admin/update/category/${category.id}"
-						class="btn btn-primary"> <span class="glyphicon glyphicon-pencil"
-							style="font-size: 20px;"></span>
+						class="btn btn-primary"> <span
+							class="glyphicon glyphicon-pencil" style="font-size: 20px;"></span>
 					</a> <a href="${contextPath}/admin/delete/category/${category.id}"
-						class="btn btn-danger"> <span class="glyphicon glyphicon-trash"
-							style="font-size: 20px;"></span>
+						class="btn btn-danger"> <span
+							class="glyphicon glyphicon-trash" style="font-size: 20px;"></span>
 					</a></td>
 				</tr>
 			</c:forEach>
