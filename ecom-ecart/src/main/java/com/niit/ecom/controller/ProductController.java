@@ -38,22 +38,27 @@ public class ProductController {
 
 	@RequestMapping(value = { "/addproduct" })
 	public ModelAndView getAddProductPage(@RequestParam(value = "op", required = false) String operation,
-			@RequestParam(value = "status", required = false) String status) {
+			@RequestParam(value = "status", required = false) String status,
+			@RequestParam(value = "id", required = false) String id) {
 		ModelAndView modelAndView = new ModelAndView("page");
 		modelAndView.addObject("product", new Product());
 		modelAndView.addObject("categories", categoryDAO.list());
 		modelAndView.addObject("products", productDAO.list());
 		if (operation != null) {
 			if ((operation.equals("update")) && status.equals("success")) {
-				modelAndView.addObject("msg", "Product Updated Successfully");
+				modelAndView.addObject("msg", "Success! Product Updated Successfully");
 			} else if ((operation.equals("update")) && status.equals("fail")) {
-				modelAndView.addObject("msg", "Failed to update Product");
-			}
-			if ((operation.equals("add")) && status.equals("success")) {
-				modelAndView.addObject("msg", "Product Added Successfully");
+				modelAndView.addObject("msg", "Failed To Update Product");
+			} else if ((operation.equals("add")) && status.equals("success")) {
+				modelAndView.addObject("msg", "Success! Product Added Successfully");
 			} else if ((operation.equals("add")) && status.equals("fail")) {
-				modelAndView.addObject("msg", "Failed to add Product");
+				modelAndView.addObject("msg", "Failed To Add Product");
+			} else if ((operation.equals("delete")) && status.equals("success") && id != "0") {
+				modelAndView.addObject("msg", "Success! Product Delted Successfully");
+			} else if ((operation.equals("delete")) && status.equals("fail") && id !="0") {
+				modelAndView.addObject("msg", "Failed To Delete Product");
 			}
+
 		}
 		modelAndView.addObject("title", "Add Product");
 		modelAndView.addObject("ifUserClickedAddProduct", true);
@@ -82,8 +87,12 @@ public class ProductController {
 	@RequestMapping(value = { "/delete/product/{id}" }, method = RequestMethod.GET)
 	public String deleteProduct(@PathVariable int id) {
 		product = productDAO.get(id);
-		productDAO.deleteProduct(product);
-		return "redirect:/admin/addproduct";
+		flag = productDAO.deleteProduct(product);
+		if (flag == true) {
+			return "redirect:/admin/addproduct?op=delete&status=success&id=" + id;
+		} else {
+			return "redirect:/admin/addproduct?op=delete&status=fail&id=" + id;
+		}
 	}
 
 	@RequestMapping(value = { "/update/product/{id}" }, method = RequestMethod.GET)

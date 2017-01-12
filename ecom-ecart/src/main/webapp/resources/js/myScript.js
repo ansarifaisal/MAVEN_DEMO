@@ -1,7 +1,10 @@
 $(document)
 		.ready(
+				
 				function() {
+					
 					switch (hoverMenu) {
+					
 					case 'About Us':
 						$('#about').addClass('active');
 						break;
@@ -116,10 +119,10 @@ $(document)
 										},
 										messages : {
 											email : {
-												required : "E-Mail field is required"
+												required : "Please, Provide E-Mail"
 											},
 											password : {
-												required : "Password field is required"
+												required : "Please, Provide Password"
 											}
 										},
 										errorElement : "em",
@@ -175,23 +178,23 @@ $(document)
 											}
 										},
 										messages : {
-											firstName : 'First Name is required',
-											lastName : 'Last Name is required',
+											firstName : 'Please, Provide First Name',
+											lastName : 'Please, Provide Last Name',
 											email : {
-												required : 'E-Mail Is Required',
-												email : 'Please, Provide a valid E-Mail Address'
+												required : 'Please, Provide Email Address',
+												email : 'Please, Provide a Valid E-Mail Address'
 											},
 											password : {
-												required : 'Password is required',
-												minlength : 'Password must contain atleast 5 charachters'
+												required : 'Please, Provide Password',
+												minlength : 'Password Must Contain Atleast 5 Charachters'
 											},
 											rePassword : {
-												required : 'Enter Password as above',
-												minlength : 'Password must contain atleast 5 charachters',
-												equalTo : "Password doesn't Match"
+												required : 'Please, Enter Password Same as Above',
+												minlength : 'Password Must Contain Atleast 5 Charachters',
+												equalTo : "Password Doesn't Match"
 											},
 											mobileNumber : {
-												required : 'Enter Mobile Number',
+												required : 'Please, Provide Mobile Number',
 												tel : 'Please, Provide a valid Mobile Number'
 											},
 											terms : {
@@ -302,7 +305,7 @@ $(document)
 										},
 										messages : {
 											search : {
-												required : "Please, Provide keyword for search"
+												required : "Please, Provide Keyword For Search"
 											}
 										},
 										errorElement : "em",
@@ -345,11 +348,11 @@ $(document)
 										messages : {
 											name : {
 												required : "Please, Provide Category Name",
-												minlength : "Name must contains atleast 5 charachters"
+												minlength : "Name Must Contains Atleast 5 Charachters"
 											},
 											description : {
 												required : "Please, Provide Category Description",
-												minlength : "Description must contains atleast 10 charachters"
+												minlength : "Description Must Contains Atleast 10 Charachters"
 											}
 										},
 										errorElement : "em",
@@ -372,4 +375,7 @@ $(document)
 													validClass);
 										}
 									});
+					$(".alert-msg").fadeTo(2000, 500).slideUp('500', function(){
+						$(".alert-msg").slideUp(500);
+					});
 				});

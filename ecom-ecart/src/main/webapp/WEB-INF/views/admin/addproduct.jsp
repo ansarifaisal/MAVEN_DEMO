@@ -4,8 +4,13 @@
 			<div class="panel-title">Add Product</div>
 		</div>
 		<div class="panel-body">
-			<c:if test="${!empty msg}"> ${msg}</c:if>
-
+			<c:if test="${!empty msg}">
+				<div class="alert-msg">
+					<div id="success-alert" class="alert alert-success" role="alert">
+						<strong>${msg}</strong>
+					</div>
+				</div>
+			</c:if>
 			<div class="col-md-offset-3 col-sm-offset-3 col-md-6">
 				<form:form method="POST" action="${contextPath}/admin/saveProduct"
 					class="form" role="form" modelAttribute="product">

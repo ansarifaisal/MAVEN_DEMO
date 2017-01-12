@@ -4,6 +4,13 @@
 			<div class="panel-title">Add Category</div>
 		</div>
 		<div class="panel-body">
+		<c:if test="${!empty msg}">
+				<div class="alert-msg">
+					<div id="success-alert" class="alert alert-success" role="alert">
+						<strong>${msg}</strong>
+					</div>
+				</div>
+			</c:if>
 			<div class="col-md-offset-3 col-sm-offset-3 col-md-6">
 				<div class="row">
 					<form:form method="POST" action="${contextPath}/admin/saveCategory"
@@ -59,10 +66,10 @@
 					<td>${category.description}</td>
 					<td><a
 						href="${contextPath}/admin/update/category/${category.id}"
-						class="btn btn-primary"> <span
+						class="btn btn-primary" data-toggle="tooltip" title="Edit"> <span
 							class="glyphicon glyphicon-pencil" style="font-size: 20px;"></span>
 					</a> <a href="${contextPath}/admin/delete/category/${category.id}"
-						class="btn btn-danger"> <span
+						class="btn btn-danger" data-toggle="tooltip" title="Delete"> <span
 							class="glyphicon glyphicon-trash" style="font-size: 20px;"></span>
 					</a></td>
 				</tr>
