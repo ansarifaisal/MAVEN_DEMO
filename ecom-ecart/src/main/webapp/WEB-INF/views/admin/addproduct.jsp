@@ -13,7 +13,8 @@
 			</c:if>
 			<div class="col-md-offset-3 col-sm-offset-3 col-md-6">
 				<form:form method="POST" action="${contextPath}/admin/saveProduct"
-					class="form" role="form" modelAttribute="product">
+					class="form" role="form" modelAttribute="product"
+					enctype="multipart/form-data">
 					<div class="form-group">
 						<label for="productName"
 							class="control-label label-size text-primary">Name</label>
@@ -54,14 +55,14 @@
 							</form:select>
 						</div>
 					</div>
-					<!-- 	<div class="form-group">
+					<div class="form-group">
 						<label for="uploadImage"
 							class="control-label label-size text-primary">Upload
-							Image</label> 
-												<div class="validate">
-							<input type="file" name="uploadImage" id="uploadImage">
-							</div>
-					</div> -->
+							Image</label>
+						<div class="validate">
+							<form:input path="image" type="file" id="uploadFile"/>
+						</div>
+					</div>
 					<div class="form-group">
 						<label for="productDescription"
 							class="control-label label-size text-primary">Description</label>

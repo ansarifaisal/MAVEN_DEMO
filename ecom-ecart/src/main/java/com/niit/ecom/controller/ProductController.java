@@ -1,5 +1,9 @@
 package com.niit.ecom.controller;
 
+import java.io.File;
+
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -7,6 +11,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.niit.ecom.dao.CategoryDAO;
@@ -18,13 +23,16 @@ import com.niit.ecom.entity.Product;
 public class ProductController {
 
 	@Autowired
-	CategoryDAO categoryDAO;
+	private CategoryDAO categoryDAO;
 
 	@Autowired
-	ProductDAO productDAO;
+	private ProductDAO productDAO;
 
 	@Autowired
-	Product product;
+	private Product product;
+
+	@Autowired
+	private HttpServletRequest request;
 
 	/*
 	 * flag variable for message
@@ -55,7 +63,7 @@ public class ProductController {
 				modelAndView.addObject("msg", "Failed To Add Product");
 			} else if ((operation.equals("delete")) && status.equals("success") && id != "0") {
 				modelAndView.addObject("msg", "Success! Product Delted Successfully");
-			} else if ((operation.equals("delete")) && status.equals("fail") && id !="0") {
+			} else if ((operation.equals("delete")) && status.equals("fail") && id != "0") {
 				modelAndView.addObject("msg", "Failed To Delete Product");
 			}
 
@@ -66,10 +74,17 @@ public class ProductController {
 	}
 
 	@RequestMapping(value = { "/saveProduct" }, method = RequestMethod.POST)
-	public String saveProduct(@ModelAttribute Product product) {
-		if (product.getId() == 0) {
+	public String saveProduct(@ModelAttribute Product product, HttpServletRequest request) {
+
+		
+
+		if (product.getId() == 0) {	
 			flag = productDAO.addProduct(product);
+			System.out.println(product);
 			if (flag == true) {
+				if(!product.getImage().getOriginalFilename().equals("")){
+					product.setImageUrl(uploadImage(product));
+				}
 				return "redirect:/admin/addproduct?op=add&status=success";
 			} else {
 				return "redirect:/admin/addproduct?op=add&status=fail";
@@ -77,6 +92,9 @@ public class ProductController {
 		} else {
 			flag = productDAO.updateProduct(product);
 			if (flag == true) {
+				if(!product.getImage().getOriginalFilename().equals("")){
+					product.setImageUrl(uploadImage(product));
+				}
 				return "redirect:/admin/addproduct?op=update&status=success";
 			} else {
 				return "redirect:/admin/addproduct?op=update&status=fail";
@@ -105,5 +123,25 @@ public class ProductController {
 		modelAndView.addObject("products", productDAO.list());
 		modelAndView.addObject("ifUserClickedUpdateProduct", true);
 		return modelAndView;
+	}
+
+	protected String uploadImage(Product product) {
+		MultipartFile imageFile = product.getImage();
+		String folderToUpload = "/resources/images/product";
+		
+		String fileName = imageFile.getOriginalFilename();
+		String realPath = request.getServletContext().getRealPath(folderToUpload);
+		if (!new File(realPath).exists()) {
+			new File(realPath).mkdirs();
+		}
+
+		String filePath = realPath + product.getId() + ".png";
+		File destination = new File(filePath);
+		try {
+			imageFile.transferTo(destination);
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		return fileName;
 	}
 }

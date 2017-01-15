@@ -34,8 +34,10 @@ public class Product implements Serializable {
 	@Column(name = "PRODUCT_QUANTITY")
 	private int quantity;
 	@Transient
+	private String imageUrl;
+	@Transient
 	private MultipartFile image;
-	
+
 	@Column(name = "CATEGORY_ID")
 	private int categoryId;
 
@@ -49,6 +51,15 @@ public class Product implements Serializable {
 	public void setImage(MultipartFile image) {
 		this.image = image;
 	}
+	
+	public String getImageUrl() {
+		return imageUrl;
+	}
+
+	public void setImageUrl(String imageUrl) {
+		this.imageUrl = imageUrl;
+	}
+
 	
 	public int getId() {
 		return id;
@@ -101,10 +112,11 @@ public class Product implements Serializable {
 	/*
 	 * Overriding toString method for debugging
 	 */
+	
 	@Override
 	public String toString() {
 		return "Product [id=" + id + ", productName=" + productName + ", description=" + description + ", price="
-				+ price + ", quantity=" + quantity + ", categoryId=" + categoryId + "]";
+				+ price + ", quantity=" + quantity + ", imageUrl=" + imageUrl + ", image=" + image + ", categoryId="
+				+ categoryId + "]";
 	}
-
 }

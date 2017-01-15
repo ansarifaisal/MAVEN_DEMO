@@ -14,10 +14,10 @@ import com.niit.ecom.entity.User;
 
 @Repository("userDAO")
 public class UserDAOImpl implements UserDAO {
-	
+
 	@Autowired
 	private SessionFactory sessionFactory;
-	
+
 	@Override
 	@Transactional
 	public List<User> list() {
@@ -28,30 +28,30 @@ public class UserDAOImpl implements UserDAO {
 
 	@Override
 	@Transactional
-	public User getUser(int id) {		
+	public User getUser(int id) {
 		return (User) sessionFactory.getCurrentSession().get(User.class, id);
 	}
 
 	@Override
 	@Transactional
 	public boolean deleteUser(User user) {
-		try{
+		try {
 			sessionFactory.getCurrentSession().delete(user);
 			return true;
-		}catch(Exception e){
+		} catch (Exception e) {
 			System.out.println(e.getMessage());
 			return false;
 		}
-		
+
 	}
 
 	@Override
 	@Transactional
 	public boolean updateUser(User user) {
-		try{
+		try {
 			sessionFactory.getCurrentSession().update(user);
 			return true;
-		}catch(Exception e ){
+		} catch (Exception e) {
 			System.out.println(e.getMessage());
 			return false;
 		}
@@ -60,15 +60,33 @@ public class UserDAOImpl implements UserDAO {
 	@Override
 	@Transactional
 	public boolean addUser(User user) {
-		try{
-			sessionFactory.getCurrentSession().save(user);	
+		try {
+			sessionFactory.getCurrentSession().save(user);
 			return true;
-		}catch(Exception e ){
+		} catch (Exception e) {
 			System.out.println(e.getMessage());
 			return false;
 		}
+
+	}
+
+	@Override
+	public boolean isValidate(String userName, String password) {
 		
+		if(userName.equals("ansarifaisal480@gmail.com")&&password.equals("test")){
+			return true;	
+		}else{
+			return false;
+		}
 		
+		/*
+		 * String hql = "SELECT email, password FROM USERS where email ="; 
+		 * Query query = sessionFactory.getCurrentSession().createQuery(hql); List
+		 * userDetails= query.list(); for (Object userDetail : userDetails) {
+		 * 
+		 * }
+		 */
+
 	}
 
 }

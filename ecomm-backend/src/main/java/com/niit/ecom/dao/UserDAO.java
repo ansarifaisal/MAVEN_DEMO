@@ -10,4 +10,5 @@ public interface UserDAO {
 	boolean addUser(User user);
 	boolean deleteUser(User user);
 	boolean updateUser(User user);
+	boolean isValidate(String userName, String password);
 }

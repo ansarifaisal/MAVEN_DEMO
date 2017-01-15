@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.niit.ecom.dao.ProductDAO;
@@ -13,15 +14,20 @@ public class PageController {
 
 	@Autowired
 	private ProductDAO productDAO;
-	
+
 	/*
 	 * to access index page
 	 */
 	@RequestMapping(value = { "/", "home", "index", "default" })
-	public ModelAndView index() {
+	public ModelAndView index(@RequestParam(name = "login", required = false) String login) {
 		ModelAndView modelAndView = new ModelAndView("page");
 		modelAndView.addObject("title", "Home");
 		modelAndView.addObject("ifUserClickedHome", true);
+		if (login != null) {
+			if (login.equals("success")) {
+				modelAndView.addObject("msg", "You Have Successfully Logged In");
+			}
+		}
 		return modelAndView;
 	}
 
@@ -47,7 +53,6 @@ public class PageController {
 		return modelAndView;
 	}
 
-
 	/*
 	 * to access single product
 	 */
@@ -71,18 +76,23 @@ public class PageController {
 		modelAndView.addObject("products", productDAO.list());
 		return modelAndView;
 	}
-	
+
 	/*
 	 * to access Login Page
 	 */
 	@RequestMapping(value = { "/login" })
-	public ModelAndView login() {
+	public ModelAndView login(@RequestParam(name = "login", required = false) String login) {
 		ModelAndView modelAndView = new ModelAndView("page");
 		modelAndView.addObject("title", "Login");
 		modelAndView.addObject("ifUserClickedLogin", true);
+		if (login != null) {
+			if (login.equals("failure")) {
+				modelAndView.addObject("msg", "Oops! Invalid Credentials");
+			}
+		}
 		return modelAndView;
 	}
-	
+
 	/*
 	 * to access Register page
 	 */
@@ -93,7 +103,7 @@ public class PageController {
 		modelAndView.addObject("ifUserClickedRegister", true);
 		return modelAndView;
 	}
-	
+
 	/*
 	 * This page is for test
 	 */

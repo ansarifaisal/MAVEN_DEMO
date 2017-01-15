@@ -6,8 +6,15 @@
 		</div>
 		<!-- Panel Body Created with padding-top 10px -->
 		<div class="panel-body tenpadding">
+		<c:if test="${!empty msg}">
+				<div class="alert-msg">
+					<div id="success-alert" class="alert alert-danger" role="alert">
+						<strong>${msg}</strong>
+					</div>
+				</div>
+			</c:if>
 			<!-- Login Form Started from here -->
-			<form id="loginForm" class="col-md-offset-2 col-md-8" role="form">
+			<form id="loginForm" action="${contextPath}/user/login" class="col-md-offset-2 col-md-8" role="form" method="POST">
 				<div class="form-group twentypadding">
 					<label for="email" class="text-primary">Email Address</label>
 					<div class="validate">
