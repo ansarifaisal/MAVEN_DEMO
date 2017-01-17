@@ -73,20 +73,21 @@ public class UserDAOImpl implements UserDAO {
 	@Override
 	public boolean isValidate(String userName, String password) {
 		
-		if(userName.equals("ansarifaisal480@gmail.com")&&password.equals("test")){
+		/*if(userName.equals("ansarifaisal480@gmail.com")&&password.equals("test")){
 			return true;	
 		}else{
 			return false;
 		}
 		
-		/*
+		
 		 * String hql = "SELECT email, password FROM USERS where email ="; 
 		 * Query query = sessionFactory.getCurrentSession().createQuery(hql); List
 		 * userDetails= query.list(); for (Object userDetail : userDetails) {
 		 * 
 		 * }
-		 */
-
+		 
+*/
+		return false;
 	}
 
 }

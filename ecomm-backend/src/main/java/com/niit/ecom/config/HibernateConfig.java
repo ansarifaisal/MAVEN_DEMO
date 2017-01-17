@@ -16,7 +16,6 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @Configuration
 @ComponentScan(basePackages = "com.niit.ecom")
 @EnableTransactionManagement
-
 public class HibernateConfig {
 
 	/*
@@ -54,7 +53,6 @@ public class HibernateConfig {
 		properties.put("hibernate.show_sql", "true");
 		properties.put("hibernate.format_sql", "true");
 		//properties.put("hibernate.hbm2ddl.auto", "update");
-		
 		return properties;
 	}
 	

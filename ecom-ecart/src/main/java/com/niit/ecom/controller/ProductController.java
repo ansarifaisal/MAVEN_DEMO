@@ -135,7 +135,7 @@ public class ProductController {
 			new File(realPath).mkdirs();
 		}
 
-		String filePath = realPath + product.getId() + ".png";
+		String filePath = realPath + File.separator + product.getId() + ".png";
 		File destination = new File(filePath);
 		try {
 			imageFile.transferTo(destination);

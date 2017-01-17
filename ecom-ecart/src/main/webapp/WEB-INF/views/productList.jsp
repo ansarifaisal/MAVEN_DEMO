@@ -1,7 +1,7 @@
 <div class="row">
 	<c:forEach items="${products}" var="product">
 		<div class="thumbnail thumbnail-setting col-md-3 col-sm-3 col-xs-3" style="margin-left:15px;">
-			<a href="${contextPath}/product/${product.id}"><img alt="#image" src="${contextPath}/resources/images/product/${product.id}.png"
+			<a href="${contextPath}/product/${product.id}"><img alt="#image" src="${images}/product/${product.id}.png"
 				class="img-resize zoom" /></a>
 			<div class="caption">
 					<p><a href="">${product.productName}</a></p>

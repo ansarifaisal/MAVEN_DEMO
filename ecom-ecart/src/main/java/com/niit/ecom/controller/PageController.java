@@ -86,7 +86,7 @@ public class PageController {
 		modelAndView.addObject("title", "Login");
 		modelAndView.addObject("ifUserClickedLogin", true);
 		if (login != null) {
-			if (login.equals("failure")) {
+			if (login.equals("error")) {
 				modelAndView.addObject("msg", "Oops! Invalid Credentials");
 			}
 		}

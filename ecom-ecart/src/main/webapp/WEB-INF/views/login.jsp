@@ -14,7 +14,7 @@
 				</div>
 			</c:if>
 			<!-- Login Form Started from here -->
-			<form id="loginForm" action="${contextPath}/user/login" class="col-md-offset-2 col-md-8" role="form" method="POST">
+			<form id="loginForm" action="${contextPath}/login" class="col-md-offset-2 col-md-8" role="form" method="POST">
 				<div class="form-group twentypadding">
 					<label for="email" class="text-primary">Email Address</label>
 					<div class="validate">

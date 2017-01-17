@@ -1,11 +1,9 @@
 package com.niit.ecom.controller;
 
-import javax.servlet.http.HttpServletRequest;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.niit.ecom.dao.UserDAO;
@@ -17,7 +15,7 @@ public class UserController {
 
 	@Autowired
 	UserDAO userDAO;
-	
+
 	/*
 	 * to access personal Information page
 	 */
@@ -52,15 +50,5 @@ public class UserController {
 		modelAndView.addObject("title", "Update Email And Mobile");
 		modelAndView.addObject("ifUserClickedUpdateEmailMobile", true);
 		return modelAndView;
-	}
-
-	@PostMapping(value = "/login")
-	public String loginPost(HttpServletRequest request){
-		String userName = request.getParameter("email");
-		String password = request.getParameter("password");
-		if(userDAO.isValidate(userName, password)){
-			return "redirect:/index?login=success";
-		}
-		return "redirect:/login?login=failure";
 	}
 }
