@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.niit.ecom.dao.CategoryDAO;
 import com.niit.ecom.dao.ProductDAO;
 
 @Controller
@@ -14,6 +15,9 @@ public class PageController {
 
 	@Autowired
 	private ProductDAO productDAO;
+	
+	@Autowired
+	private CategoryDAO categoryDAO;
 
 	/*
 	 * to access index page
@@ -23,6 +27,8 @@ public class PageController {
 		ModelAndView modelAndView = new ModelAndView("page");
 		modelAndView.addObject("title", "Home");
 		modelAndView.addObject("ifUserClickedHome", true);
+		modelAndView.addObject("products", productDAO.list());
+		modelAndView.addObject("categories", categoryDAO.list());
 		if (login != null) {
 			if (login.equals("success")) {
 				modelAndView.addObject("msg", "You Have Successfully Logged In");
@@ -60,12 +66,12 @@ public class PageController {
 	public ModelAndView product(@PathVariable("id") int id) {
 		ModelAndView modelAndView = new ModelAndView("page");
 		modelAndView.addObject("title", "Product");
-		modelAndView.addObject("product", productDAO.get(1));
+		modelAndView.addObject("product", productDAO.get(id));
 		modelAndView.addObject("ifUserClickedProduct", true);
 		return modelAndView;
 	}
 
-	@RequestMapping(value = { "/product/show" })
+	@RequestMapping(value = { "/product/show/all" })
 	public ModelAndView productList() {
 		ModelAndView modelAndView = new ModelAndView("page");
 		modelAndView.addObject("title", "All Products");

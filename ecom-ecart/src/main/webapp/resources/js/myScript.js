@@ -39,6 +39,44 @@ $(document)
 						break;
 					}
 
+					
+										
+					/*
+					 * Sort nav
+					 */
+
+					$('#sortPriceASC').on('click', function() {
+
+						$('#sortPriceASC').addClass("active");
+						$('#sortPriceDESC').removeClass("active");
+						$('#sortId').removeClass("active");
+						$('#sortName').removeClass("active");
+					});
+
+					$('#sortPriceDESC').on('click', function() {
+
+						$('#sortPriceASC').removeClass("active");
+						$('#sortPriceDESC').addClass("active");
+						$('#sortId').removeClass("active");
+						$('#sortName').removeClass("active");
+					});
+
+					$('#sortId').on('click', function() {
+
+						$('#sortPrice').removeClass("active");
+						$('#sortPriceDESC').removeClass("active");
+						$('#sortId').addClass("active");
+						$('#sortName').removeClass("active");
+					});
+
+					$('#sortName').on('click', function() {
+
+						$('#sortPrice').removeClass("active");
+						$('#sortPriceDESC').removeClass("active");
+						$('#sortId').removeClass("active");
+						$('#sortName').addClass("active");
+					});
+
 					/*
 					 * Initializing tooltip
 					 */
@@ -379,6 +417,5 @@ $(document)
 							function() {
 								$(".alert-msg").slideUp(500);
 							});
-
 
 				});

@@ -31,38 +31,45 @@
 
 var angularModule = angular.module("myApp", []);
 
-angularModule.controller('ProductListController', ['$scope','$http','orderByFilter',function($scope, $http,orderBy) {
-	
-	// set the property for orderBy
-	$scope.propertyName = 'price';
-	$scope.reverse = false;
-		
-	
-	$http.get('/ecom-ecart/product/all').then( // success callback
-	function(response) {
-		// console.log(data);
-		$scope.products = orderBy(response.data,$scope.propertyName, $scope.reverse);
-	},
-	// error callback
-	function(error) {
-		console.log(error);
-	});
-	
-	
-	$scope.sortBy = function(propertyName) {
-		console.log('sort called');
-		$scope.propertyName = propertyName;
-		$scope.reverse = !$scope.reverse;
-		//set the reverse
-		console.log($scope.reverse);
-		
-		$scope.products = orderBy($scope.products,$scope.propertyName, $scope.reverse);
-		
-		
-	}
-		
-	
-	
-	
-	
-}]);
+angularModule.controller('ProductListController', [
+		'$scope',
+		'$http',
+		'orderByFilter',
+		function($scope, $http, orderBy) {
+
+			// set the property for orderBy
+			$scope.propertyName = '';
+			$scope.reverse = '';
+
+			$http.get('/ecom-ecart/product/all').then(
+					// success callback
+					function(response) {
+
+						$scope.products = orderBy(response.data,
+								$scope.propertyName, $scope.reverse);
+
+					},
+					// error callback
+					function(error) {
+						console.log(error);
+					});
+
+			$scope.sortByASC = function(propertyName) {
+				$scope.propertyName = propertyName;
+				
+				$scope.reverse = false;
+				
+				$scope.products = orderBy($scope.products, $scope.propertyName,
+						$scope.reverse);
+			}
+			
+			$scope.sortByDESC = function(propertyName) {
+				$scope.propertyName = propertyName;
+
+				$scope.reverse = true;
+
+				$scope.products = orderBy($scope.products, $scope.propertyName,
+						$scope.reverse);
+			}
+
+		} ]);
