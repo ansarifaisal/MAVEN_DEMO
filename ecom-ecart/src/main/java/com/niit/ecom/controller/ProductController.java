@@ -80,7 +80,6 @@ public class ProductController {
 
 		if (product.getId() == 0) {	
 			flag = productDAO.addProduct(product);
-			System.out.println(product);
 			if (flag == true) {
 				if(!product.getImage().getOriginalFilename().equals("")){
 					product.setImageUrl(uploadImage(product));
@@ -140,7 +139,7 @@ public class ProductController {
 		try {
 			imageFile.transferTo(destination);
 		} catch (Exception e) {
-			// TODO: handle exception
+			e.printStackTrace();
 		}
 		return fileName;
 	}

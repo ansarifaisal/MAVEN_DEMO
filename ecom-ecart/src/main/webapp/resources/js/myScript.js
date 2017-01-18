@@ -1,10 +1,10 @@
 $(document)
 		.ready(
-				
+
 				function() {
-					
+
 					switch (hoverMenu) {
-					
+
 					case 'About Us':
 						$('#about').addClass('active');
 						break;
@@ -375,7 +375,10 @@ $(document)
 													validClass);
 										}
 									});
-					$(".alert-msg").fadeTo(2000, 500).slideUp('500', function(){
-						$(".alert-msg").slideUp(500);
-					});
+					$(".alert-msg").fadeTo(2000, 500).slideUp('500',
+							function() {
+								$(".alert-msg").slideUp(500);
+							});
+
+
 				});

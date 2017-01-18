@@ -67,6 +67,11 @@
 			<%@include file="register.jsp"%>
 		</c:if>
 
+		<c:if test="${ifUserClickedListProducts == true}">
+			<%@include file="productList.jsp"%>
+		</c:if>
+
+
 		<%--if user clicks on Personal Information --%>
 		<c:if test="${ifUserClickedPersonalInformation == true }">
 			<%@include file="user/account.jsp"%>

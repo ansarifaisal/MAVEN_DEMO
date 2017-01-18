@@ -65,17 +65,14 @@ public class PageController {
 		return modelAndView;
 	}
 
-	/*
-	 * to access all product
-	 */
-	@RequestMapping(value = { "/product/all" })
+	@RequestMapping(value = { "/product/show" })
 	public ModelAndView productList() {
 		ModelAndView modelAndView = new ModelAndView("page");
 		modelAndView.addObject("title", "All Products");
-		modelAndView.addObject("ifUserClickedProductList", true);
-		modelAndView.addObject("products", productDAO.list());
+		modelAndView.addObject("ifUserClickedListProducts", true);
 		return modelAndView;
 	}
+	
 
 	/*
 	 * to access Login Page
