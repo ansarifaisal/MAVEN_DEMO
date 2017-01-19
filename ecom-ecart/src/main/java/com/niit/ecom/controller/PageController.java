@@ -4,11 +4,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.niit.ecom.dao.CategoryDAO;
 import com.niit.ecom.dao.ProductDAO;
+import com.niit.ecom.entity.User;
 
 @Controller
 public class PageController {
@@ -99,14 +101,7 @@ public class PageController {
 	/*
 	 * to access Register page
 	 */
-	@RequestMapping(value = { "/register" })
-	public ModelAndView register() {
-		ModelAndView modelAndView = new ModelAndView("page");
-		modelAndView.addObject("title", "Register");
-		modelAndView.addObject("ifUserClickedRegister", true);
-		return modelAndView;
-	}
-
+	
 	/*
 	 * This page is for test
 	 */

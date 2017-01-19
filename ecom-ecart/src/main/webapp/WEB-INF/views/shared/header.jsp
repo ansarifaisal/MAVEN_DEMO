@@ -42,7 +42,7 @@
 				<%-- Display Controls to all the user--%>
 				<sec:authorize access="isAnonymous()">
 					<li id="login"><a href="${contextPath}/login">Login</a></li>
-					<li id="register"><a href="${contextPath}/register">Sign
+					<li id="register"><a href="register">Sign
 							Up</a></li>
 				</sec:authorize>
 

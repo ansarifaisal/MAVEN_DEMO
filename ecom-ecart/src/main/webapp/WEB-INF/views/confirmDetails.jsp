@@ -39,57 +39,31 @@
 						<div class="form-group">
 							<label for="firstName" class="text-primary control-label">First
 								Name</label>
-							<div class="validate">
-								<form:input class="form-control" id="firstName" path="firstName"
-									placeholder="Enter First Name" />
-								<form:hidden class="form-control" id="userId" path="id"
-									disable="disable" />
+							<div class="label-size">
+								<strong>${user.firstName}</strong>
 							</div>
 						</div>
 						<div class="form-group">
 							<label for="lastName" class="text-primary control-label">Last
 								Name</label>
-							<div class="validate">
-								<form:input class="form-control" id="lastName" path="lastName"
-									placeholder="Enter Last Name" />
+							<div class="label-size">
+								<strong>${user.lastName}</strong>
 							</div>
 						</div>
 						<%-- End of LastName and FirstName --%>
 						<div class="form-group">
 							<label for="email" class="text-primary control-label">Email
 								Address</label>
-							<div class="validate">
-								<form:input class="form-control" id="email" path="email"
-									placeholder="Enter Email Address" />
+							<div class="label-size">
+								<strong>${user.email}</strong>
 							</div>
 						</div>
 						<%--End Of Email Field --%>
 
 						<div class="form-group">
-							<label for="password" class="text-primary control-label">Password</label>
-							<div class="validate">
-								<form:input class="form-control" id="password" path="password"
-									placeholder="Enter Password" />
-							</div>
-						</div>
-						<%-- End of Password Field --%>
-
-						<div class="form-group">
-							<label for="rePassword" class="text-primary control-label">Re-Enter
-								Password</label>
-							<div class="validate">
-								<form:input class="form-control" id="rePassword"
-									path="confirmPassword" placeholder="Re-Enter Password" />
-							</div>
-						</div>
-						<%-- End of Re-Type Password Field --%>
-
-						<div class="form-group">
 							<label for="gender" class="text-primary">Gender</label>
-							<div class="radio">
-								<label class="radio-inline"><form:radiobutton
-										path="gender" id="male" />Male</label> <label class="radio-inline"><form:radiobutton
-										path="gender" id="female" />Female</label>
+							<div class="label-size">
+								<strong>${user.gender}</strong>
 							</div>
 						</div>
 						<%--End of Gender Fields --%>
@@ -97,27 +71,17 @@
 						<div class="form-group">
 							<label for="mobileNumber" class="text-primary">Mobile
 								Number</label>
-							<div class="validate">
-								<form:input class="form-control" id="mobileNumber"
-									path="mobileNumber" placeholder="Enter Mobile Number" />
+							<div class="label-size">
+								<strong>${user.mobileNumber}</strong>
 							</div>
 						</div>
 						<%--End of Mobile Number Field --%>
 
-						<div class="form-group col-md-offset-1">
-							<div class="checkbox">
-								<div class="validate">
-									<input type="checkbox" id="terms"> Agree With The Terms
-									and Conditions
-								</div>
-							</div>
-						</div>
-						<%--End of Terms And Condition --%>
 						<div class="form-group">
 							<input type="submit" name="_eventId_submitRegister"
-								class="btn btn-success col-md-3" value="Sign Up"> <input
-								type="reset" class="btn btn-warning col-md-offset-1 col-md-3"
-								value="Reset">
+								class="btn btn-success col-md-3" value="Confirm">
+							<input type="submit" name="_eventId_editRegister"
+								class="btn btn-warning col-md-offset-1 col-md-3" value="Edit">
 						</div>
 						<%--End of Submit and reset Button --%>
 					</form:form>
