@@ -19,14 +19,14 @@
 	</view-state>
 
 	<action-state id="validate">
-		<evaluate expression="registerFlow.addUser(user)"></evaluate>
+		<evaluate expression="registerFlow.addUser(user, messageContext)"></evaluate>
 		<transition on="success" to="confirmDetails" />
 		<transition on="failure" to="start" />
 	</action-state>
 
 	<view-state id="confirmDetails" view="confirmDetails" model="flowScope.user">
 		<transition on="editRegister" to="start" />
-		<transition on="submitRegister" to="welcome" />
+		<transition on="submitRegister" to="toHome" />
 	</view-state>
 
 	<end-state id="welcome" view="/index" />

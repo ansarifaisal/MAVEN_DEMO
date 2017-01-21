@@ -41,17 +41,17 @@ public class UserDAOTestCases {
 	 * Test to get user by its id
 	 */
 	
-	@Test
-	public void getUserTest(){
-		user = userDAO.getUser(1);
-		Assert.assertEquals("This is Valid", user.getId(),userDAO.getUser(1).getId());
-	}	
-	
 	/*@Test
+	public void getUserTest(){
+		user = userDAO.getUser(4);
+		Assert.assertEquals("This is Valid", user.getId(),userDAO.getUser(1).getId());
+	}	*/
+	
+	@Test
 	public void getAllUserTest(){
-		int size = userDAO.list().size();
-		Assert.assertEquals(1, size);
-	}*/
+		user = userDAO.getByUserName("ansarifaisal480@gmail.com");
+		Assert.assertEquals(1, user.getId());
+	}
 	
 	/*@Test
 	public void updateUserTest(){

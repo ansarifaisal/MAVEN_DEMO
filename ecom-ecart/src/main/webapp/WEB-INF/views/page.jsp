@@ -90,6 +90,12 @@
 		<c:if test="${ifUserClickedAddresses == true }">
 			<%@include file="user/account.jsp"%>
 		</c:if>
+		
+		
+		<%--if user clicks on Edit Addresses--%>
+		<c:if test="${ifUserClickedEditAddress == true }">
+			<%@include file="user/account.jsp"%>
+		</c:if>
 
 		<%--if user clicks on Add Product--%>
 		<c:if test="${ifUserClickedAddProduct == true }">

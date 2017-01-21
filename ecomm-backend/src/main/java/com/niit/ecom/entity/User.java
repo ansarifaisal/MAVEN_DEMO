@@ -23,7 +23,7 @@ public class User implements Serializable {
 	 * Declaring Private Fields
 	 */
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "USER_ID")
 	private int id;
 	@Column(name = "USER_EMAIL")
@@ -32,6 +32,8 @@ public class User implements Serializable {
 	private String password;
 	@Transient
 	private String confirmPassword;
+	@Transient
+	private String oldPassword;
 	@Column(name = "USER_FIRST_NAME")
 	private String firstName;
 	@Column(name = "USER_LAST_NAME")
@@ -40,11 +42,12 @@ public class User implements Serializable {
 	private String gender;
 	@Column(name = "USER_MOBILE_NUMBER")
 	private String mobileNumber;
+	@Transient
+	private String tempMobileNumber;
 	@Column(name = "USER_ENABLED")
 	private boolean enabled;
 	@Column(name = "USER_ROLE")
 	private String role;
-
 	/*
 	 * Getters And Setters or Accessors and Mutators
 	 */
@@ -128,14 +131,23 @@ public class User implements Serializable {
 		this.confirmPassword = confirmPassword;
 	}
 
+	public String getOldPassword() {
+		return oldPassword;
+	}
+
+	public void setOldPassword(String oldPassword) {
+		this.oldPassword = oldPassword;
+	}
+
 	/*
 	 * Override toString Method for Debugging Purpose
 	 */
+
 	@Override
 	public String toString() {
-		return "User [id=" + id + ", email=" + email + ", password=" + password + ", firstName=" + firstName
-				+ ", lastName=" + lastName + ", gender=" + gender + ", mobileNumber=" + mobileNumber + ", enabled="
-				+ enabled + ", role=" + role + "]";
+		return "User [id=" + id + ", email=" + email + ", password=" + password + ", confirmPassword=" + confirmPassword
+				+ ", oldPassword=" + oldPassword + ", firstName=" + firstName + ", lastName=" + lastName + ", gender="
+				+ gender + ", mobileNumber=" + mobileNumber + ", enabled=" + enabled + ", role=" + role + "]";
 	}
 
 }

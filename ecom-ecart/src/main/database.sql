@@ -23,14 +23,14 @@ CREATE TABLE PRODUCTS
 
 CREATE TABLE USERS(
 	user_id IDENTITY,
-	user_email VARCHAR(100) NOT NULL,
+	user_email VARCHAR(100) NOT NULL UNIQUE,
 	user_password VARCHAR(100) NOT NULL,
 	user_first_name VARCHAR(100) NOT NULL,
 	user_last_name VARCHAR(100) NOT NULL,
 	user_gender VARCHAR(10) NOT NULL,
-	user_mobile_number VARCHAR(15) NOT NULL,
+	user_mobile_number VARCHAR(15) NOT NULL UNIQUE,
 	user_enabled BOOLEAN DEFAULT 'TRUE',
-	USER_ROLE VARCHAR(20) DEFAULT 'CUSTOMER'
+	USER_ROLE VARCHAR(20) DEFAULT 'USER'
 );
 
 --Addresses

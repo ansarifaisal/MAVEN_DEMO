@@ -17,5 +17,9 @@
 			<%@include file="addresses.jsp"%>
 		</c:if>
 		
+		<c:if test="${ifUserClickedEditAddress == true}">
+			<%@include file="addresses.jsp"%>
+		</c:if>
+		
 	</div>
 </div>

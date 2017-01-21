@@ -9,7 +9,9 @@
 <html>
 <head>
 <title>E-Cart - ${title}</title>
-
+<script type="text/javascript">
+	window.hoverMenu = '${title}';
+</script>
 <!-- import JS Files -->
 <script type="text/javascript" src="${js}/jquery.js"></script>
 <script type="text/javascript" src="${js}/jquery.validate.js"></script>
@@ -42,6 +44,7 @@
 							<div class="validate">
 								<form:input class="form-control" id="firstName" path="firstName"
 									placeholder="Enter First Name" />
+									
 								<form:hidden class="form-control" id="userId" path="id"
 									disable="disable" />
 							</div>
@@ -58,18 +61,22 @@
 						<div class="form-group">
 							<label for="email" class="text-primary control-label">Email
 								Address</label>
+								
 							<div class="validate">
 								<form:input class="form-control" id="email" path="email"
 									placeholder="Enter Email Address" />
 							</div>
+							<c:forEach items = "${flowRequestContext.messageContext.getMessagesBySource('email')}" var = "error">
+										<span class="text-danger">${error.text}</span>
+									</c:forEach>
 						</div>
 						<%--End Of Email Field --%>
 
 						<div class="form-group">
 							<label for="password" class="text-primary control-label">Password</label>
 							<div class="validate">
-								<form:input class="form-control" id="password" path="password"
-									placeholder="Enter Password" />
+								<form:password class="form-control" id="password"
+									path="password" placeholder="Enter Password" />
 							</div>
 						</div>
 						<%-- End of Password Field --%>
@@ -78,7 +85,7 @@
 							<label for="rePassword" class="text-primary control-label">Re-Enter
 								Password</label>
 							<div class="validate">
-								<form:input class="form-control" id="rePassword"
+								<form:password class="form-control" id="rePassword"
 									path="confirmPassword" placeholder="Re-Enter Password" />
 							</div>
 						</div>
@@ -86,10 +93,14 @@
 
 						<div class="form-group">
 							<label for="gender" class="text-primary">Gender</label>
-							<div class="radio">
-								<label class="radio-inline"><form:radiobutton
-										path="gender" id="male" />Male</label> <label class="radio-inline"><form:radiobutton
-										path="gender" id="female" />Female</label>
+							<div class="validate">
+								<div class="gender">
+									<select class="form-control" name="gender">
+										<option value = "">What you are</option>
+										<option value = "Male">Male</option>
+										<option value = "Female">Female</option>
+									</select>
+								</div>
 							</div>
 						</div>
 						<%--End of Gender Fields --%>
@@ -107,12 +118,18 @@
 						<div class="form-group col-md-offset-1">
 							<div class="checkbox">
 								<div class="validate">
-									<input type="checkbox" id="terms"> Agree With The Terms
-									and Conditions
+									<div class="terms">
+										<input type="checkbox" id="terms" name="terms"> Agree
+										With The Terms and Conditions
+									</div>
 								</div>
 							</div>
 						</div>
 						<%--End of Terms And Condition --%>
+
+						<%-- Hidden Fields --%>
+						<form:hidden path="enabled" value = "TRUE" disable = "disable"/>
+						<form:hidden path="role" value = "USER" disable = "disable"/>
 						<div class="form-group">
 							<input type="submit" name="_eventId_submitRegister"
 								class="btn btn-success col-md-3" value="Sign Up"> <input

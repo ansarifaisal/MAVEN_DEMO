@@ -4,55 +4,76 @@
 			<div class="panel-title">Add New Address</div>
 		</div>
 		<div class="panel-body ">
+			<c:if test="${!empty successMsg}">
+				<div class="alert-msg">
+					<div class="alert alert-success" role="alert">
+						<strong>${successMsg}</strong>
+					</div>
+				</div>
+			</c:if>
+			<c:if test="${!empty failureMsg}">
+				<div class="alert-msg">
+					<div class="alert alert-danger" role="alert">
+						<strong>${failureMsg}</strong>
+					</div>
+				</div>
+			</c:if>
+
 			<div class="col-md-offset-2 col-sm-offset-2">
 				<form:form action="${contextPath}/user/address/save" class="form"
-					role="form" modelAttribute="address">
+					role="form" modelAttribute="address" method="POST">
 					<div class="form-group">
 						<label for="firstName" class="control-label text-primary">First
 							Name</label>
 						<form:input path="firstName" class="form-control"
-							placeholder="Enter Name" required="required" />
-						<form:hidden path="id" class="form-control"/>
-						<form:hidden path="userId" class="form-control"/>
+							placeholder="Enter Name" id="firstName"
+							value="${address.firstName }" />
+						<form:hidden path="id" class="form-control" value="${address.id} " />
+						<form:hidden path="userId" value="${user.id}" class="form-control" />
 					</div>
 
 					<div class="form-group">
 						<label for="lastName" class="control-label text-primary">Last
 							Name</label>
 						<form:input path="lastName" class="form-control"
-							placeholder="Enter Name" required="required" />
+							placeholder="Enter Name" value="${address.lastName }" />
 					</div>
 					<div class="form-group">
 						<label for="lineOne" class="control-label text-primary"
 							id="label-text-area">Address Line 1</label>
 						<form:input path="lineOne" class="form-control"
-							placeholder="Enter Address Line 1" required="required" />
+							placeholder="Enter Address Line 1" value="${address.lineOne }" />
 					</div>
 					<div class="form-group">
 						<label for="lineTwo" class="control-label text-primary"
 							id="label-text-area">Address Line 2</label>
 						<form:input path="lineTwo" class="form-control"
-							placeholder="Enter Address Line 2" required="required" />
+							placeholder="Enter Address Line 2" value="${address.lineTwo}" />
 					</div>
 					<div class="form-group">
 						<label for="landmark" class="control-label text-primary">Landmark</label>
 						<form:input path="landmark" class="form-control" id="landmark"
-							placeholder="Enter Landmark" required="required" />
+							placeholder="Enter Landmark" value="${address.landmark}" />
 					</div>
 					<div class="form-group">
 						<label for="city" class="control-label text-primary">City</label>
 						<form:input path="city" class="form-control" id="city"
-							placeholder="Enter City" required="required" />
+							placeholder="Enter City" value="${address.city}" />
 					</div>
 					<div class="form-group">
 						<label for="state" class="control-label text-primary">State</label>
 						<form:input path="state" class="form-control" id="state"
-							placeholder="Enter State" required="required" />
+							placeholder="Enter State" value="${address.state}" />
 					</div>
 					<div class="form-group">
 						<label for="pincode" class="control-label text-primary">Pincode</label>
 						<form:input path="pincode" class="form-control" id="pincode"
-							placeholder="Enter Pincode" required="required" />
+							placeholder="Enter Pincode" value="${address.pincode }" />
+					</div>
+					<div class="form-group">
+						<label for="country" class="control-label text-primary">Country</label>
+						<form:input path="country" class="form-control" id="country"
+							placeholder="Enter Pincode" value="India" readonly="readonly" />
 					</div>
 
 					<div class="form-group">
@@ -60,7 +81,7 @@
 							Number</label>
 						<form:input path="mobileNumber" class="form-control"
 							id="phoneNumber" placeholder="Enter Phone Number"
-							required="required" />
+							value="${address.mobileNumber }" />
 					</div>
 
 					<div class="form-group">

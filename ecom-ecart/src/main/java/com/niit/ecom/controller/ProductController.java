@@ -62,7 +62,7 @@ public class ProductController {
 			} else if ((operation.equals("add")) && status.equals("fail")) {
 				modelAndView.addObject("msg", "Failed To Add Product");
 			} else if ((operation.equals("delete")) && status.equals("success") && id != "0") {
-				modelAndView.addObject("msg", "Success! Product Delted Successfully");
+				modelAndView.addObject("msg", "Success! Product Deleted Successfully");
 			} else if ((operation.equals("delete")) && status.equals("fail") && id != "0") {
 				modelAndView.addObject("msg", "Failed To Delete Product");
 			}

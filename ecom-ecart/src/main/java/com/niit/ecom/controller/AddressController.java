@@ -1,23 +1,110 @@
 package com.niit.ecom.controller;
 
+import java.security.Principal;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.niit.ecom.dao.AddressDAO;
+import com.niit.ecom.dao.UserDAO;
+import com.niit.ecom.entity.Address;
+import com.niit.ecom.entity.User;
+
 @Controller
-@RequestMapping(value = {"/user"})
+@RequestMapping(value = { "/user" })
 public class AddressController {
+
+	@Autowired
+	Address address;
+
+	@Autowired
+	AddressDAO addressDAO;
+
+	@Autowired
+	User user;
+
+	@Autowired
+	UserDAO userDAO;
 
 	/*
 	 * To Access Address Page
-	 * */
-	
-	@RequestMapping(value = {"/addresses"})
-	public ModelAndView addresses(){
+	 */
+
+	@RequestMapping(value = { "/addresses" })
+	public ModelAndView addresses(Principal principal, @RequestParam(name = "op", required = false) String operation,
+			@RequestParam(name = "status", required = false) String status,
+			@RequestParam(value = "id", required = false) String id) {
 		ModelAndView modelAndView = new ModelAndView("page");
+		modelAndView.addObject("user", userDAO.getByUserName(principal.getName()));
+		modelAndView.addObject("address", new Address());
+		if (operation != null) {
+			if ((operation.equals("update")) & status.equals("success")) {
+				modelAndView.addObject("successMsg", "Success! Address Updated Successfully");
+			} else if ((operation.equals("update")) & status.equals("fail")){
+				modelAndView.addObject("failureMsg", "Failed To Update Address");
+			}
+			if ((operation.equals("save")) & status.equals("success")) {
+				modelAndView.addObject("successMsg", "Success! Address Added Successfully");
+			} else if ((operation.equals("save")) & status.equals("fail")){
+				modelAndView.addObject("failureMsg", "Failed To Add Address");
+			}
+			if ((operation.equals("delete")) && status.equals("success") && id != "0") {
+				modelAndView.addObject("successMsg", "Success! Address Deleted Successfully");
+			} else if ((operation.equals("delete")) && status.equals("fail") && id != "0") {
+				modelAndView.addObject("failureMsg", "Failed To Delete Address");
+			}
+
+		}
 		modelAndView.addObject("title", "Addresses");
 		modelAndView.addObject("ifUserClickedAddresses", true);
 		return modelAndView;
 	}
-	
+
+	@RequestMapping(value = { "/address/save" }, method = RequestMethod.POST)
+	public String saveAddress(@ModelAttribute Address address) {
+		if (address.getId() == 0) {
+			boolean flag = addressDAO.addAddress(address);
+			if (flag == true) {
+				return "redirect:/user/addresses?op=save&status=success";
+			} else {
+				return "redirect:/user/addresses?op=save&status=fail";
+			}
+		} else {
+			boolean flag = addressDAO.updateAddress(address);
+			if (flag == true) {
+				return "redirect:/user/addresses?op=update&status=success";
+			} else {
+				return "redirect:/user/addresses?op=update&status=fail";
+			}
+		}
+	}
+
+	@RequestMapping(value = { "/address/edit/{id}" }, method = RequestMethod.GET)
+	public ModelAndView editAddress(@PathVariable(name = "id", required = false) int id) {
+		ModelAndView modelAndView = new ModelAndView("page");
+		address = addressDAO.get(id);
+		modelAndView.addObject("address", address);
+		modelAndView.addObject("title", "Update Address");
+		modelAndView.addObject("ifUserClickedEditAddress", true);
+		return modelAndView;
+	}
+
+	@RequestMapping(value = { "/address/delete/{id}" }, method = RequestMethod.GET)
+	public String deleteAddress(@PathVariable(name = "id", required = false) int id) {
+		address = addressDAO.get(id);
+		boolean flag = addressDAO.deleteAddress(address);
+		if (flag == true) {
+			return "redirect:/user/addresses?op=delete&status=success&id=" + address.getId();
+		} else {
+			return "redirect:/user/addresses?op=delete&status=fail&id=" + address.getId();
+		}
+
+	}
+
 }

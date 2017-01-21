@@ -39,8 +39,6 @@ $(document)
 						break;
 					}
 
-					
-										
 					/*
 					 * Sort nav
 					 */
@@ -114,8 +112,10 @@ $(document)
 						// in order to add icons to inputs
 						element.parents(".validate").addClass("has-feedback");
 
-						if (element.prop("type") === "radio") {
-							error.insertAfter(element.parent(".checkbox"));
+						if (element.prop("type") === "select") {
+							error.insertAfter(element.prop(".gender"));
+						} else if (element.prop("type") === "checkbox") {
+							error.insertAfter(element.parent(".terms"));
 						} else {
 							error.insertAfter(element);
 						}
@@ -192,8 +192,14 @@ $(document)
 							.validate(
 									{
 										rules : {
-											firstName : 'required',
-											lastName : 'required',
+											firstName : {
+												required : true,
+												minlength : 3
+											},
+											lastName : {
+												required : true,
+												minlength : 3
+											},
 											email : {
 												required : true,
 												email : true
@@ -202,7 +208,7 @@ $(document)
 												required : true,
 												minlength : 5
 											},
-											rePassword : {
+											confirmPassword : {
 												required : true,
 												minlength : 5,
 												equalTo : '#password'
@@ -210,6 +216,9 @@ $(document)
 											mobileNumber : {
 												required : true,
 												tel : true
+											},
+											gender : {
+												required : true
 											},
 											terms : {
 												required : true
@@ -226,10 +235,13 @@ $(document)
 												required : 'Please, Provide Password',
 												minlength : 'Password Must Contain Atleast 5 Charachters'
 											},
-											rePassword : {
+											confirmPassword : {
 												required : 'Please, Enter Password Same as Above',
 												minlength : 'Password Must Contain Atleast 5 Charachters',
 												equalTo : "Password Doesn't Match"
+											},
+											gender:{
+												required: 'Please, Select Gender'
 											},
 											mobileNumber : {
 												required : 'Please, Provide Mobile Number',

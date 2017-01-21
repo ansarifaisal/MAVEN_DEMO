@@ -2,12 +2,11 @@ package com.niit.ecom.daoimpl;
 
 import java.util.List;
 
-import javax.transaction.Transactional;
-
 import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.niit.ecom.dao.UserDAO;
 import com.niit.ecom.entity.User;
@@ -17,6 +16,9 @@ public class UserDAOImpl implements UserDAO {
 
 	@Autowired
 	private SessionFactory sessionFactory;
+	
+	@Autowired
+	User user;
 
 	@Override
 	@Transactional
@@ -88,6 +90,20 @@ public class UserDAOImpl implements UserDAO {
 		 
 */
 		return false;
+	}
+	
+
+	@Transactional
+	@Override
+	public User getByUserName(String userName) {
+		String hql = "FROM USERS WHERE USER_EMAIL =:email";
+		Query query = sessionFactory.getCurrentSession().createQuery(hql);
+		query.setParameter("email", userName);
+		List<User> listOfUser = query.getResultList();
+		if(listOfUser != null && !listOfUser.isEmpty()){
+			return listOfUser.get(0);
+		}
+		return null;
 	}
 
 }
