@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.niit.ecom.dao.UserDAO;
+import com.niit.ecom.entity.Cart;
 import com.niit.ecom.entity.User;
 
 @Repository("userDAO")
@@ -16,9 +17,12 @@ public class UserDAOImpl implements UserDAO {
 
 	@Autowired
 	private SessionFactory sessionFactory;
-	
+
 	@Autowired
 	User user;
+
+	@Autowired
+	Cart cart;
 
 	@Override
 	@Transactional
@@ -74,24 +78,21 @@ public class UserDAOImpl implements UserDAO {
 
 	@Override
 	public boolean isValidate(String userName, String password) {
-		
-		/*if(userName.equals("ansarifaisal480@gmail.com")&&password.equals("test")){
-			return true;	
-		}else{
-			return false;
-		}
-		
-		
-		 * String hql = "SELECT email, password FROM USERS where email ="; 
-		 * Query query = sessionFactory.getCurrentSession().createQuery(hql); List
+
+		/*
+		 * if(userName.equals("ansarifaisal480@gmail.com")&&password.equals(
+		 * "test")){ return true; }else{ return false; }
+		 * 
+		 * 
+		 * String hql = "SELECT email, password FROM USERS where email ="; Query
+		 * query = sessionFactory.getCurrentSession().createQuery(hql); List
 		 * userDetails= query.list(); for (Object userDetail : userDetails) {
 		 * 
 		 * }
-		 
-*/
+		 * 
+		 */
 		return false;
 	}
-	
 
 	@Transactional
 	@Override
@@ -100,7 +101,7 @@ public class UserDAOImpl implements UserDAO {
 		Query query = sessionFactory.getCurrentSession().createQuery(hql);
 		query.setParameter("email", userName);
 		List<User> listOfUser = query.getResultList();
-		if(listOfUser != null && !listOfUser.isEmpty()){
+		if (listOfUser != null && !listOfUser.isEmpty()) {
 			return listOfUser.get(0);
 		}
 		return null;

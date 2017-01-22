@@ -20,7 +20,7 @@
 			</c:if>
 
 			<div class="col-md-offset-2 col-sm-offset-2">
-				<form:form action="${contextPath}/user/address/save" class="form"
+				<form:form action="${contextPath}/user/address/save" class="form addAddress"
 					role="form" modelAttribute="address" method="POST">
 					<div class="form-group">
 						<label for="firstName" class="control-label text-primary">First
@@ -51,7 +51,7 @@
 							placeholder="Enter Address Line 2" value="${address.lineTwo}" />
 					</div>
 					<div class="form-group">
-						<label for="landmark" class="control-label text-primary">Landmark</label>
+						<label for="landmark" class="control-label text-primary">Landmark (Optional)</label>
 						<form:input path="landmark" class="form-control" id="landmark"
 							placeholder="Enter Landmark" value="${address.landmark}" />
 					</div>

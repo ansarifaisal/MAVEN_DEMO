@@ -19,6 +19,11 @@ public class CartController {
 		return modelAndView;
 	}
 	
+	@RequestMapping(value = {"/cart/add/{id}"})
+	public String addCart(){
+		return "";
+	}
+	
 	
 	
 }

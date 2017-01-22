@@ -2,11 +2,14 @@ package com.niit.ecom.entity;
 
 import java.io.Serializable;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Transient;
 
 import org.springframework.stereotype.Component;
@@ -44,10 +47,16 @@ public class User implements Serializable {
 	private String mobileNumber;
 	@Transient
 	private String tempMobileNumber;
+
+	@JoinColumn(name = "CART_ID")
+	@OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
+	private Cart cart;
+
 	@Column(name = "USER_ENABLED")
 	private boolean enabled;
 	@Column(name = "USER_ROLE")
 	private String role;
+
 	/*
 	 * Getters And Setters or Accessors and Mutators
 	 */
@@ -139,6 +148,14 @@ public class User implements Serializable {
 		this.oldPassword = oldPassword;
 	}
 
+	public Cart getCart() {
+		return cart;
+	}
+
+	public void setCart(Cart cart) {
+		this.cart = cart;
+	}
+
 	/*
 	 * Override toString Method for Debugging Purpose
 	 */
@@ -147,7 +164,8 @@ public class User implements Serializable {
 	public String toString() {
 		return "User [id=" + id + ", email=" + email + ", password=" + password + ", confirmPassword=" + confirmPassword
 				+ ", oldPassword=" + oldPassword + ", firstName=" + firstName + ", lastName=" + lastName + ", gender="
-				+ gender + ", mobileNumber=" + mobileNumber + ", enabled=" + enabled + ", role=" + role + "]";
+				+ gender + ", mobileNumber=" + mobileNumber + ", tempMobileNumber=" + tempMobileNumber + ", cart="
+				+ cart + ", enabled=" + enabled + ", role=" + role + "]";
 	}
 
 }

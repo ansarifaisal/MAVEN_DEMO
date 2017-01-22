@@ -30,7 +30,10 @@ CREATE TABLE USERS(
 	user_gender VARCHAR(10) NOT NULL,
 	user_mobile_number VARCHAR(15) NOT NULL UNIQUE,
 	user_enabled BOOLEAN DEFAULT 'TRUE',
-	USER_ROLE VARCHAR(20) DEFAULT 'USER'
+	USER_ROLE VARCHAR(20) DEFAULT 'USER',
+	CART_ID INT(10) NOT NULL,
+	CONSTRAINT fk_user_cart_id FOREIGN KEY(CART_ID)
+	REFERENCES CART(CART_ID)
 );
 
 --Addresses
@@ -51,29 +54,7 @@ CREATE TABLE ADDRESSES(
 	REFERENCES USERS(user_id)
 );
 
---CART
 
-CREATE TABLE CART(
-	cart_id IDENTITY,
-	user_id int(10) NOT NULL,
-	cart_total DECIMAL(8,2) NOT NULL;
-	CONSTRAINT fk_cart_user_id FOREIGN KEY(user_id)
-	REFERENCES USERS(user_id)
-);
-
---CART ITEMS
-CREATE TABLE CART_ITEMS(
-	item_id IDENTITY,
-	cart_id int(10) NOT NULL,
-	product_id int(10) NOT NULL,
-	item_price DECIMAL(8,2) NOT NULL,
-	item_quantity int(10) NOT NULL,
-	item_total DECIMAL(8,2) NOT NULL,
-	CONSTRAINT fk_item_cart_id FOREIGN KEY(cart_id)
-	REFERENCES CART(cart_id),
-	CONSTRAINT fk_item_product_id FOREIGN KEY(product_id)
-	REFERENCES PRODUCTS(product_id)
-);
 
 --ORDERS
 CREATE TABLE ORDERS(
@@ -113,3 +94,31 @@ CREATE TABLE Seller(
 	mobile BIGINT(15) NOT NULL
 
 );
+
+--Cart
+
+CREATE TABLE CART(
+	CART_ID IDENTITY,
+	GRAND_TOTAL INT(10) NOT NULL,
+	NO_OF_CART_ITEMS INT(10) NOT NULL,
+	USER_ID INT(10) NOT NULL,
+	CONSTRAINT fk_cart_user_id FOREIGN KEY(USER_ID)
+	REFERENCES USERS(USER_ID)
+);
+
+--CART ITEMS
+
+CREATE TABLE CART_ITEMS(
+	item_id IDENTITY,
+	cart_id int(10) NOT NULL,
+	product_id int(10) NOT NULL,
+	item_price DECIMAL(8,2) NOT NULL,
+	item_quantity int(10) NOT NULL,
+	item_total DECIMAL(8,2) NOT NULL,
+	CONSTRAINT fk_item_cart_id FOREIGN KEY(cart_id)
+	REFERENCES CART(cart_id),
+	CONSTRAINT fk_item_product_id FOREIGN KEY(product_id)
+	REFERENCES PRODUCTS(product_id)
+);
+
+

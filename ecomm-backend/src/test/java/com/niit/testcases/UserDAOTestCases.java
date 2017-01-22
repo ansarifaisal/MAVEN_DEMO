@@ -1,13 +1,11 @@
 package com.niit.testcases;
 
-import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import com.niit.ecom.dao.UserDAO;
+import com.niit.ecom.entity.Cart;
 import com.niit.ecom.entity.User;
-
-import junit.framework.Assert;
 
 public class UserDAOTestCases {
 
@@ -19,6 +17,9 @@ public class UserDAOTestCases {
 
 	@Autowired
 	User user;
+	
+	@Autowired
+	Cart cart;
 
 	@Autowired
 	AnnotationConfigApplicationContext context;
@@ -29,11 +30,12 @@ public class UserDAOTestCases {
 		context.refresh();
 		userDAO = (UserDAO) context.getBean("userDAO");
 		user = (User) context.getBean("user");
+		cart = (Cart) context.getBean("cart");
 	}
 	
-/*	@Test
+	/*@Test
 	public void deleteUserTest(){
-		user = userDAO.getUser(2);
+		user = userDAO.getUser(37);
 		Assert.assertEquals(true, userDAO.deleteUser(user));
 	}*/
 
@@ -47,11 +49,11 @@ public class UserDAOTestCases {
 		Assert.assertEquals("This is Valid", user.getId(),userDAO.getUser(1).getId());
 	}	*/
 	
-	@Test
+	/*@Test
 	public void getAllUserTest(){
 		user = userDAO.getByUserName("ansarifaisal480@gmail.com");
 		Assert.assertEquals(1, user.getId());
-	}
+	}*/
 	
 	/*@Test
 	public void updateUserTest(){
@@ -62,15 +64,22 @@ public class UserDAOTestCases {
 	
 	/*@Test
 	public void addUserTest() {
-		user.setId(2);
-		user.setEmail("test@test.com");
-		user.setFirstName("test");
-		user.setLastName("test");
+		
+		cart.setGrandTotal(1000);
+		cart.setNumberOfCartItems(1);
+		cart.setCartItems(null);
+		
+		user.setFirstName("Ansari");
+		user.setLastName("Faisal");
+		user.setEmail("ansarifaisal480@gmail.com");
 		user.setGender("Male");
+		user.setMobileNumber("9920312317");
 		user.setPassword("test");
-		user.setMobileNumber("9999944455");
-		user.setRole("Customer");
-		user.setEnabled(false);
+		user.setCart(cart);
+		user.setEnabled(true);
+		user.setRole("ADMIN");
+		cart.setUser(user);
+		userDAO.addUser(user);
 		Assert.assertEquals(true, userDAO.addUser(user));
 	}*/
 }

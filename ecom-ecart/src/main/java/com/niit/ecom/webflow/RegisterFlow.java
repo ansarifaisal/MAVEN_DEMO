@@ -6,6 +6,7 @@ import org.springframework.binding.message.MessageContext;
 import org.springframework.stereotype.Component;
 
 import com.niit.ecom.dao.UserDAO;
+import com.niit.ecom.entity.Cart;
 import com.niit.ecom.entity.User;
 
 @Component
@@ -17,6 +18,9 @@ public class RegisterFlow {
 	@Autowired
 	private UserDAO userDAO;
 
+	@Autowired
+	private Cart cart;
+
 	public User initFlow() {
 		return user;
 	}
@@ -25,14 +29,14 @@ public class RegisterFlow {
 		String status = "success";
 		User userExists = userDAO.getByUserName(user.getEmail());
 		if (userExists != null) {
-			
-			//Giving error message if user already exists
+
+			// Giving error message if user already exists
 			messageContext.addMessage(new MessageBuilder().error().source("email")
 					.defaultText("User Already Exists, Please Login").build());
 			status = "failure";
 		} else {
-			
-			//else performing the registration task
+
+			// else performing the registration task
 			if (user.getEmail().isEmpty()) {
 				messageContext.addMessage(
 						new MessageBuilder().error().source("email").defaultText("Please, Provide E-mail").build());
@@ -71,7 +75,7 @@ public class RegisterFlow {
 						.defaultText("Please, Provide Mobile Number").build());
 				return "failure";
 			} else {
-				user.setLastName(user.getMobileNumber());
+				user.setMobileNumber(user.getMobileNumber());
 				status = "success";
 			}
 			if (user.getConfirmPassword().isEmpty()) {
@@ -79,7 +83,7 @@ public class RegisterFlow {
 						.defaultText("Please, Confirm The Password").build());
 				return "failure";
 			} else {
-				user.setLastName(user.getConfirmPassword());
+				user.setConfirmPassword(user.getConfirmPassword());
 				status = "success";
 			}
 			if (user.getGender().isEmpty()) {
@@ -87,12 +91,14 @@ public class RegisterFlow {
 						new MessageBuilder().error().source("gender").defaultText("Please, Provide Gender").build());
 				return "failure";
 			} else {
-				user.setLastName(user.getGender());
+				user.setGender(user.getGender());
 				status = "success";
 			}
 			user.setRole(user.getRole());
 			user.setEnabled(user.isEnabled());
-			//Adding user into the database
+			cart.setUser(user);
+			user.setCart(cart);
+			// Adding user into the database
 			userDAO.addUser(user);
 
 		}

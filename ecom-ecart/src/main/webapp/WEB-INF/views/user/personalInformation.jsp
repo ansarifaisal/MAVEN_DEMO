@@ -21,19 +21,19 @@
 
 		<div class="panel-body col-md-offset-3 col-sm-offset-3">
 
-			<form:form id="personalInformation"
-				action="${contextPath}/user/update/password"
+			<form:form class="form personalInformation"
+				action="${contextPath}/user/update/personalinformation"
 				method="POST" modelAttribute="user">
 				<div class="col-md-9 col-sm-9 col-xs-9">
 					<label for="firstName" class="text-primary ">First Name</label>
-					<div class="form-group">
+					<div class="form-group validate">
 						<form:input path="firstName" class="form-control"
 							placeholder="Enter First Name" name="firstName" id="firstName"
 							value="${user.firstName}" />
 						<form:hidden path="id" value="${user.id}" disable="disable" />
 					</div>
 					<label for="lastName" class="text-primary ">Last Name</label>
-					<div class="form-group">
+					<div class="form-group validate">
 						<form:input path="lastName" class="form-control"
 							placeholder="Last Name" id="lastName" value="${user.lastName}" />
 					</div>

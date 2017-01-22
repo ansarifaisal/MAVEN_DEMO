@@ -55,14 +55,16 @@ public class UserController {
 			@RequestParam(name = "status", required = false) String status) {
 		ModelAndView modelAndView = new ModelAndView("page");
 		modelAndView.addObject("user", userDAO.getByUserName(principal.getName()));
-		if (operation.equals("update") & status.equals("wrong")) {
-			modelAndView.addObject("wrongMsg", "Old Password Doesn't Match");
-		}
-		if (operation.equals("update") & status.equals("success")) {
-			modelAndView.addObject("successMsg", "Success! Password Updated Successfully");
-		}
-		if (operation.equals("update") & status.equals("failure")) {
-			modelAndView.addObject("failureMsg", "Failed To Update The Password");
+		if (operation != null) {
+			if (operation.equals("update") & status.equals("wrong")) {
+				modelAndView.addObject("wrongMsg", "Old Password Doesn't Match");
+			}
+			if (operation.equals("update") & status.equals("success")) {
+				modelAndView.addObject("successMsg", "Success! Password Updated Successfully");
+			}
+			if (operation.equals("update") & status.equals("failure")) {
+				modelAndView.addObject("failureMsg", "Failed To Update The Password");
+			}
 		}
 		modelAndView.addObject("title", "Change Password");
 		modelAndView.addObject("ifUserClickedChangePassword", true);
@@ -79,12 +81,13 @@ public class UserController {
 			@RequestParam(name = "status", required = false) String status) {
 		ModelAndView modelAndView = new ModelAndView("page");
 		modelAndView.addObject("user", userDAO.getByUserName(principal.getName()));
-
-		if (operation.equals("update") & status.equals("success")) {
-			modelAndView.addObject("successMsg", "Success! Password Updated Email/Mobile");
-		}
-		if (operation.equals("update") & status.equals("failure")) {
-			modelAndView.addObject("failureMsg", "Failed To Update The Email/Mobile");
+		if (operation != null) {
+			if (operation.equals("update") & status.equals("success")) {
+				modelAndView.addObject("successMsg", "Success! Password Updated Email/Mobile");
+			}
+			if (operation.equals("update") & status.equals("failure")) {
+				modelAndView.addObject("failureMsg", "Failed To Update The Email/Mobile");
+			}
 		}
 
 		modelAndView.addObject("title", "Update Email And Mobile");

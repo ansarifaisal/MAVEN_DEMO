@@ -67,7 +67,7 @@
 				
 				<%--Display Controls To User --%>
 				<sec:authorize access="hasAuthority('USER')">
-					<li class="dropdown"><a href="#user" class="dropdown-toggle"
+					<li class="dropdown"><a href="#userPanel" class="dropdown-toggle"
 						data-toggle="dropdown" role="button" aria-haspopup="true"
 						aria-expanded="false"> User<span class="caret"></span></a>
 						<ul class="dropdown-menu">

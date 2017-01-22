@@ -26,25 +26,25 @@
 			</div>
 		</c:if>
 
-		<div class="panel-body col-md-offset-3 col-sm-offset-3">
-			<form:form class="form" role="form" modelAttribute="user"
+		<div class="panel-body col-md-offset-3 col-sm-offset-3 ">
+			<form:form class="form changePassword" role="form" modelAttribute="user"
 				method="POST" action = "${contextPath}/user/update/password">
 				<div class="col-md-9 col-sm-12 col-xs-12">
 					<label for="oldPassword" class="text-primary">Old Password</label>
-					<div class="form-group">
+					<div class="form-group validate">
 						<form:password path = "oldPassword" id="oldPassword"
 							class="form-control" placeholder="Enter Old Password"/>
 							<form:hidden path="id" value = "${user.id}"/> 
 					</div>
 					<label for="newPassword " class="text-primary">New Password</label>
-					<div class="form-group">
+					<div class="form-group validate">
 						<form:password path = "password" id="newPassword"
 							placeholder="Enter New Password" class="form-control"/>
 					</div>
 					<label for="reTypeNewPassword" class="text-primary">Re-Type
 						New Password</label>
 
-					<div class="form-group">
+					<div class="form-group validate">
 						<form:password path = "confirmPassword" class="form-control" id="reTypeNewPassword"
 							placeholder="Re-Type New Password"/>
 					</div>
