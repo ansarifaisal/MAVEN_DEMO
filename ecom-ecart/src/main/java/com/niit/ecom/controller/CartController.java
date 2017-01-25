@@ -76,7 +76,7 @@ public class CartController {
 			cartItems = new HashSet<>();
 			cartItems.add(cartItem);
 			cart.setCartItems(cartItems);
-			cart.setNumberOfCartItems(cartItemDAO.list(cart.getCartId()).size());
+			cart.setNumberOfCartItems(cartItemDAO.list(cart.getCartId()).size()+1);
 			System.out.println(cartItems.size());
 			cart.setUser(user);
 			cart.setGrandTotal(cart.getGrandTotal());
