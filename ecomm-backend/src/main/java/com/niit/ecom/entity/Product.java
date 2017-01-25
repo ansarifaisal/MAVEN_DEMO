@@ -30,7 +30,7 @@ public class Product implements Serializable {
 	@Column(name = "PRODUCT_DESCRIPTION")
 	private String description;
 	@Column(name = "PRODUCT_PRICE")
-	private double price;
+	private int price;
 	@Column(name = "PRODUCT_QUANTITY")
 	private int quantity;
 	@Transient
@@ -85,11 +85,11 @@ public class Product implements Serializable {
 		this.description = description;
 	}
 
-	public double getPrice() {
+	public int getPrice() {
 		return price;
 	}
 
-	public void setPrice(double price) {
+	public void setPrice(int price) {
 		this.price = price;
 	}
 

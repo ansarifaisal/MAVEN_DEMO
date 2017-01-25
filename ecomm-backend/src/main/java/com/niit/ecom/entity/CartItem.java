@@ -6,8 +6,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.PrimaryKeyJoinColumn;
 
 import org.springframework.stereotype.Component;
 
@@ -27,17 +27,17 @@ public class CartItem {
 	@Column(name = "PRODUCT_ID")
 	private int product;
 
-	@Column(name = "QUANTITY")
+	@Column(name = "ITEM_QUANTITY")
 	private int quantity;
 
 	@Column(name = "ITEM_PRICE")
 	private int itemPrice;
 
-	@Column(name = "TOTAL_PRICE")
-	private double totalPrice;
+	@Column(name = "ITEM_TOTAL")
+	private int totalPrice;
 
 	@ManyToOne(cascade = CascadeType.ALL)
-	@PrimaryKeyJoinColumn(name = "CART_ID")
+	@JoinColumn(name = "CART_ID")
 	private Cart cart;
 
 	/*
@@ -68,12 +68,13 @@ public class CartItem {
 		this.quantity = quantity;
 	}
 
-	public double getTotalPrice() {
+	public int getTotalPrice() {
 		return totalPrice;
 	}
 
-	public void setTotalPrice(double totalPrice) {
-		this.totalPrice = totalPrice;
+	public void setTotalPrice(int totalPrice) {
+		//To get the total price if the quantity increased
+		this.totalPrice = getQuantity()*getItemPrice();
 	}
 
 	public Cart getCart() {

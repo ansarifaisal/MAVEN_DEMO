@@ -39,7 +39,7 @@ public class ProductDAOImpl implements ProductDAO {
 			sessionFactory.getCurrentSession().persist(product);
 			return true;
 		} catch (Exception e) {
-			System.out.println(e.getMessage());
+			e.printStackTrace();
 			return false;
 		}
 	}
@@ -51,7 +51,7 @@ public class ProductDAOImpl implements ProductDAO {
 			sessionFactory.getCurrentSession().update(product);
 			return true;
 		} catch (Exception e) {
-			System.out.println(e.getMessage());
+			e.printStackTrace();
 			return false;
 		}
 		
@@ -64,7 +64,7 @@ public class ProductDAOImpl implements ProductDAO {
 			sessionFactory.getCurrentSession().delete(product);
 			return true;
 		} catch (Exception e) {
-			System.out.println(e.getMessage());
+			e.printStackTrace();
 			return false;
 		}
 	}
