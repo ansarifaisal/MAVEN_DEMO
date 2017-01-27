@@ -9,28 +9,13 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.niit.ecom.dao.CartItemDAO;
-import com.niit.ecom.dao.ProductDAO;
 import com.niit.ecom.entity.CartItem;
-import com.niit.ecom.entity.Product;
-
 
 @Repository("cartItemDAO")
 public class CartItemDAOImpl implements CartItemDAO {
 
 	@Autowired
 	private SessionFactory sessionFactory;
-	
-	@Autowired
-	private CartItem cartItem;
-	
-	@Autowired
-	private Product product;
-	
-	@Autowired
-	private ProductDAO productDAO;
-	
-	@Autowired
-	private CartItemDAO cartDAO;
 
 	@Override
 	@Transactional
@@ -63,7 +48,7 @@ public class CartItemDAOImpl implements CartItemDAO {
 			e.printStackTrace();
 			return false;
 		}
-		
+
 	}
 
 	@Override
@@ -86,11 +71,30 @@ public class CartItemDAOImpl implements CartItemDAO {
 
 	@Override
 	@Transactional
-	public double updateCart(int id) {
-		cartItem = cartDAO.get(id);
-		product = productDAO.get(cartItem.getId());
-		int quantity = product.getQuantity();
-		return 0;
+	public boolean existingCartItem(int productId, int cartId) {
+		String hql = "FROM CART_ITEMS WHERE CART_ID = :cartId AND PRODUCT_ID = :productId";
+		Query query = sessionFactory.getCurrentSession().createQuery(hql);
+		query.setParameter("cartId", cartId);
+		query.setParameter("productId", productId);
+		if(query.list().isEmpty()){
+			return false;
+		}else{
+			return true;
+		}
+	}
+
+	@Override
+	@Transactional
+	public CartItem getByProductId(int productId, int cartId) {
+		String hql = "FROM CART_ITEMS WHERE PRODUCT_ID = :productId AND CART_ID = :cartId";
+		Query query = sessionFactory.getCurrentSession().createQuery(hql);
+		query.setParameter("productId", productId);
+		query.setParameter("cartId", cartId);
+		List<CartItem> cartItems = query.getResultList();
+		if (cartItems != null && !cartItems.isEmpty()) {
+			return cartItems.get(0);
+		}
+		return null;
 	}
 
 }

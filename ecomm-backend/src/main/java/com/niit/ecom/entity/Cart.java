@@ -3,7 +3,6 @@ package com.niit.ecom.entity;
 import java.io.Serializable;
 import java.util.Set;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -16,9 +15,9 @@ import javax.persistence.PrimaryKeyJoinColumn;
 
 import org.springframework.stereotype.Component;
 
-@Entity(name = "Cart")
+@Entity(name = "CART")
 @Component
-public class Cart implements Serializable{
+public class Cart implements Serializable {
 
 	/**
 	 * 
@@ -28,28 +27,33 @@ public class Cart implements Serializable{
 	/*
 	 * Declaring Private Fields
 	 */
-	
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "CART_ID")
 	private int cartId;
 
-	@OneToMany(cascade = CascadeType.ALL, mappedBy = "cart")
+	@OneToMany(mappedBy = "cart")
 	@PrimaryKeyJoinColumn(name = "CART_ITEM_ID")
 	private Set<CartItem> cartItems;
 
 	@Column(name = "GRAND_TOTAL")
-	private double grandTotal;
-	
+	private int grandTotal;
+
 	@Column(name = "NO_OF_CART_ITEMS")
 	private int numberOfCartItems;
-	
+
 	@OneToOne
 	@JoinColumn(name = "USER_ID")
 	private User user;
-
 	
+	public int getCartId() {
+		return cartId;
+	}
+
+	public void setCartId(int cartId) {
+		this.cartId = cartId;
+	}
 
 	public Set<CartItem> getCartItems() {
 		return cartItems;
@@ -59,19 +63,11 @@ public class Cart implements Serializable{
 		this.cartItems = cartItems;
 	}
 
-	public int getCartId() {
-		return cartId;
-	}
-
-	public void setCartId(int cartId) {
-		this.cartId = cartId;
-	}
-
-	public double getGrandTotal() {
+	public int getGrandTotal() {
 		return grandTotal;
 	}
 
-	public void setGrandTotal(double grandTotal) {
+	public void setGrandTotal(int grandTotal) {
 		this.grandTotal = grandTotal;
 	}
 
@@ -90,40 +86,31 @@ public class Cart implements Serializable{
 	public void setUser(User user) {
 		this.user = user;
 	}
+
+	/*
+	 * //Cart Methods
+	 * 
+	 * @Autowired CartItemDAO cartItemDAO;
+	 * 
+	 * public void addCart(CartItem cartItem){ int productId =
+	 * cartItem.getProduct(); if(cartItems.contains(productId)){ CartItem
+	 * existingCartItem = cartItemDAO.get(productId);
+	 * existingCartItem.setQuantity(existingCartItem.getQuantity()+cartItem.
+	 * getQuantity()); cartItems.add(existingCartItem); } updateGrandTotal(); }
+	 * 
+	 * public void removeCart(CartItem cartItem){ int productId =
+	 * cartItem.getProduct(); cartItems.remove(productId); updateGrandTotal(); }
+	 * 
+	 * public void updateGrandTotal(){ grandTotal = 0; for(CartItem cartItem :
+	 * cartItems){ grandTotal = grandTotal+cartItem.getTotalPrice(); } }
+	 */
+
 	
-	/*//Cart Methods
-	
-	@Autowired
-	CartItemDAO cartItemDAO;
-	
-	public void addCart(CartItem cartItem){
-		int productId = cartItem.getProduct();
-		if(cartItems.contains(productId)){
-			CartItem existingCartItem = cartItemDAO.get(productId);
-			existingCartItem.setQuantity(existingCartItem.getQuantity()+cartItem.getQuantity());
-			cartItems.add(existingCartItem);
-		}
-		updateGrandTotal();
-	}
-	
-	public void removeCart(CartItem cartItem){
-		int productId = cartItem.getProduct();
-		cartItems.remove(productId);
-		updateGrandTotal();
-	}
-	
-	public void updateGrandTotal(){
-		grandTotal = 0;
-		for(CartItem cartItem : cartItems){
-			grandTotal = grandTotal+cartItem.getTotalPrice();
-		}
-	}*/
 
 	@Override
 	public String toString() {
 		return "Cart [cartId=" + cartId + ", cartItems=" + cartItems + ", grandTotal=" + grandTotal
 				+ ", numberOfCartItems=" + numberOfCartItems + ", user=" + user + "]";
 	}
-	
-	
+
 }

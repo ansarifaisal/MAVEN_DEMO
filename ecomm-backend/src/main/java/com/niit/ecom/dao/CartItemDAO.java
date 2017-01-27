@@ -3,7 +3,6 @@ package com.niit.ecom.dao;
 import java.util.List;
 
 import com.niit.ecom.entity.CartItem;
-import com.niit.ecom.entity.Product;
 
 public interface CartItemDAO {
 	List<CartItem> list(int id);
@@ -11,5 +10,6 @@ public interface CartItemDAO {
 	boolean deleteCartItem(CartItem cartItem);
 	boolean updateCartItem(CartItem cartItem);
 	CartItem get(int id);
-	double updateCart(int id);
+	CartItem getByProductId(int productId, int cartId);
+	boolean existingCartItem(int productId, int cartId);
 }

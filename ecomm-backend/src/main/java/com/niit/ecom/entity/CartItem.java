@@ -36,7 +36,7 @@ public class CartItem {
 	@Column(name = "ITEM_TOTAL")
 	private int totalPrice;
 
-	@ManyToOne(cascade = CascadeType.ALL)
+	@ManyToOne
 	@JoinColumn(name = "CART_ID")
 	private Cart cart;
 
