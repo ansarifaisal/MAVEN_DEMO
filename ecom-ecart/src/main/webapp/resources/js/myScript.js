@@ -38,6 +38,18 @@ $(document)
 					default:
 						break;
 					}
+					
+					/*
+					 * Quantity form
+					 * */
+					$('.quantity').on('focus',function(){
+						$('#saveQuantity').css('display','inline');
+					});
+					
+					/*$('#quantity').on('focusout',function(){
+						$('#saveQuantity').css('display','none');						
+					});*/
+					
 
 					/*
 					 * Sort nav
