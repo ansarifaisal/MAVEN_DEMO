@@ -86,25 +86,6 @@ public class Cart implements Serializable {
 	public void setUser(User user) {
 		this.user = user;
 	}
-
-	/*
-	 * //Cart Methods
-	 * 
-	 * @Autowired CartItemDAO cartItemDAO;
-	 * 
-	 * public void addCart(CartItem cartItem){ int productId =
-	 * cartItem.getProduct(); if(cartItems.contains(productId)){ CartItem
-	 * existingCartItem = cartItemDAO.get(productId);
-	 * existingCartItem.setQuantity(existingCartItem.getQuantity()+cartItem.
-	 * getQuantity()); cartItems.add(existingCartItem); } updateGrandTotal(); }
-	 * 
-	 * public void removeCart(CartItem cartItem){ int productId =
-	 * cartItem.getProduct(); cartItems.remove(productId); updateGrandTotal(); }
-	 * 
-	 * public void updateGrandTotal(){ grandTotal = 0; for(CartItem cartItem :
-	 * cartItems){ grandTotal = grandTotal+cartItem.getTotalPrice(); } }
-	 */
-
 	
 
 	@Override

@@ -23,33 +23,33 @@
 									style="height: 100px; width: 50px;">
 							</div>
 							<div class="col-md-11">
-								${cartItem.product}<br />
-								<div class="text-muted">Lorem Ipsum is simply dummy text
-									of the printing and typesetting industry. Lorem Ipsum has been
-									the industry's standard dummy text ever since the 1500s, when
-									an unknown printer took a galley of type and scrambled it to
-									make a type specimen book.</div>
+								${cartItem.product.productName}<br />
+								<div class="text-muted">${cartItem.product.description}</div>
 								<div class="text-right">
 									<input type="submit" class="btn btn-info"
 										value="Move To Wishlist"
-										onclick="window.location=${contextPath}/"> 
-										<a href="${contextPath}/user/cart/delete/${cartItem.id}" class="btn btn-danger">Remove</a>
+										onclick="window.location=${contextPath}/"> <a
+										href="${contextPath}/user/cart/delete/${cartItem.id}"
+										class="btn btn-danger">Remove</a>
 								</div>
 							</div>
 						</td>
 						<%--item column Ends here --%>
 
 						<%-- QTY Column Starts Here--%>
-						<td>
-							<form:form method="POST" action="${contextPath}/user/cart/update" modelAttribute = "cartItem">
+						<td><form:form method="POST"
+								action="${contextPath}/user/cart/update"
+								modelAttribute="cartItem">
 								<div class="form-group">
-									<form:input path = "quantity" placeholder="1"
-										class="form-control text-center quantity" style="max-width: 30px;" value = "${cartItem.quantity}"/>
-										<form:hidden path = "id" value = "${cartItem.id}"/>
-										<input type="submit" class="btn btn-primary" value="save" id="saveQuantity" style="display:none;">
+									<form:input id="${cartItem.id}" path="quantity" placeholder="1"
+										class="form-control text-center quantity"
+										style="max-width: 30px;" value="${cartItem.quantity}" />
+									<form:hidden path="id" value="${cartItem.id}" />
+									<input type="submit" class="btn btn-primary"
+										id="btn_${cartItem.id}" value="save" id="Test"
+										style="display: none;">
 								</div>
-							</form:form>
-						</td>
+							</form:form></td>
 						<%-- QTY Column Ends Here--%>
 						<%--Price Column Starts Here --%>
 						<td>

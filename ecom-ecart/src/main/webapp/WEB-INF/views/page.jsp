@@ -121,6 +121,11 @@
 		<c:if test="${ifUserClickedUpdateProduct == true }">
 			<%@include file="admin/admin.jsp"%>
 		</c:if>
+		
+		<%--if user click on addressList --%>
+		<c:if test = "${ifUserClickedAddressList == true }">
+		<%@include file = "cartWebFlow/addressList.jsp" %>
+		</c:if>
 
 	</div>
 	<div class="container-fluid">

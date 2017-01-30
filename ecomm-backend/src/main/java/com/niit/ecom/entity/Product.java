@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.persistence.Transient;
 
 import org.springframework.stereotype.Component;
@@ -25,22 +26,30 @@ public class Product implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "PRODUCT_ID")
 	private int id;
+	
 	@Column(name = "PRODUCT_NAME")
 	private String productName;
+	
 	@Column(name = "PRODUCT_DESCRIPTION")
 	private String description;
+	
 	@Column(name = "PRODUCT_PRICE")
 	private int price;
+	
 	@Column(name = "PRODUCT_QUANTITY")
 	private int quantity;
+	
 	@Transient
 	private String imageUrl;
+	
 	@Transient
 	private MultipartFile image;
 
 	@Column(name = "CATEGORY_ID")
 	private int categoryId;
 
+	@OneToOne(mappedBy = "product")
+	private CartItem cartItem;
 	/*
 	 * Getters And Setters / Accessors And Mutators
 	 */
@@ -52,6 +61,14 @@ public class Product implements Serializable {
 		this.image = image;
 	}
 	
+	public CartItem getCartItem() {
+		return cartItem;
+	}
+
+	public void setCartItem(CartItem cartItem) {
+		this.cartItem = cartItem;
+	}
+
 	public String getImageUrl() {
 		return imageUrl;
 	}

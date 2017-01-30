@@ -6,7 +6,7 @@ import com.niit.ecom.entity.Address;
 
 public interface AddressDAO {
 
-	List<Address> list();
+	List<Address> list(int userId);
 	
 	boolean addAddress(Address address);
 	

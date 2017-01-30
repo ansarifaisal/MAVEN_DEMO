@@ -14,10 +14,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.niit.ecom.dao.AddressDAO;
 import com.niit.ecom.dao.CartDAO;
 import com.niit.ecom.dao.CartItemDAO;
 import com.niit.ecom.dao.ProductDAO;
 import com.niit.ecom.dao.UserDAO;
+import com.niit.ecom.entity.Address;
 import com.niit.ecom.entity.Cart;
 import com.niit.ecom.entity.CartItem;
 import com.niit.ecom.entity.Product;
@@ -50,6 +52,12 @@ public class CartController {
 
 	@Autowired
 	CartItemDAO cartItemDAO;
+	
+	@Autowired
+	Address address;
+	
+	@Autowired
+	AddressDAO addressDAO;
 
 	/*
 	 * to access cart page
@@ -61,7 +69,6 @@ public class CartController {
 		modelAndView.addObject("cartItem", new CartItem());
 		modelAndView.addObject("cartItems", cartItemDAO.list(user.getCart().getCartId()));
 		modelAndView.addObject("cart", cartDAO.get(user.getId()));
-		modelAndView.addObject("product", productDAO.get(cartItem.getProduct()));
 		modelAndView.addObject("title", "Cart");
 		modelAndView.addObject("ifUserClickedCart", true);
 		return modelAndView;
@@ -88,7 +95,7 @@ public class CartController {
 		if (product.getQuantity() != 0) {
 			// add the product if it is not available in the cart
 			if (flag != true) {
-				cartItem.setProduct(product.getId());
+				cartItem.setProduct(cartItem.getProduct());
 				cartItem.setQuantity(1);
 				product.setQuantity(product.getQuantity() - 1);
 				cartItem.setItemPrice(product.getPrice());
@@ -128,7 +135,7 @@ public class CartController {
 		if (id != 0) {
 			cart = cartDAO.get(user.getId());
 			cartItem = cartItemDAO.get(id);
-			product = productDAO.get(cartItem.getProduct());
+			product = productDAO.get(cartItem.getProduct().getId());
 			product.setQuantity(product.getQuantity() + cartItem.getQuantity());
 			cartItemDAO.deleteCartItem(cartItem);
 			cartDAO.updateCartAgain(cart);
@@ -145,7 +152,7 @@ public class CartController {
 	public String updateQuantity(@ModelAttribute CartItem cartItem, HttpServletRequest request) {
 		int quantity = cartItem.getQuantity();
 		cartItem = cartItemDAO.get(cartItem.getId());
-		product = productDAO.get(cartItem.getProduct());
+		product = productDAO.get(cartItem.getProduct().getId());
 		cartItem.setQuantity(quantity);
 		cartItem.setTotalPrice(cartItem.getTotalPrice());
 		cartItemDAO.updateCartItem(cartItem);
@@ -156,4 +163,17 @@ public class CartController {
 		cartDAO.updateCart(cart);
 		return "redirect:/user/cart";
 	}
+	
+	@RequestMapping(value = {"/cart/addressList"})
+	public ModelAndView addressList(Principal principal){
+		user = userDAO.getByUserName(principal.getName());
+		int userId = user.getId();
+		ModelAndView modelAndView = new ModelAndView("page");
+		modelAndView.addObject("title", "Addesses");
+		modelAndView.addObject("ifUserClickedAddressList", true);
+		modelAndView.addObject("addresses",addressDAO.list(userId));
+		return modelAndView;
+	}
+	
+	
 }

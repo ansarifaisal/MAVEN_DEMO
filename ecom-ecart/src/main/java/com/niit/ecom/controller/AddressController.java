@@ -1,6 +1,7 @@
 package com.niit.ecom.controller;
 
 import java.security.Principal;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -41,17 +42,19 @@ public class AddressController {
 			@RequestParam(name = "status", required = false) String status,
 			@RequestParam(value = "id", required = false) String id) {
 		ModelAndView modelAndView = new ModelAndView("page");
-		modelAndView.addObject("user", userDAO.getByUserName(principal.getName()));
+		user = userDAO.getByUserName(principal.getName());
+		modelAndView.addObject("user", user);
+		modelAndView.addObject("addresses", addressDAO.list(user.getId()));
 		modelAndView.addObject("address", new Address());
 		if (operation != null) {
 			if ((operation.equals("update")) & status.equals("success")) {
 				modelAndView.addObject("successMsg", "Success! Address Updated Successfully");
-			} else if ((operation.equals("update")) & status.equals("fail")){
+			} else if ((operation.equals("update")) & status.equals("fail")) {
 				modelAndView.addObject("failureMsg", "Failed To Update Address");
 			}
 			if ((operation.equals("save")) & status.equals("success")) {
 				modelAndView.addObject("successMsg", "Success! Address Added Successfully");
-			} else if ((operation.equals("save")) & status.equals("fail")){
+			} else if ((operation.equals("save")) & status.equals("fail")) {
 				modelAndView.addObject("failureMsg", "Failed To Add Address");
 			}
 			if ((operation.equals("delete")) && status.equals("success") && id != "0") {
@@ -105,6 +108,23 @@ public class AddressController {
 			return "redirect:/user/addresses?op=delete&status=fail&id=" + address.getId();
 		}
 
+	}
+
+	@RequestMapping(value = { "/address/default/{id}" })
+	public String setDefaultAddress(@PathVariable(name = "id", required = false) int id, Principal principal) {
+		user = userDAO.getByUserName(principal.getName());
+		address = addressDAO.get(id);
+		List<Address> addresses = addressDAO.list(user.getId());
+		for (Address defaultAddress : addresses) {
+			if (defaultAddress.isDefaultAddress() == true) {
+				Address existingDefault = addressDAO.get(defaultAddress.getId());
+				existingDefault.setDefaultAddress(false);
+				addressDAO.updateAddress(existingDefault);
+			}
+		}
+		address.setDefaultAddress(true);
+		addressDAO.updateAddress(address);
+		return "redirect:/user/addresses";
 	}
 
 }

@@ -7,6 +7,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 
 import org.springframework.stereotype.Component;
 
@@ -22,9 +23,10 @@ public class CartItem {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "ITEM_ID")
 	private int id;
-
-	@Column(name = "PRODUCT_ID")
-	private int product;
+	
+	@OneToOne
+	@JoinColumn(name = "PRODUCT_ID")
+	private Product product;
 
 	@Column(name = "ITEM_QUANTITY")
 	private int quantity;
@@ -51,11 +53,11 @@ public class CartItem {
 		this.id = id;
 	}
 
-	public int getProduct() {
+	public Product getProduct() {
 		return product;
 	}
 
-	public void setProduct(int product) {
+	public void setProduct(Product product) {
 		this.product = product;
 	}
 

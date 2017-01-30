@@ -38,18 +38,24 @@ $(document)
 					default:
 						break;
 					}
-					
+
 					/*
 					 * Quantity form
-					 * */
-					$('.quantity').on('focus',function(){
-						$('#saveQuantity').css('display','inline');
+					 */
+					$('.quantity').on('focus', function() {
+						// console.log($(this).attr('id'));
+						var elm = "#btn_" + $(this).attr('id');
+						$(elm).css('display', 'inline');
 					});
-					
-					/*$('#quantity').on('focusout',function(){
-						$('#saveQuantity').css('display','none');						
-					});*/
-					
+
+					$('.defaultAddress')
+							.on(
+									'change',
+									function() {
+										var elm = $(this).attr('id');
+										window.location.href = '/ecom-ecart/user/address/default/'
+												+ elm;
+									});
 
 					/*
 					 * Sort nav
@@ -252,8 +258,8 @@ $(document)
 												minlength : 'Password Must Contain Atleast 5 Charachters',
 												equalTo : "Password Doesn't Match"
 											},
-											gender:{
-												required: 'Please, Select Gender'
+											gender : {
+												required : 'Please, Select Gender'
 											},
 											mobileNumber : {
 												required : 'Please, Provide Mobile Number',

@@ -20,9 +20,10 @@ public class AddressDAOImpl implements AddressDAO{
 	
 	@Override
 	@Transactional
-	public List<Address> list() {
-		String hql = "From Addresses";
+	public List<Address> list(int userId) {
+		String hql = "From Addresses WHERE USER_ID = :userId";
 		Query query = sessionFactory.getCurrentSession().createQuery(hql);
+		query.setParameter("userId", userId);
 		return query.list();
 	}
 
@@ -30,6 +31,7 @@ public class AddressDAOImpl implements AddressDAO{
 	@Transactional
 	public boolean addAddress(Address address) {
 		try {
+			address.setDefaultAddress(false);
 			sessionFactory.getCurrentSession().save(address);
 			return true;
 		} catch (Exception e) {

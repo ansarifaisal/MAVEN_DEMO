@@ -20,8 +20,9 @@
 			</c:if>
 
 			<div class="col-md-offset-2 col-sm-offset-2">
-				<form:form action="${contextPath}/user/address/save" class="form addAddress"
-					role="form" modelAttribute="address" method="POST">
+				<form:form action="${contextPath}/user/address/save"
+					class="form addAddress" role="form" modelAttribute="address"
+					method="POST">
 					<div class="form-group">
 						<label for="firstName" class="control-label text-primary">First
 							Name</label>
@@ -51,7 +52,8 @@
 							placeholder="Enter Address Line 2" value="${address.lineTwo}" />
 					</div>
 					<div class="form-group">
-						<label for="landmark" class="control-label text-primary">Landmark (Optional)</label>
+						<label for="landmark" class="control-label text-primary">Landmark
+							(Optional)</label>
 						<form:input path="landmark" class="form-control" id="landmark"
 							placeholder="Enter Landmark" value="${address.landmark}" />
 					</div>
@@ -96,38 +98,33 @@
 					<strong>Your Saved Address</strong>
 				</h6>
 			</div>
-			<div class=" col-md-4 col-sm-12 col-xs-12">
-				<div class="thumbnail nopadding">
-					<div class="well no-bottom-margin">
-						<div class="caption">
-							<address>
-								<Strong>Ansari Faisal</Strong><br> Plot No. 6, Line. N,
-								Room No. 2, Baiganwadi,<br> Govandi Road No. 7, Near
-								Govandi Nursing Home<br> Mumbai - 400043<br> <abbr
-									title="Phone">Ph:</abbr> (123) 456-7890
-							</address>
-							<input type="radio" name="default" id="default">Default
-							Address<br> <a href="#edit">Edit</a> | <a href="#delete">Delete</a>
+			<c:forEach items="${addresses}" var="address">
+				<div class=" col-md-5 col-sm-12 col-xs-12">
+					<div class="thumbnail nopadding default-border">
+						<div class="well no-bottom-margin">
+							<div class="caption">
+								<address>
+									<Strong>${address.firstName} ${address.lastName}</Strong><br>
+									${address.lineOne },<br> ${address.lineTwo },<br>${address.landmark},<br>${address.city}
+									- ${address.pincode}<br> ${address.state}<br> <abbr
+										title="Phone">Ph:</abbr> ${address.mobileNumber}
+								</address>
+								<c:choose>
+									<c:when test="${address.defaultAddress == true }">
+										<input type="radio" name="default" class="defaultAddress"
+											id="${address.id}" checked="checked">Default Address
+								</c:when>
+									<c:otherwise>
+										<input type="radio" name="default" class="defaultAddress"
+											id="${address.id}">Default Address
+								</c:otherwise>
+								</c:choose>
+								<br> <a href="#edit">Edit</a> | <a href="#delete">Delete</a>
+							</div>
 						</div>
 					</div>
 				</div>
-			</div>
-			<div class=" col-md-4 col-sm-12 col-xs-12">
-				<div class="thumbnail  nopadding">
-					<div class="well no-bottom-margin">
-						<div class="caption">
-							<address>
-								<Strong>Ansari Faisal</Strong><br> Plot No. 6, Line. N,
-								Room No. 2, Baiganwadi,<br> Govandi Road No. 7, Near
-								Govandi Nursing Home<br> Mumbai - 400043<br> <abbr
-									title="Phone">Ph:</abbr> (123) 456-7890
-							</address>
-							<input type="radio" name="default" id="default">Default
-							Address<br> <a href="#edit">Edit</a> | <a href="#delete">Delete</a>
-						</div>
-					</div>
-				</div>
-			</div>
+			</c:forEach>
 		</div>
 	</div>
 </div>

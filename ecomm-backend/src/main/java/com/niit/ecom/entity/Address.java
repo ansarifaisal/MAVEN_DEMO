@@ -60,10 +60,21 @@ public class Address implements Serializable {
 
 	@Column(name = "ADDR_MOBILE_NUMBER")
 	private String mobileNumber;
+	
+	@Column(name = "ADDR_DEFAULT")
+	private boolean defaultAddress;
 
 	/*
 	 * Getters and Setters OR Accessors and Mutators
 	 */
+
+	public boolean isDefaultAddress() {
+		return defaultAddress;
+	}
+
+	public void setDefaultAddress(boolean defaultAddress) {
+		this.defaultAddress = defaultAddress;
+	}
 
 	public int getId() {
 		return id;

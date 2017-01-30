@@ -1,4 +1,3 @@
---CATEGORIES
 CREATE TABLE CATEGORIES(
 	category_id IDENTITY,
 	category_name VARCHAR(50) NOT NULL,
@@ -50,6 +49,7 @@ CREATE TABLE ADDRESSES(
 	addr_country VARCHAR(50) NOT NULL,
 	addr_pincode Number(10) NOT NULL,
 	addr_mobile_number Number(15) NOT NULL,
+	addr_default boolean NOT NULL,
 	CONSTRAINT fk_addr_user_id FOREIGN KEY (user_id)
 	REFERENCES USERS(user_id)
 );
