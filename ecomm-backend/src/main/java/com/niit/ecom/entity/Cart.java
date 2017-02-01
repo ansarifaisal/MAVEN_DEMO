@@ -5,6 +5,7 @@ import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -33,7 +34,7 @@ public class Cart implements Serializable {
 	@Column(name = "CART_ID")
 	private int cartId;
 
-	@OneToMany(mappedBy = "cart")
+	@OneToMany(mappedBy = "cart", fetch = FetchType.EAGER)
 	@PrimaryKeyJoinColumn(name = "CART_ITEM_ID")
 	private Set<CartItem> cartItems;
 

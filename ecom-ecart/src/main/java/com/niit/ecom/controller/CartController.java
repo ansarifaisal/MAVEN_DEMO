@@ -52,10 +52,10 @@ public class CartController {
 
 	@Autowired
 	CartItemDAO cartItemDAO;
-	
+
 	@Autowired
 	Address address;
-	
+
 	@Autowired
 	AddressDAO addressDAO;
 
@@ -68,7 +68,7 @@ public class CartController {
 		user = userDAO.getByUserName(principal.getName());
 		modelAndView.addObject("cartItem", new CartItem());
 		modelAndView.addObject("cartItems", cartItemDAO.list(user.getCart().getCartId()));
-		modelAndView.addObject("cart", cartDAO.get(user.getId()));
+		modelAndView.addObject("cart", cartDAO.get(user.getCart().getCartId()));
 		modelAndView.addObject("title", "Cart");
 		modelAndView.addObject("ifUserClickedCart", true);
 		return modelAndView;
@@ -80,22 +80,18 @@ public class CartController {
 		user = userDAO.getByUserName(principal.getName());
 		product = productDAO.get(id);
 		Set<CartItem> cartItems = new HashSet<>();
-		if (cart == null) {
-			// creating cart if it is not available
-			cart = new Cart();
-		} else {
-			// getting cart if it is available
-			cart = cartDAO.get(user.getId());
-		}
+
+		// getting cart if it is available
+		cart = cartDAO.get(user.getCart().getCartId());
 
 		// get whether the product is an existing product
 		boolean flag = cartItemDAO.existingCartItem(product.getId(), cart.getCartId());
 
 		// if the product is in stock then add product into the cart
-		if (product.getQuantity() != 0) {
+		if (product.getQuantity() > 0) {
 			// add the product if it is not available in the cart
 			if (flag != true) {
-				cartItem.setProduct(cartItem.getProduct());
+				cartItem.setProduct(product);
 				cartItem.setQuantity(1);
 				product.setQuantity(product.getQuantity() - 1);
 				cartItem.setItemPrice(product.getPrice());
@@ -112,8 +108,8 @@ public class CartController {
 			} else {
 				// if the product is already in the cart then update the
 				// quantity
-				CartItem existingCartItem = cartItemDAO.getByProductId(product.getId(), cart.getCartId());
-				cartItem.setQuantity(existingCartItem.getQuantity() + 1);
+				cartItem = cartItemDAO.getByProductId(product.getId(), cart.getCartId());
+				cartItem.setQuantity(cartItem.getQuantity() + 1);
 				cartItem.setTotalPrice(cartItem.getTotalPrice());
 				cartItemDAO.updateCartItem(cartItem);
 				product.setQuantity(product.getQuantity() - 1);
@@ -132,10 +128,10 @@ public class CartController {
 	public String deleteCart(@PathVariable(name = "id", required = false) int id, Principal principal) {
 		String url = "";
 		user = userDAO.getByUserName(principal.getName());
+		product = productDAO.get(cartItem.getProduct().getId());
 		if (id != 0) {
-			cart = cartDAO.get(user.getId());
+			cart = cartDAO.get(user.getCart().getCartId());
 			cartItem = cartItemDAO.get(id);
-			product = productDAO.get(cartItem.getProduct().getId());
 			product.setQuantity(product.getQuantity() + cartItem.getQuantity());
 			cartItemDAO.deleteCartItem(cartItem);
 			cartDAO.updateCartAgain(cart);
@@ -145,6 +141,7 @@ public class CartController {
 		} else {
 			url = "redirect:/user/cart?op=delete&status=fail";
 		}
+
 		return url;
 	}
 
@@ -152,28 +149,39 @@ public class CartController {
 	public String updateQuantity(@ModelAttribute CartItem cartItem, HttpServletRequest request) {
 		int quantity = cartItem.getQuantity();
 		cartItem = cartItemDAO.get(cartItem.getId());
+		int existingQuantity = cartItem.getQuantity();
+		int changeQuantity = existingQuantity - quantity;
 		product = productDAO.get(cartItem.getProduct().getId());
-		cartItem.setQuantity(quantity);
-		cartItem.setTotalPrice(cartItem.getTotalPrice());
-		cartItemDAO.updateCartItem(cartItem);
-		product.setQuantity(product.getQuantity() - quantity);
-		productDAO.updateProduct(product);
-		cart = cartDAO.get(user.getId());
-		cartDAO.updateCartAgain(cart);
-		cartDAO.updateCart(cart);
-		return "redirect:/user/cart";
+		if (product.getQuantity() > quantity) {
+			cartItem.setQuantity(quantity);
+			cartItem.setTotalPrice(cartItem.getTotalPrice());
+			cartItemDAO.updateCartItem(cartItem);
+			product.setQuantity(product.getQuantity() + changeQuantity);
+			
+			/*if (existingQuantity > quantity) {
+				product.setQuantity(product.getQuantity() + quantity);
+			} else {
+				product.setQuantity(product.getQuantity() - quantity);
+			}*/
+			productDAO.updateProduct(product);
+			cart = user.getCart();
+			cartDAO.updateCartAgain(cart);
+			cartDAO.updateCart(cart);
+			return "redirect:/user/cart";
+		} else {
+			return "redirect:/user/cart?fail";
+		}
 	}
-	
-	@RequestMapping(value = {"/cart/addressList"})
-	public ModelAndView addressList(Principal principal){
+
+	@RequestMapping(value = { "/cart/addressList" })
+	public ModelAndView addressList(Principal principal) {
 		user = userDAO.getByUserName(principal.getName());
 		int userId = user.getId();
 		ModelAndView modelAndView = new ModelAndView("page");
 		modelAndView.addObject("title", "Addesses");
 		modelAndView.addObject("ifUserClickedAddressList", true);
-		modelAndView.addObject("addresses",addressDAO.list(userId));
+		modelAndView.addObject("addresses", addressDAO.list(userId));
 		return modelAndView;
 	}
-	
-	
+
 }

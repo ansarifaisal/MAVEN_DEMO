@@ -13,24 +13,24 @@ import javax.persistence.OneToOne;
 
 import org.springframework.stereotype.Component;
 
-@Entity(name = "CART_ITEMS")
+@Entity(name = "ORDER_ITEMS")
 @Component
-public class CartItem implements Serializable {
+public class OrderItem implements Serializable {
 
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 4656864328651257095L;
+	private static final long serialVersionUID = -9027358021451176117L;
 
 	/*
 	 * Private Fields
 	 */
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "ITEM_ID")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-	
+
 	@OneToOne
 	@JoinColumn(name = "PRODUCT_ID")
 	private Product product;
@@ -45,11 +45,11 @@ public class CartItem implements Serializable {
 	private int totalPrice;
 
 	@ManyToOne
-	@JoinColumn(name = "CART_ID")
-	private Cart cart;
+	@JoinColumn(name = "ORDER_ID")
+	private Order order;
 
 	/*
-	 * Getters and Setters
+	 * Getter And Setters / Accessors And Mutators
 	 */
 
 	public int getId() {
@@ -76,23 +76,6 @@ public class CartItem implements Serializable {
 		this.quantity = quantity;
 	}
 
-	public int getTotalPrice() {
-		return totalPrice;
-	}
-
-	public void setTotalPrice(int totalPrice) {
-		//To get the total price if the quantity increased
-		this.totalPrice = getQuantity()*getItemPrice();
-	}
-
-	public Cart getCart() {
-		return cart;
-	}
-
-	public void setCart(Cart cart) {
-		this.cart = cart;
-	}
-
 	public int getItemPrice() {
 		return itemPrice;
 	}
@@ -101,14 +84,26 @@ public class CartItem implements Serializable {
 		this.itemPrice = itemPrice;
 	}
 
-	/*
-	 * Overriding toString Method For Debugging
-	 */
+	public int getTotalPrice() {
+		return totalPrice;
+	}
+
+	public void setTotalPrice(int totalPrice) {
+		this.totalPrice = totalPrice;
+	}
+
+	public Order getOrder() {
+		return order;
+	}
+
+	public void setOrder(Order order) {
+		this.order = order;
+	}
 
 	@Override
 	public String toString() {
-		return "CartItem [id=" + id + ", product=" + product + ", quantity=" + quantity + ", itemPrice=" + itemPrice
-				+ ", totalPrice=" + totalPrice + ", cart=" + cart + "]";
+		return "OrderItem [id=" + id + ", product=" + product + ", quantity=" + quantity + ", itemPrice=" + itemPrice
+				+ ", totalPrice=" + totalPrice + ", order=" + order + "]";
 	}
 
 }

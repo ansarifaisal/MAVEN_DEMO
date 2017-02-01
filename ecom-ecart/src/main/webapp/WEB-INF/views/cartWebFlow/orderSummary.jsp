@@ -1,6 +1,25 @@
 <div class="panel panel-primary">
-	<div class="panel-heading" style="font-size: 20px;">Cart(${cart.numberOfCartItems})</div>
+	<div class="panel-heading" style="font-size: 15px;">Delivery
+		Address</div>
+	<div class="panel-body">
+		<div class="col-md-10 col-sm-10 col-xs-10">
+			<div class="lead nomargin">
+				<strong>${address.firstName} ${address.lastName}</strong>
+				&nbsp;${address.mobileNumber}
+			</div>
+			${address.lineOne}, ${address.lineTwo}, ${address.landmark},
+			${address.city}, ${address.state} - ${address.pincode}
+		</div>
+		<div class="col-md-2 col-sm-2 col-xs-2">
+			<a href="${contextPath}/user/cart/addressList"
+				class="btn btn-warning">Change Address</a>
+		</div>
+	</div>
+</div>
 
+
+<div class="panel panel-primary">
+	<div class="panel-heading" style="font-size: 15px;">Order Summary</div>
 	<div class="panel-body">
 		<table class="table">
 			<thead>
@@ -25,10 +44,7 @@
 								${cartItem.product.productName}<br />
 								<div class="text-muted">${cartItem.product.description}</div>
 								<div class="text-right">
-									<input type="submit" class="btn btn-info"
-										value="Move To Wishlist"
-										onclick="window.location=${contextPath}/"> <a
-										href="${contextPath}/user/cart/delete/${cartItem.id}"
+									<a href="${contextPath}/user/cart/delete/${cartItem.id}"
 										class="btn btn-danger">Remove</a>
 								</div>
 							</div>
@@ -36,19 +52,7 @@
 						<%--item column Ends here --%>
 
 						<%-- QTY Column Starts Here--%>
-						<td><form:form method="POST"
-								action="${contextPath}/user/cart/update"
-								modelAttribute="cartItem">
-								<div class="form-group">
-									<form:input id="${cartItem.id}" path="quantity" placeholder="1"
-										class="form-control text-center quantity"
-										style="max-width: 30px;" value="${cartItem.quantity}" />
-									<form:hidden path="id" value="${cartItem.id}" />
-									<input type="submit" class="btn btn-primary"
-										id="btn_${cartItem.id}" value="save" id="Test"
-										style="display: none;">
-								</div>
-							</form:form></td>
+						<td>${cartItem.quantity}</td>
 						<%-- QTY Column Ends Here--%>
 						<%--Price Column Starts Here --%>
 						<td>
@@ -69,12 +73,11 @@
 		</table>
 		<div class="text-right well"
 			style="margin-top: -20px; font-size: 25px;">Amount Payable:
-			&ensp;&#8377;${cart.grandTotal}</div>
+			&nbsp;&#8377;${cart.grandTotal}</div>
+
 		<div class="text-right">
 			<a href="${contextPath}/" class="btn-lg btn-default">< Continue
-				Shopping</a> <a href="${contextPath}/user/cart/addressList" class="btn-lg btn-warning">Place
-				Order</a>
+				Shopping</a> <a href="${contextPath}/user/cart/order/paymentMode" class="btn-lg btn-warning">Proceed to Pay</a>
 		</div>
 	</div>
-
 </div>

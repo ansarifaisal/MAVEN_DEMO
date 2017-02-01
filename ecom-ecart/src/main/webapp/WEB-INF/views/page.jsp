@@ -126,6 +126,22 @@
 		<c:if test = "${ifUserClickedAddressList == true }">
 		<%@include file = "cartWebFlow/addressList.jsp" %>
 		</c:if>
+		
+		<%--if user click on addressList --%>
+		<c:if test = "${ifUserClickedOrderSummary == true }">
+		<%@include file = "cartWebFlow/orderSummary.jsp" %>
+		</c:if>
+		
+		<%--if user click on addressList --%>
+		<c:if test = "${ifUserClickedPaymentMode == true }">
+		<%@include file = "cartWebFlow/paymentMode.jsp" %>
+		</c:if>
+		
+		<%--if user click on addressList --%>
+		<c:if test = "${ifUserClickedInvoice == true }">
+		<%@include file = "cartWebFlow/invoice.jsp" %>
+		</c:if>
+		
 
 	</div>
 	<div class="container-fluid">

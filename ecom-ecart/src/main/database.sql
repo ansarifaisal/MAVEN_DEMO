@@ -122,3 +122,29 @@ CREATE TABLE CART_ITEMS(
 );
 
 
+--Orders
+
+CREATE TABLE ORDERS(
+	ORDER_ID IDENTITY,
+	GRAND_TOTAL INT(10) NOT NULL,
+	NO_OF_ORDER_ITEMS INT(10) NOT NULL,
+	USER_ID INT(10) NOT NULL,
+	PAYMENT_MODE VARCHAR(20) NOT NULL,
+	CONSTRAINT fk_order_user_id FOREIGN KEY(USER_ID)
+	REFERENCES USERS(USER_ID)
+);
+
+--Order_Items
+
+CREATE TABLE ORDER_ITEMS(
+	item_id IDENTITY,
+	order_id int(10) NOT NULL,
+	product_id int(10) NOT NULL,
+	item_price DECIMAL(8,2) NOT NULL,
+	item_quantity int(10) NOT NULL,
+	item_total DECIMAL(8,2) NOT NULL,
+	CONSTRAINT fk_item_order_id FOREIGN KEY(order_id)
+	REFERENCES orders(order_id),
+	CONSTRAINT fk_order_product_id FOREIGN KEY(product_id)
+	REFERENCES PRODUCTS(product_id)
+);

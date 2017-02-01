@@ -17,10 +17,10 @@
 								</address>
 								<c:choose>
 									<c:when test="${address.defaultAddress == true }">
-										<a href="" class="btn btn-primary">Continue</a>
+										<a href="${contextPath}/user/cart/order?add=${address.id}" class="btn btn-primary">Continue</a>
 									</c:when>
 									<c:otherwise>
-										<a href="" class="btn btn-default">Deliver Here</a>
+										<a href="${contextPath}/user/cart/order?add=${address.id}" class="btn btn-default">Deliver Here</a>
 									</c:otherwise>
 								</c:choose>
 							</div>

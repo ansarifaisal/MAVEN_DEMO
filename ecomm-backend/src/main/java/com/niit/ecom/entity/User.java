@@ -1,6 +1,7 @@
 package com.niit.ecom.entity;
 
 import java.io.Serializable;
+import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -9,7 +10,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Transient;
 
 import org.springframework.stereotype.Component;
@@ -54,6 +57,11 @@ public class User implements Serializable {
 
 	@Column(name = "USER_ENABLED")
 	private boolean enabled;
+
+	@PrimaryKeyJoinColumn(name = "ORDER_ID")
+	@OneToMany(mappedBy = "user")
+	private Set<Order> orders;
+
 	@Column(name = "USER_ROLE")
 	private String role;
 
@@ -154,6 +162,22 @@ public class User implements Serializable {
 
 	public void setCart(Cart cart) {
 		this.cart = cart;
+	}
+
+	public String getTempMobileNumber() {
+		return tempMobileNumber;
+	}
+
+	public void setTempMobileNumber(String tempMobileNumber) {
+		this.tempMobileNumber = tempMobileNumber;
+	}
+
+	public Set<Order> getOrders() {
+		return orders;
+	}
+
+	public void setOrders(Set<Order> orders) {
+		this.orders = orders;
 	}
 
 	/*
