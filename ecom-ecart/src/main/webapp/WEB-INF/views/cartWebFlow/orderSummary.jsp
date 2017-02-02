@@ -77,7 +77,7 @@
 
 		<div class="text-right">
 			<a href="${contextPath}/" class="btn-lg btn-default">< Continue
-				Shopping</a> <a href="${contextPath}/user/cart/order/paymentMode" class="btn-lg btn-warning">Proceed to Pay</a>
+				Shopping</a> <a href="${contextPath}/user/cart/order/paymentMode?add=${address.id}" class="btn-lg btn-warning">Proceed to Pay</a>
 		</div>
 	</div>
 </div>

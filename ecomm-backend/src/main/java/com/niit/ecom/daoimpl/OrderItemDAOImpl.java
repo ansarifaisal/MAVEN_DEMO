@@ -22,6 +22,7 @@ public class OrderItemDAOImpl implements OrderItemDAO {
 	public List<OrderItem> list(int id) {
 		String hql = "FROM ORDER_ITEMS WHERE ORDER_ID = :orderId";
 		Query query = sessionFactory.getCurrentSession().createQuery(hql);
+		query.setParameter("orderId", id);
 		return query.list();
 	}
 

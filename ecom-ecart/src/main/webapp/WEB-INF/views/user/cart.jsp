@@ -72,7 +72,7 @@
 			&ensp;&#8377;${cart.grandTotal}</div>
 		<div class="text-right">
 			<a href="${contextPath}/" class="btn-lg btn-default">< Continue
-				Shopping</a> <a href="${contextPath}/user/cart/addressList" class="btn-lg btn-warning">Place
+				Shopping</a> <a href="${contextPath}/addressList" class="btn-lg btn-warning">Place
 				Order</a>
 		</div>
 	</div>

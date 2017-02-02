@@ -42,8 +42,7 @@
 				<%-- Display Controls to all the user--%>
 				<sec:authorize access="isAnonymous()">
 					<li id="login"><a href="${contextPath}/login">Login</a></li>
-					<li id="register"><a href="register">Sign
-							Up</a></li>
+					<li id="register"><a href="${contextPath}/register">Sign Up</a></li>
 				</sec:authorize>
 
 				<%-- Display Controls To Admin --%>
@@ -64,14 +63,16 @@
 							<li><a href="${contextPath}/logout">Logout</a>
 						</ul></li>
 				</sec:authorize>
-				
+
 				<%--Display Controls To User --%>
 				<sec:authorize access="hasAuthority('USER')">
-					<li class="dropdown"><a href="#userPanel" class="dropdown-toggle"
-						data-toggle="dropdown" role="button" aria-haspopup="true"
-						aria-expanded="false"> User<span class="caret"></span></a>
+					<li class="dropdown"><a href="#userPanel"
+						class="dropdown-toggle" data-toggle="dropdown" role="button"
+						aria-haspopup="true" aria-expanded="false"> User<span
+							class="caret"></span></a>
 						<ul class="dropdown-menu">
-							<li><a href="${contextPath }/user/personalinformation/${user.id}">Account</a></li>
+							<li><a
+								href="${contextPath }/user/personalinformation/${user.id}">Account</a></li>
 							<li><a href="${contextPath}/user/changepassword">Change
 									Password</a></li>
 							<li><a href="${contextPath}/user/addresses">Addresses</a></li>

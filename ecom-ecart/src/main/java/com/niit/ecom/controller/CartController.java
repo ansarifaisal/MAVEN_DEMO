@@ -128,10 +128,10 @@ public class CartController {
 	public String deleteCart(@PathVariable(name = "id", required = false) int id, Principal principal) {
 		String url = "";
 		user = userDAO.getByUserName(principal.getName());
+		cartItem = cartItemDAO.get(id);
 		product = productDAO.get(cartItem.getProduct().getId());
 		if (id != 0) {
 			cart = cartDAO.get(user.getCart().getCartId());
-			cartItem = cartItemDAO.get(id);
 			product.setQuantity(product.getQuantity() + cartItem.getQuantity());
 			cartItemDAO.deleteCartItem(cartItem);
 			cartDAO.updateCartAgain(cart);
@@ -157,12 +157,6 @@ public class CartController {
 			cartItem.setTotalPrice(cartItem.getTotalPrice());
 			cartItemDAO.updateCartItem(cartItem);
 			product.setQuantity(product.getQuantity() + changeQuantity);
-			
-			/*if (existingQuantity > quantity) {
-				product.setQuantity(product.getQuantity() + quantity);
-			} else {
-				product.setQuantity(product.getQuantity() - quantity);
-			}*/
 			productDAO.updateProduct(product);
 			cart = user.getCart();
 			cartDAO.updateCartAgain(cart);
@@ -173,7 +167,7 @@ public class CartController {
 		}
 	}
 
-	@RequestMapping(value = { "/cart/addressList" })
+	/*@RequestMapping(value = { "/cart/addressList" })
 	public ModelAndView addressList(Principal principal) {
 		user = userDAO.getByUserName(principal.getName());
 		int userId = user.getId();
@@ -182,6 +176,6 @@ public class CartController {
 		modelAndView.addObject("ifUserClickedAddressList", true);
 		modelAndView.addObject("addresses", addressDAO.list(userId));
 		return modelAndView;
-	}
+	}*/
 
 }

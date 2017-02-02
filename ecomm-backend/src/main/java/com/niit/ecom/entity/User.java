@@ -6,6 +6,7 @@ import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -59,8 +60,11 @@ public class User implements Serializable {
 	private boolean enabled;
 
 	@PrimaryKeyJoinColumn(name = "ORDER_ID")
-	@OneToMany(mappedBy = "user")
+	@OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
 	private Set<Order> orders;
+
+	@OneToMany(mappedBy = "user", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	private Set<Address> address;
 
 	@Column(name = "USER_ROLE")
 	private String role;
@@ -178,6 +182,14 @@ public class User implements Serializable {
 
 	public void setOrders(Set<Order> orders) {
 		this.orders = orders;
+	}
+
+	public Set<Address> getAddress() {
+		return address;
+	}
+
+	public void setAddress(Set<Address> address) {
+		this.address = address;
 	}
 
 	/*

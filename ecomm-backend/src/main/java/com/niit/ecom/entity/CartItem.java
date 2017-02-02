@@ -13,6 +13,8 @@ import javax.persistence.OneToOne;
 
 import org.springframework.stereotype.Component;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 @Entity(name = "CART_ITEMS")
 @Component
 public class CartItem implements Serializable {
@@ -105,10 +107,10 @@ public class CartItem implements Serializable {
 	 * Overriding toString Method For Debugging
 	 */
 
-	@Override
+	/*@Override
 	public String toString() {
 		return "CartItem [id=" + id + ", product=" + product + ", quantity=" + quantity + ", itemPrice=" + itemPrice
 				+ ", totalPrice=" + totalPrice + ", cart=" + cart + "]";
-	}
+	}*/
 
 }

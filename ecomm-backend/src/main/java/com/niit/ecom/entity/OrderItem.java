@@ -2,6 +2,7 @@ package com.niit.ecom.entity;
 
 import java.io.Serializable;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -44,7 +45,7 @@ public class OrderItem implements Serializable {
 	@Column(name = "ITEM_TOTAL")
 	private int totalPrice;
 
-	@ManyToOne
+	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "ORDER_ID")
 	private Order order;
 

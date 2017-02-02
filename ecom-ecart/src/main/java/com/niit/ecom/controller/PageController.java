@@ -98,16 +98,13 @@ public class PageController {
 		return modelAndView;
 	}
 
-	/*
-	 * to access Register page
-	 */
 	
 	/*
 	 * This page is for test
 	 */
-	@RequestMapping(value = { "test" })
+	/*@RequestMapping(value = { "test" })
 	public ModelAndView test() {
 		ModelAndView mv = new ModelAndView("test");
 		return mv;
-	}
+	}*/
 }

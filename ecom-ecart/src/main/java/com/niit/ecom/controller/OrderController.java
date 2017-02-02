@@ -7,6 +7,7 @@ import java.util.Set;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
@@ -21,6 +22,7 @@ import com.niit.ecom.entity.Address;
 import com.niit.ecom.entity.Cart;
 import com.niit.ecom.entity.CartItem;
 import com.niit.ecom.entity.Order;
+import com.niit.ecom.entity.OrderAddress;
 import com.niit.ecom.entity.OrderItem;
 import com.niit.ecom.entity.User;
 
@@ -64,6 +66,9 @@ public class OrderController {
 	@Autowired
 	private AddressDAO addressDAO;
 
+	@Autowired
+	private OrderAddress orderAddress;
+
 	@RequestMapping(value = { "/cart/order" })
 	public ModelAndView orders(@RequestParam(name = "add", required = false) int addrId, Principal principal) {
 		ModelAndView modelAndView = new ModelAndView("page");
@@ -79,7 +84,7 @@ public class OrderController {
 	@RequestMapping(value = { "/cart/order/paymentMode" })
 	public ModelAndView paymentMode(@ModelAttribute Order order) {
 		ModelAndView modelAndView = new ModelAndView("page");
-		modelAndView.addObject("order", new Order());
+		// modelAndView.addObject("order", new Order());
 		modelAndView.addObject("title", "Payment Mode");
 		modelAndView.addObject("ifUserClickedPaymentMode", true);
 		return modelAndView;
@@ -89,6 +94,7 @@ public class OrderController {
 	public String addOrder(Principal principal, @ModelAttribute Order order) {
 		user = userDAO.getByUserName(principal.getName());
 		cart = user.getCart();
+		//address = addressDAO.get(id);
 		Set<CartItem> cartItems = user.getCart().getCartItems();
 		Set<OrderItem> orderItems = new HashSet<>();
 		order.setOrderItems(orderItems);
@@ -96,6 +102,17 @@ public class OrderController {
 		order.setNumberOfOrderItems(cart.getNumberOfCartItems());
 		order.setGrandTotal(cart.getGrandTotal());
 		order.setPaymentMode(order.getPaymentMode());
+		orderAddress.setFirstName(address.getFirstName());
+		orderAddress.setLastName(address.getLastName());
+		orderAddress.setLineOne(address.getLineOne());
+		orderAddress.setLineTwo(address.getLineTwo());
+		orderAddress.setCity(address.getCity());
+		orderAddress.setState(address.getState());
+		orderAddress.setCountry(address.getCountry());
+		orderAddress.setLandmark(address.getLandmark());
+		orderAddress.setMobileNumber(address.getMobileNumber());
+		orderAddress.setPincode(address.getPincode());
+		order.setOrderAddress(orderAddress);
 		orderDAO.addOrder(order);
 		for (CartItem cartItem : cartItems) {
 			orderItem.setItemPrice(cartItem.getItemPrice());
@@ -108,8 +125,9 @@ public class OrderController {
 			orderItemDAO.addOrderItem(orderItem);
 			cartItemDAO.deleteCartItem(cartItem);
 		}
+		cartDAO.updateCartAgain(cart);
 		cartDAO.updateCart(cart);
-		return "/cart/order/confirmOrder";
+		return "redirect:/user/cart/order/invoice/" + order.getId();
 	}
 
 	@RequestMapping(value = { "/cart/order/confirmOrder" })
@@ -120,13 +138,14 @@ public class OrderController {
 		return modelAndView;
 	}
 
-	@RequestMapping(value = { "/cart/order/invoice" })
-	public ModelAndView invoice(Principal principal) {
+	@RequestMapping(value = { "/cart/order/invoice/{id}" })
+	public ModelAndView invoice(Principal principal, @PathVariable(name = "id", required = false) int id) {
 		user = userDAO.getByUserName(principal.getName());
+		order = orderDAO.get(id);
 		ModelAndView modelAndView = new ModelAndView("page");
 		modelAndView.addObject("title", "Invoice");
-		modelAndView.addObject("cartItems", user.getCart().getCartItems());
-		modelAndView.addObject("cart", user.getCart());
+		modelAndView.addObject("orderItems", orderItemDAO.list(id));
+		modelAndView.addObject("order", order);
 		modelAndView.addObject("address", addressDAO.get(user.getId()));
 		modelAndView.addObject("ifUserClickedInvoice", true);
 		return modelAndView;

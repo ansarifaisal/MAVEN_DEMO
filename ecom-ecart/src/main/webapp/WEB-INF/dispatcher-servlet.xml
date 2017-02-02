@@ -33,8 +33,8 @@
 	<webflow:flow-registry id="flowRegistry"
 		flow-builder-services="flowBuilderServices" base-path="/WEB-INF">
 		<!-- here the id is mapped to invoke this flow -->
-		<webflow:flow-location id="register"
-			path="/registerControl.xml" />
+		<webflow:flow-location id="addressList" path="/checkoutControl.xml" />
+		<webflow:flow-location id="register" path="/registerControl.xml" />
 	</webflow:flow-registry>
 
 	<webflow:flow-builder-services id="flowBuilderServices"
@@ -58,7 +58,7 @@
 		</property>
 	</bean>
 
-	<!-- View Resolver Configuration-->
+	<!-- View Resolver Configuration -->
 	<bean id="viewResolver"
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<property name="prefix" value="/WEB-INF/views/" />

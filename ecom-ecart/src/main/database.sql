@@ -55,6 +55,24 @@ CREATE TABLE ADDRESSES(
 );
 
 
+--ORDER_ADDRESS
+
+CREATE TABLE ORDER_ADDRESSES(
+	addr_id IDENTITY,
+	order_id int(10) NOT NULL,
+	addr_first_name VARCHAR(50) NOT NULL,
+	addr_last_name VARCHAR(50) NOT NULL,
+	addr_line_one VARCHAR(500) NOT NULL,
+	addr_line_two VARCHAR(500) NOT NULL,
+	addr_landmark VARCHAR(500) NOT NULL,
+	addr_city VARCHAR(50) NOT NULL,
+	addr_state VARCHAR(50) NOT NULL,
+	addr_country VARCHAR(50) NOT NULL,
+	addr_pincode Number(10) NOT NULL,
+	addr_mobile_number Number(15) NOT NULL,
+	CONSTRAINT fk_addr_order_id FOREIGN KEY (order_id)
+	REFERENCES ORDERS(order_id)
+);
 
 --ORDERS
 CREATE TABLE ORDERS(

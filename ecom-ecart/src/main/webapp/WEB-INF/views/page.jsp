@@ -142,6 +142,10 @@
 		<%@include file = "cartWebFlow/invoice.jsp" %>
 		</c:if>
 		
+		<%--if user click on addressList --%>
+		<c:if test = "${ifUserClickedConfirmOrder == true }">
+		<%@include file = "cartWebFlow/confirmOrder.jsp" %>
+		</c:if>
 
 	</div>
 	<div class="container-fluid">

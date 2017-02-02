@@ -10,7 +10,7 @@
 	<on-start>
 		<!-- registerHandler is a class available through annotated registerHandler.java 
 			class. here we are calling it's initflow() method. -->
-		<evaluate expression="registerFlow.initFlow()" result="flowScope.user"></evaluate>
+		<evaluate expression="registerFlow.initFlow()" result="flowScope.user"/>
 	</on-start>
 
 	<!-- If not specified the first view state is the starting state -->

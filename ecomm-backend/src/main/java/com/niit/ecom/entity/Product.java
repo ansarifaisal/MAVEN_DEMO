@@ -1,5 +1,4 @@
 package com.niit.ecom.entity;
-
 import java.io.Serializable;
 
 import javax.persistence.Column;
@@ -7,7 +6,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToOne;
 import javax.persistence.Transient;
 
 import org.springframework.stereotype.Component;
@@ -48,8 +46,7 @@ public class Product implements Serializable {
 	@Column(name = "CATEGORY_ID")
 	private int categoryId;
 
-	@OneToOne(mappedBy = "product")
-	private CartItem cartItem;
+
 	/*
 	 * Getters And Setters / Accessors And Mutators
 	 */
@@ -59,14 +56,6 @@ public class Product implements Serializable {
 
 	public void setImage(MultipartFile image) {
 		this.image = image;
-	}
-	
-	public CartItem getCartItem() {
-		return cartItem;
-	}
-
-	public void setCartItem(CartItem cartItem) {
-		this.cartItem = cartItem;
 	}
 
 	public String getImageUrl() {
@@ -125,15 +114,17 @@ public class Product implements Serializable {
 	public void setCategoryId(int categoryId) {
 		this.categoryId = categoryId;
 	}
+	
 
 	/*
 	 * Overriding toString method for debugging
 	 */
-	
-	@Override
+
+	/*@Override
 	public String toString() {
 		return "Product [id=" + id + ", productName=" + productName + ", description=" + description + ", price="
 				+ price + ", quantity=" + quantity + ", imageUrl=" + imageUrl + ", image=" + image + ", categoryId="
-				+ categoryId + "]";
-	}
+				+ categoryId + ", cartItem=" + cartItem + ", orderItem=" + orderItem + "]";
+	}*/
+
 }

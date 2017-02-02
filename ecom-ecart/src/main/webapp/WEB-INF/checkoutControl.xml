@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<flow xmlns="http://www.springframework.org/schema/webflow"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/webflow
+                          http://www.springframework.org/schema/webflow/spring-webflow-2.4.xsd">
+                          
+	<var name="order" class="com.niit.ecom.entity.Order" />
+	<var name="orderItem" class="com.niit.ecom.entity.OrderItem" />
+	<var name="address" class="com.niit.ecom.entity.Address" />
+	<var name="cart" class="com.niit.ecom.entity.Cart" />
+	<var name="cartItem" class="com.niit.ecom.entity.CartItem" />
+
+	<on-start>
+		<!-- cartHandler is a class available through annotated cartHandler.java 
+			class. here we are calling it's initflow() method. -->
+		<evaluate expression="cartFlow.initFlow()" result="flowScope.address">
+		</evaluate>
+	</on-start>
+
+	<view-state id="start" view="addressList" model="flowScope.address">
+		<transition on="addressList" to="addBillingAddress" />
+	</view-state>
+
+	<action-state id="addBillingAddress">
+		<evaluate expression="cartFlow.addBillingAddress(address)"></evaluate>
+		<transition on="success" to="toOrderSummary" />
+		<transition on="failure" to="start" />
+	</action-state>
+
+	<view-state id="toOrderSummary" view="cartWebFlow/orderSummary" model="flowScope.order">
+		<transition on="paymentMode" to="paymentMode" />
+	</view-state>
+
+	<action-state id="paymentMode">
+		<evaluate expression="cartFlow.paymentMode(order)"></evaluate>
+		<transition on="success" to="toOrderConfrim" />
+		<transition on="failure" to="start" />
+	</action-state>
+
+	<view-state id="toOrderConfrim" view="cartWebFlow/invoice" model="flowScope.order">
+		<transition on="invoice" to="invoice" />
+	</view-state>
+
+	<action-state id="invoice">
+		<evaluate expression="cartFlow.addCartItem(order)"></evaluate>
+		<transition on="success" to="toCart" />
+	</action-state>
+
+	<end-state id="toCart" view="externalRedirect:contextRelative:/user/cart/order/" />
+	<end-state id="toException" view="externalRedirect:contextRelative:403" />
+</flow>

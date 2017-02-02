@@ -3,12 +3,17 @@ package com.niit.ecom.entity;
 import java.io.Serializable;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.PrimaryKeyJoinColumn;
 
 import org.springframework.stereotype.Component;
@@ -26,10 +31,11 @@ public class Order implements Serializable {
 	 * Private Fields
 	 */
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "ORDER_ID")
 	private int id;
 	
-	@OneToMany(mappedBy = "order")
+	@OneToMany(mappedBy = "order", cascade = CascadeType.ALL)
 	@PrimaryKeyJoinColumn(name = "ORDER_ITEM_ID")
 	private Set<OrderItem> orderItems;
 
@@ -45,11 +51,22 @@ public class Order implements Serializable {
 	
 	@Column(name = "PAYMENT_MODE")
 	private String paymentMode;
-
+	
+	@OneToOne(mappedBy = "order",fetch = FetchType.LAZY)
+	private OrderAddress orderAddress;
+	
 	/*
 	 * Getters and Setters
 	 */
+	
+	public OrderAddress getOrderAddress() {
+		return orderAddress;
+	}
 
+	public void setOrderAddress(OrderAddress orderAddress) {
+		this.orderAddress = orderAddress;
+	}
+	
 	public String getPaymentMode() {
 		return paymentMode;
 	}
