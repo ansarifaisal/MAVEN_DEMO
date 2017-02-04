@@ -63,7 +63,7 @@ public class User implements Serializable {
 	@OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
 	private Set<Order> orders;
 
-	@OneToMany(mappedBy = "user", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "user", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	private Set<Address> address;
 
 	@Column(name = "USER_ROLE")
@@ -190,18 +190,6 @@ public class User implements Serializable {
 
 	public void setAddress(Set<Address> address) {
 		this.address = address;
-	}
-
-	/*
-	 * Override toString Method for Debugging Purpose
-	 */
-
-	@Override
-	public String toString() {
-		return "User [id=" + id + ", email=" + email + ", password=" + password + ", confirmPassword=" + confirmPassword
-				+ ", oldPassword=" + oldPassword + ", firstName=" + firstName + ", lastName=" + lastName + ", gender="
-				+ gender + ", mobileNumber=" + mobileNumber + ", tempMobileNumber=" + tempMobileNumber + ", cart="
-				+ cart + ", enabled=" + enabled + ", role=" + role + "]";
 	}
 
 }

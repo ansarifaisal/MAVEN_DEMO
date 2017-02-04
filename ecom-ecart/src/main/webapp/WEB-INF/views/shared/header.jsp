@@ -72,7 +72,7 @@
 							class="caret"></span></a>
 						<ul class="dropdown-menu">
 							<li><a
-								href="${contextPath }/user/personalinformation/${user.id}">Account</a></li>
+								href="${contextPath }/user/personalinformation">Account</a></li>
 							<li><a href="${contextPath}/user/changepassword">Change
 									Password</a></li>
 							<li><a href="${contextPath}/user/addresses">Addresses</a></li>

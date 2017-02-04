@@ -62,13 +62,12 @@ public class AddressController {
 			} else if ((operation.equals("delete")) && status.equals("fail") && id != "0") {
 				modelAndView.addObject("failureMsg", "Failed To Delete Address");
 			}
-
 		}
 		modelAndView.addObject("title", "Addresses");
 		modelAndView.addObject("ifUserClickedAddresses", true);
 		return modelAndView;
 	}
-
+	
 	@RequestMapping(value = { "/address/save" }, method = RequestMethod.POST)
 	public String saveAddress(@ModelAttribute Address address) {
 		if (address.getId() == 0) {
@@ -89,10 +88,13 @@ public class AddressController {
 	}
 
 	@RequestMapping(value = { "/address/edit/{id}" }, method = RequestMethod.GET)
-	public ModelAndView editAddress(@PathVariable(name = "id", required = false) int id) {
+	public ModelAndView editAddress(@PathVariable(name = "id", required = false) int id, Principal principal) {
 		ModelAndView modelAndView = new ModelAndView("page");
+		user = userDAO.getByUserName(principal.getName());
 		address = addressDAO.get(id);
 		modelAndView.addObject("address", address);
+		modelAndView.addObject("addresses", addressDAO.list(address.getUser().getId()));
+		modelAndView.addObject("user", user);
 		modelAndView.addObject("title", "Update Address");
 		modelAndView.addObject("ifUserClickedEditAddress", true);
 		return modelAndView;

@@ -5,6 +5,7 @@ import java.security.Principal;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -31,7 +32,8 @@ public class UserController {
 			@RequestParam(name = "op", required = false) String operation,
 			@RequestParam(name = "status", required = false) String status) {
 		ModelAndView modelAndView = new ModelAndView("page");
-		modelAndView.addObject("user", userDAO.getByUserName(principal.getName()));
+		user = userDAO.getByUserName(principal.getName());
+		modelAndView.addObject("user", user);
 		if (operation != null) {
 			if (operation.equals("update") & status.equals("success")) {
 				modelAndView.addObject("successMsg", "Success! Details Updated Successfully");
@@ -169,5 +171,7 @@ public class UserController {
 		}
 
 	}
+
+
 
 }

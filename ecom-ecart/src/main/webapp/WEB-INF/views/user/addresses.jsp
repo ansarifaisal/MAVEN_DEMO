@@ -20,72 +20,68 @@
 			</c:if>
 
 			<div class="col-md-offset-2 col-sm-offset-2">
-				<form:form action="${contextPath}/user/address/save"
-					class="form addAddress" role="form" modelAttribute="address"
-					method="POST">
-					<div class="form-group">
+				<form:form method="POST" action="${contextPath}/user/address/save"
+					class="form addAddress" role="form" modelAttribute="address">
+					<div class="form-group validate">
 						<label for="firstName" class="control-label text-primary">First
 							Name</label>
 						<form:input path="firstName" class="form-control"
-							placeholder="Enter Name" id="firstName"
-							value="${address.firstName }" />
+							placeholder="Enter Name" value="${address.firstName}" />
 						<form:hidden path="id" class="form-control" value="${address.id} " />
-						<form:hidden path="userId" value="${user.id}" class="form-control" />
+						<form:hidden path="user" value="${user.id}" class="form-control" />
 					</div>
-
-					<div class="form-group">
+					<div class="form-group validate">
 						<label for="lastName" class="control-label text-primary">Last
 							Name</label>
 						<form:input path="lastName" class="form-control"
 							placeholder="Enter Name" value="${address.lastName }" />
 					</div>
-					<div class="form-group">
+					<div class="form-group validate">
 						<label for="lineOne" class="control-label text-primary"
 							id="label-text-area">Address Line 1</label>
 						<form:input path="lineOne" class="form-control"
 							placeholder="Enter Address Line 1" value="${address.lineOne }" />
 					</div>
-					<div class="form-group">
+					<div class="form-group validate">
 						<label for="lineTwo" class="control-label text-primary"
 							id="label-text-area">Address Line 2</label>
 						<form:input path="lineTwo" class="form-control"
 							placeholder="Enter Address Line 2" value="${address.lineTwo}" />
 					</div>
-					<div class="form-group">
+					<div class="form-group validate">
 						<label for="landmark" class="control-label text-primary">Landmark
 							(Optional)</label>
 						<form:input path="landmark" class="form-control" id="landmark"
 							placeholder="Enter Landmark" value="${address.landmark}" />
 					</div>
-					<div class="form-group">
+					<div class="form-group validate">
 						<label for="city" class="control-label text-primary">City</label>
 						<form:input path="city" class="form-control" id="city"
 							placeholder="Enter City" value="${address.city}" />
 					</div>
-					<div class="form-group">
+					<div class="form-group validate">
 						<label for="state" class="control-label text-primary">State</label>
 						<form:input path="state" class="form-control" id="state"
 							placeholder="Enter State" value="${address.state}" />
 					</div>
-					<div class="form-group">
+					<div class="form-group validate">
 						<label for="pincode" class="control-label text-primary">Pincode</label>
-						<form:input path="pincode" class="form-control" id="pincode"
+						<form:input path="pincode" class="form-control" id="pin"
 							placeholder="Enter Pincode" value="${address.pincode }" />
 					</div>
-					<div class="form-group">
+					<div class="form-group validate">
 						<label for="country" class="control-label text-primary">Country</label>
 						<form:input path="country" class="form-control" id="country"
-							placeholder="Enter Pincode" value="India" readonly="readonly" />
+							placeholder="Enter Pincode" value="India" disabled = "disabled" />
 					</div>
 
-					<div class="form-group">
+					<div class="form-group validate">
 						<label for="mobileNumber" class="control-label text-primary">Phone
 							Number</label>
 						<form:input path="mobileNumber" class="form-control"
 							id="phoneNumber" placeholder="Enter Phone Number"
 							value="${address.mobileNumber }" />
 					</div>
-
 					<div class="form-group">
 						<input type="submit"
 							class="btn btn-primary col-md-offset-3 col-sm-offset-3"
@@ -119,7 +115,9 @@
 											id="${address.id}">Default Address
 								</c:otherwise>
 								</c:choose>
-								<br> <a href="#edit">Edit</a> | <a href="#delete">Delete</a>
+								<br> <a
+									href="${contextPath}/user/address/edit/${address.id}">Edit</a>
+								| <a href="${contextPath}/user/address/delete/${address.id}">Delete</a>
 							</div>
 						</div>
 					</div>

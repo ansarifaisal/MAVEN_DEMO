@@ -6,6 +6,7 @@ import com.niit.ecom.entity.CartItem;
 
 public interface CartItemDAO {
 	List<CartItem> list(int id);
+	List<CartItem> wishList(int id);
 	boolean addCartItem(CartItem cartItem);
 	boolean deleteCartItem(CartItem cartItem);
 	boolean updateCartItem(CartItem cartItem);

@@ -133,6 +133,7 @@ CREATE TABLE CART_ITEMS(
 	item_price DECIMAL(8,2) NOT NULL,
 	item_quantity int(10) NOT NULL,
 	item_total DECIMAL(8,2) NOT NULL,
+	wishlist boolean NOT NULL, 
 	CONSTRAINT fk_item_cart_id FOREIGN KEY(cart_id)
 	REFERENCES CART(cart_id),
 	CONSTRAINT fk_item_product_id FOREIGN KEY(product_id)

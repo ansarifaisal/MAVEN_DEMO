@@ -13,8 +13,6 @@ import javax.persistence.OneToOne;
 
 import org.springframework.stereotype.Component;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-
 @Entity(name = "CART_ITEMS")
 @Component
 public class CartItem implements Serializable {
@@ -49,10 +47,21 @@ public class CartItem implements Serializable {
 	@ManyToOne
 	@JoinColumn(name = "CART_ID")
 	private Cart cart;
+	
+	@Column(name = "WISHLIST")
+	private boolean wishList;
 
 	/*
 	 * Getters and Setters
 	 */
+
+	public boolean isWishList() {
+		return wishList;
+	}
+
+	public void setWishList(boolean wishList) {
+		this.wishList = wishList;
+	}
 
 	public int getId() {
 		return id;

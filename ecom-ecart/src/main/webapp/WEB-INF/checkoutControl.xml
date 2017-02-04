@@ -13,21 +13,21 @@
 	<on-start>
 		<!-- cartHandler is a class available through annotated cartHandler.java 
 			class. here we are calling it's initflow() method. -->
-		<evaluate expression="cartFlow.initFlow()" result="flowScope.address">
+		<evaluate expression="cartFlow.initFlow()" result="flowScope.orderBean">
 		</evaluate>
 	</on-start>
 
-	<view-state id="start" view="addressList" model="flowScope.address">
-		<transition on="addressList" to="addBillingAddress" />
+	<view-state id="start" view="cartWebFlow/addressList" model="flowScope.orderBean">
+		<transition on="addressList" to="chooseAddress" />
 	</view-state>
 
-	<action-state id="addBillingAddress">
-		<evaluate expression="cartFlow.addBillingAddress(address)"></evaluate>
+	<action-state id="chooseAddress">
+		<evaluate expression="cartFlow.chooseAddress(flowScope.orderBean)"></evaluate>
 		<transition on="success" to="toOrderSummary" />
 		<transition on="failure" to="start" />
 	</action-state>
 
-	<view-state id="toOrderSummary" view="cartWebFlow/orderSummary" model="flowScope.order">
+	<view-state id="toOrderSummary" view="orderSummary" model="flowScope.order">
 		<transition on="paymentMode" to="paymentMode" />
 	</view-state>
 
@@ -37,7 +37,7 @@
 		<transition on="failure" to="start" />
 	</action-state>
 
-	<view-state id="toOrderConfrim" view="cartWebFlow/invoice" model="flowScope.order">
+	<view-state id="toOrderConfrim" view="invoice" model="flowScope.order">
 		<transition on="invoice" to="invoice" />
 	</view-state>
 

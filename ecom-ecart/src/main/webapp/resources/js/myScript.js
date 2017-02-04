@@ -47,6 +47,9 @@ $(document)
 						var elm = "#btn_" + $(this).attr('id');
 						$(elm).css('display', 'inline');
 					});
+					
+					var pincode = $('#pin').val();
+					$(pincode).replaceWith($('#pin').val(""));
 
 					$('.defaultAddress')
 							.on(
@@ -443,9 +446,212 @@ $(document)
 													validClass);
 										}
 									});
+
+					/*
+					 * Method to validate Personal Information Form
+					 */
+
+					$('#information')
+							.validate(
+									{
+										rules : {
+											firstName : {
+												required : true,
+												minlength : 3
+											},
+											lastName : {
+												required : true,
+												minlength : 3
+											},
+											gender : {
+												required : true
+											}
+										},
+										messages : {
+											firstName : {
+												required : "Please, Provide First Name",
+												minlength : "First Name Must Contains Atleast 3 Charachters"
+											},
+											lastName : {
+												required : "Please, Provide Category Description",
+												minlength : "Last Name Must Contains Atleast 3 Charachters"
+											},
+											gender : {
+												required : "Please, Provide Gender"
+											}
+										},
+										errorElement : "em",
+										errorPlacement : function(error,
+												element) {
+											errorPlacement(error, element);
+										},
+										success : function(label, element) {
+											success(label, element);
+
+										},
+										highlight : function(element,
+												errorClass, validClass) {
+											highlight(element, errorClass,
+													validClass);
+										},
+										unhighlight : function(element,
+												errorClass, validClass) {
+											unhighlight(element, errorClass,
+													validClass);
+										}
+									});
+
+					/*
+					 * Method To Validate ChangePassword Form
+					 */
+					$(".changePassword")
+							.validate(
+									{
+										rules : {
+											oldPassword : {
+												required : true,
+												minlength : 3
+											},
+											password : {
+												required : true,
+												minlength : 3
+											},
+											confirmPassword : {
+												required : true,
+												equalTo : '#password'
+											}
+										},
+										messages : {
+											oldPassword : {
+												required : "Please, Provide Password",
+												minlength : "Password Must Contains Atleast 3 Charachters"
+											},
+											password : {
+												required : "Please, Provide New Password",
+												minlength : "Password Must Contains Atleast 3 Charachters"
+											},
+											confirmPassword : {
+												required : "Please, Provide Password",
+												equalTo : "Password Doesn't Match"
+											}
+										},
+										errorElement : "em",
+										errorPlacement : function(error,
+												element) {
+											errorPlacement(error, element);
+										},
+										success : function(label, element) {
+											success(label, element);
+
+										},
+										highlight : function(element,
+												errorClass, validClass) {
+											highlight(element, errorClass,
+													validClass);
+										},
+										unhighlight : function(element,
+												errorClass, validClass) {
+											unhighlight(element, errorClass,
+													validClass);
+										}
+									});
+
+					$('.addAddress')
+							.validate(
+									{
+										rules : {
+											firstName : {
+												required : true,
+												minlength : 3
+											},
+											lastName : {
+												required : true,
+												minlength : 3
+											},
+											lineOne : {
+												required : true,
+												minlength : 5
+											},
+											lineTwo : {
+												required : true,
+												minlength : 5
+											},
+											city : {
+												required : true,
+												minlength : 2
+											},
+											state : {
+												required : true,
+												minlength : 3
+											},
+											country : {
+												required : true,
+												minlength : 3
+											},
+											mobileNumber : {
+												required : true,
+												number : true,
+												maxlength : 10
+											}
+										},
+										messages : {
+											firstName : {
+												required : "Please, Provide First Name",
+												minlength : "First Name Must Contain Atleast 3 Charachters"
+											},
+											lastName : {
+												required : "Please, Provide Last Name",
+												minlength : "Last Name Must Contain Atleast 3 Charachters"
+											},
+											lineOne : {
+												required : "Please, Provide Line 1 Details",
+												minlength : "Line 1 Must Contain Atleast 5 Charachters"
+											},
+											lineTwo : {
+												required : "Please, Provide Line 2 Details",
+												minlength : "Line 2 Must Contain Atleast 5 Charachters"
+											},
+											city : {
+												required : "Please, Provide Last Name",
+												minlength : "City Must Contain Atleast 2 Charachters"
+											},
+											state : {
+												required : "Please, Provide State",
+												minlength : "State Must Contain Atleast 2 Charachters"
+											},
+											country : {
+												required : "Please, Provide Country",
+												minlength : "Country Must Contains Atleast 2 Charachters"
+											},
+											mobileNumber : {
+												required : "Please, Provide Mobile Number",
+												number : "This Field Can Contains Only Charachters",
+												maxlength : "Mobile Number Must Contains 10 Charachters"
+											}
+										},
+										errorElement : "em",
+										errorPlacement : function(error,
+												element) {
+											errorPlacement(error, element);
+										},
+										success : function(label, element) {
+											success(label, element);
+
+										},
+										highlight : function(element,
+												errorClass, validClass) {
+											highlight(element, errorClass,
+													validClass);
+										},
+										unhighlight : function(element,
+												errorClass, validClass) {
+											unhighlight(element, errorClass,
+													validClass);
+										}
+									});
+
 					$(".alert-msg").fadeTo(2000, 500).slideUp('500',
 							function() {
 								$(".alert-msg").slideUp(500);
 							});
-
 				});

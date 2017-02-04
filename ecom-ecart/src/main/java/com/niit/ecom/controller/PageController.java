@@ -4,13 +4,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.niit.ecom.dao.CategoryDAO;
 import com.niit.ecom.dao.ProductDAO;
-import com.niit.ecom.entity.User;
 
 @Controller
 public class PageController {
@@ -102,9 +100,9 @@ public class PageController {
 	/*
 	 * This page is for test
 	 */
-	/*@RequestMapping(value = { "test" })
+	@RequestMapping(value = { "test" })
 	public ModelAndView test() {
 		ModelAndView mv = new ModelAndView("test");
 		return mv;
-	}*/
+	}
 }

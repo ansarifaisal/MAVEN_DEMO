@@ -22,133 +22,8 @@
 	</div>
 </div>
 
-<div class="row">
-	<div class="panel panel-default">
-		<div class="panel-body">
-			<div class="col-md-2">
-				<br>
-				<h3>Mobile Accessories</h3>
-				<br>
-				<div class="btn-group">
-					<button class="btn btn-primary">View All</button>
-				</div>
-			</div>
-			<div class="col-md-10">
-				<div class="carousel slide media-carousel" id="media-2">
-					<div class="carousel-inner">
-						<div class="item active">
-							<div class="col-md-3">
-								<div class="thumbnail">
-									<img alt="" src="${images}/1.png" />
-									<div class="caption">
-										<p class="title">
-											<a href="#title">Title</a>
-										</p>
-										<h5 class="text-muted price">Now at &#8377;123</h5>
-									</div>
-								</div>
-							</div>
-							<div class="col-md-3">
-								<div class="thumbnail">
-									<img alt="" src="${images}/1.png" />
-									<div class="caption">
-										<p class="title">
-											<a href="#title">Title</a>
-										</p>
-										<h5 class="text-muted price">Now at &#8377;123</h5>
-									</div>
-								</div>
-							</div>
-							<div class="col-md-3">
-								<div class="thumbnail">
-									<img alt="" src="${images}/1.png" />
-									<div class="caption">
-										<p class="title">
-											<a href="#title">Title</a>
-										</p>
-										<h5 class="text-muted price">Now at &#8377;123</h5>
-									</div>
-								</div>
-							</div>
-							<div class="col-md-3">
-								<div class="thumbnail">
-									<img alt="" src="${images}/1.png" />
-									<div class="caption">
-										<p class="title">
-											<a href="#title">Title</a>
-										</p>
-										<h5 class="text-muted price">Now at &#8377;123</h5>
-									</div>
-								</div>
-							</div>
-						</div>
-						<!-- /item -->
-						<div class="item">
-							<div class="col-md-3">
-								<div class="thumbnail">
-									<img alt="" src="${images}/1.png" />
-									<div class="caption">
-										<p class="title">
-											<a href="#title">Title</a>
-										</p>
-										<h5 class="text-muted price">Now at &#8377;123</h5>
-									</div>
-								</div>
-							</div>
-							<div class="col-md-3">
-								<div class="thumbnail">
-									<img alt="" src="${images}/1.png" />
-									<div class="caption">
-										<p class="title">
-											<a href="#title">Title</a>
-										</p>
-										<h5 class="text-muted price">Now at &#8377;123</h5>
-									</div>
-								</div>
-							</div>
-							<div class="col-md-3">
-								<div class="thumbnail">
-									<img alt="" src="${images}/1.png" />
-									<div class="caption">
-										<p class="title">
-											<a href="#title">Title</a>
-										</p>
-										<h5 class="text-muted price">Now at &#8377;123</h5>
-									</div>
-								</div>
-							</div>
-							<div class="col-md-3">
-								<div class="thumbnail">
-									<img alt="" src="${images}/1.png" />
-									<div class="caption">
-										<p class="title">
-											<a href="#title">Title</a>
-										</p>
-										<h5 class="text-muted price">Now at &#8377;123</h5>
-									</div>
-								</div>
-							</div>
-						</div>
-						<!-- /item -->
-					</div>
-					<!-- Carousel inner -->
-					<a data-slide="prev" href="#media-2" class="left carousel-control"
-						role="button"><span class="fa fa-chevron-circle-left"
-						aria-hidden="true"></span></a> <a data-slide="next" href="#media-2"
-						class="right carousel-control" role="button"><span
-						class="fa fa-chevron-circle-right" aria-hidden="true"></span></a>
-				</div>
-				<!-- Carousel -->
-			</div>
-			<!-- /col-md -->
-		</div>
-		<!-- panel-body -->
-	</div>
-	<!-- panel -->
-</div>
 
-
-<%-- <c:set var="count" value="0" scope="page" />
+<c:set var="count" value="0" scope="page" />
 
 <c:set var="productCount" value="4" scope="page" />
 
@@ -177,14 +52,18 @@
 													<div class="item active">
 														<div class="col-md-3 col-sm-3 col-xs-12 thumbnail-setting">
 															<div class="thumbnail">
-																<a href=""><img alt="#image"
+																<a href=""><img alt="${product.productName}"
 																	src="${images}/product/${product.id}.png"
 																	class="img-resize zoom" /></a>
 																<div class="caption">
 																	<p class="title">
-																		<a href="#title">Title</a>
+																		<a href="${contextPath}/product/${product.id}">${product.productName }</a>
 																	</p>
-																	<h6 class="text-muted price">Now at &#8377;123</h6>
+																	<h6 class="text-muted price">Now at
+																		&#8377;${product.price}</h6>
+																</div>
+																<div class="text-right">
+																	<a href=""><span class="glyphicon glyphicon-heart"></span></a>
 																</div>
 															</div>
 														</div>
@@ -195,19 +74,19 @@
 										</div>
 										<!-- Carousel inner -->
 
-										<a data-slide="prev" href="#media-${category.id}"
+										<%-- 							<a data-slide="prev" href="#media-${category.id}"
 											class="left carousel-control" role="button"><span
 											class="fa fa-chevron-circle-left" aria-hidden="true"></span></a>
 										<a data-slide="next" href="#media-${category.id}"
 											class="right carousel-control" role="button"><span
 											class="fa fa-chevron-circle-right" aria-hidden="true"></span></a>
+			 --%>
 									</div>
 								</c:when>
 								<c:otherwise>
 									<h3>Sorry! No Product Available In This Category..</h3>
 								</c:otherwise>
 							</c:choose>
-
 							<!-- Carousel -->
 						</div>
 						<!-- /col-md -->
@@ -230,4 +109,4 @@
 			</div>
 		</div>
 	</c:otherwise>
-</c:choose> --%>
+</c:choose>

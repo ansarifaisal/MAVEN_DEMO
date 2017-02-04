@@ -20,12 +20,21 @@ public class CartItemDAOImpl implements CartItemDAO {
 	@Override
 	@Transactional
 	public List<CartItem> list(int cartId) {
-		String hql = "FROM CART_ITEMS WHERE cart_id = :id";
+		String hql = "FROM CART_ITEMS WHERE cart_id = :id AND WISHLIST = FALSE";
 		Query query = sessionFactory.getCurrentSession().createQuery(hql);
 		query.setParameter("id", cartId);
 		return query.list();
 	}
 
+	@Override
+	@Transactional
+	public List<CartItem> wishList(int cartId){
+		String hql = "FROM CART_ITEMS WHERE cart_id = :id AND WISHLIST = TRUE";
+		Query query = sessionFactory.getCurrentSession().createQuery(hql);
+		query.setParameter("id", cartId);
+		return query.list();
+	}
+	
 	@Override
 	@Transactional
 	public boolean addCartItem(CartItem cartItem) {

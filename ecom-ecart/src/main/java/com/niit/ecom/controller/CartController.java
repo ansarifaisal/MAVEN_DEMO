@@ -82,7 +82,7 @@ public class CartController {
 		Set<CartItem> cartItems = new HashSet<>();
 
 		// getting cart if it is available
-		cart = cartDAO.get(user.getCart().getCartId());
+		cart = user.getCart();
 
 		// get whether the product is an existing product
 		boolean flag = cartItemDAO.existingCartItem(product.getId(), cart.getCartId());
@@ -96,6 +96,7 @@ public class CartController {
 				product.setQuantity(product.getQuantity() - 1);
 				cartItem.setItemPrice(product.getPrice());
 				cartItem.setTotalPrice(cartItem.getTotalPrice());
+				cartItem.setWishList(false);
 				cartItems.add(cartItem);
 				cart.setCartItems(cartItems);
 				cart.setUser(user);
@@ -111,6 +112,7 @@ public class CartController {
 				cartItem = cartItemDAO.getByProductId(product.getId(), cart.getCartId());
 				cartItem.setQuantity(cartItem.getQuantity() + 1);
 				cartItem.setTotalPrice(cartItem.getTotalPrice());
+				cartItem.setWishList(false);
 				cartItemDAO.updateCartItem(cartItem);
 				product.setQuantity(product.getQuantity() - 1);
 				productDAO.updateProduct(product);
@@ -167,15 +169,45 @@ public class CartController {
 		}
 	}
 
-	/*@RequestMapping(value = { "/cart/addressList" })
-	public ModelAndView addressList(Principal principal) {
-		user = userDAO.getByUserName(principal.getName());
-		int userId = user.getId();
+	@RequestMapping(value = "/wishlist/show")
+	public ModelAndView wishList() {
 		ModelAndView modelAndView = new ModelAndView("page");
-		modelAndView.addObject("title", "Addesses");
-		modelAndView.addObject("ifUserClickedAddressList", true);
-		modelAndView.addObject("addresses", addressDAO.list(userId));
+		modelAndView.addObject("title", "WishList");
+
+		modelAndView.addObject("ifUserClickedWhishList", true);
 		return modelAndView;
-	}*/
+	}
+
+	@RequestMapping(value = { "/wishlist/add/{id}" })
+	public String addWishList(@PathVariable(name = "id", required = false) int id, Principal principal) {
+		String url;
+		user = userDAO.getByUserName(principal.getName());
+		product = productDAO.get(id);
+		cart = user.getCart();
+		boolean flag = cartItemDAO.existingCartItem(product.getId(), cart.getCartId());
+		if (product.getId() >= 0) {
+			if (flag == false) {
+				cartItem.setProduct(product);
+				cartItem.setQuantity(0);
+				cartItem.setCart(user.getCart());
+				cartItem.setTotalPrice(cartItem.getTotalPrice());
+				cartItem.setWishList(true);
+				cartItemDAO.addCartItem(cartItem);
+				url = "redirect:/user/wishlist/show?op=add&status=success";
+			} else {
+				product.setQuantity(product.getQuantity() + cartItem.getQuantity());
+				productDAO.updateProduct(product);
+				cartItem.setQuantity(0);
+				cartItem.setWishList(true);
+				cartItemDAO.updateCartItem(cartItem);
+				cartDAO.updateCartAgain(cart);
+				cartDAO.updateCart(cart);
+				url = "redirect:/user/wishlist/show?op=add&status=success";
+			}
+		} else {
+			url = "redirect:/user/wishlist/show?op=add&status=failure";
+		}
+		return url;
+	}
 
 }
