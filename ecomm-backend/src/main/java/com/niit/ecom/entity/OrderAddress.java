@@ -2,6 +2,7 @@ package com.niit.ecom.entity;
 
 import java.io.Serializable;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -28,7 +29,7 @@ public class OrderAddress implements Serializable {
 	@Column(name = "ADDR_ID")
 	private int id;
 
-	@OneToOne(fetch = FetchType.LAZY)
+	@OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
 	@JoinColumn(name = "ORDER_ID")
 	private Order order;
 

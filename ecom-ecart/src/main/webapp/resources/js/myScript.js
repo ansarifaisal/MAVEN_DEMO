@@ -47,7 +47,7 @@ $(document)
 						var elm = "#btn_" + $(this).attr('id');
 						$(elm).css('display', 'inline');
 					});
-					
+
 					var pincode = $('#pin').val();
 					$(pincode).replaceWith($('#pin').val(""));
 
@@ -59,6 +59,23 @@ $(document)
 										window.location.href = '/ecom-ecart/user/address/default/'
 												+ elm;
 									});
+
+					/*var check = $('.cAddress').prop('checked');
+					console.log(check);
+					console.log($(check).val());
+					if ($('.cAddress').prop('checked') === true) {
+						debugger;
+						var defaultAddress = $(this).val();
+						console.log(defaultAddress);
+						$('.choose').val(defaultAddress);
+					}*/
+
+					
+					  $('.cAddress').on('change', function(){ 
+						  var chooseAddress = $(this).val();
+						  console.log(chooseAddress);
+					  $('.choose').val(chooseAddress); });
+					 
 
 					/*
 					 * Sort nav

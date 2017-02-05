@@ -94,7 +94,6 @@ public class OrderController {
 	public String addOrder(Principal principal, @ModelAttribute Order order) {
 		user = userDAO.getByUserName(principal.getName());
 		cart = user.getCart();
-		//address = addressDAO.get(id);
 		Set<CartItem> cartItems = user.getCart().getCartItems();
 		Set<OrderItem> orderItems = new HashSet<>();
 		order.setOrderItems(orderItems);

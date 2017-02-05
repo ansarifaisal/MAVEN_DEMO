@@ -9,7 +9,9 @@
 <html>
 <head>
 <title>E-Cart - ${title}</title>
-
+<script type="text/javascript">
+	window.hoverMenu = '${title}';
+</script>
 <!-- import JS Files -->
 <script type="text/javascript" src="${js}/jquery.js"></script>
 <script type="text/javascript" src="${js}/jquery.validate.js"></script>
@@ -33,25 +35,28 @@
 				</div>
 				<div class="panel-body">
 					<form:form role="form" modelAttribute="orderBean">
+					<input type="hidden" class = "choose" name = "addressChoosen">
 						<c:forEach items="${orderBean.addresses}" var="address">
 							<div class=" col-md-3 col-sm-12 col-xs-12">
 								<div class="thumbnail nopadding default-border">
 									<div class="well no-bottom-margin">
 										<div class="caption">
 											<address>
-												<Strong>${address.firstName} ${address.lastName}</Strong><br>
+												<Strong>${address.id} ${address.firstName} ${address.lastName}</Strong><br>
 												${address.lineOne },<br> ${address.lineTwo },<br>${address.landmark},<br>${address.city}
 												- ${address.pincode}<br> ${address.state}<br> <abbr
 													title="Phone">Ph:</abbr> ${address.mobileNumber }
 											</address>
 											<c:choose>
 												<c:when test="${address.defaultAddress == true }">
-													<input type="submit" name="_eventId_toOrderSummary"
+													<input type="radio" class="cAddress" name = "chooseAddress" value="${address.id}">
+													<input type="submit" name="_eventId_addressList"
 														class="btn btn-primary" value="Continue">
 												</c:when>
 												<c:otherwise>
-													<a href="${contextPath}/user/cart/order?add=${address.id}"
-														class="btn btn-default">Deliver Here</a>
+													<input type="radio" class="cAddress" name = "chooseAddress" value="${address.id}">
+													<input type="submit" name="_eventId_addressList"
+														class="btn btn-default" value="Deliver Here">
 												</c:otherwise>
 											</c:choose>
 										</div>

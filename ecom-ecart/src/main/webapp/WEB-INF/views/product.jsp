@@ -5,8 +5,8 @@
 		</div>
 	</div>
 	<div class="col-md-offset-1 col-sm-offset-1 col-xs-offset-1">
-	<a href = "" class="btn btn-warning col-md-5" style="margin-right:10%;"><span class="glyphicon glyphicon-shopping-cart"></span> Add To Cart</a>
-	<a href="" class="btn btn-danger col-md-5"><span class="glyphicon glyphicon-heart"></span> Wish List</a>
+	<a href = "${contextPath}/user/cart/add/${product.id}" class="btn btn-warning col-md-5" style="margin-right:10%;"><span class="glyphicon glyphicon-shopping-cart"></span> Add To Cart</a>
+	<a href="${contextPath}/user/wishlist/add/${product.id}" class="btn btn-danger col-md-5"><span class="glyphicon glyphicon-heart"></span> Wish List</a>
 	</div>
 </div>
 <div class="panel panel-default col-md-7" style="margin-left: 15px;">

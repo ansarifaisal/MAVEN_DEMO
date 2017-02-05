@@ -1,3 +1,4 @@
+
 package com.niit.ecom.entity;
 
 import java.io.Serializable;
@@ -26,9 +27,31 @@ public class OrderBean implements Serializable {
 	private Order order;
 	private Set<OrderItem> orderItems;
 
+	private int addressChoosen;
+	
+	private String paymentMode;
+	
+	
+
 	/*
 	 * Getter And Setters / Accessors And Mutators
 	 */
+
+	public String getPaymentMode() {
+		return paymentMode;
+	}
+
+	public void setPaymentMode(String paymentMode) {
+		this.paymentMode = paymentMode;
+	}
+
+	public int getAddressChoosen() {
+		return addressChoosen;
+	}
+
+	public void setAddressChoosen(int addressChoosen) {
+		this.addressChoosen = addressChoosen;
+	}
 
 	public Set<Address> getAddresses() {
 		return addresses;

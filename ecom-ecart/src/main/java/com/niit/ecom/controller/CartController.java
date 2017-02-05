@@ -195,6 +195,7 @@ public class CartController {
 				cartItemDAO.addCartItem(cartItem);
 				url = "redirect:/user/wishlist/show?op=add&status=success";
 			} else {
+				
 				product.setQuantity(product.getQuantity() + cartItem.getQuantity());
 				productDAO.updateProduct(product);
 				cartItem.setQuantity(0);

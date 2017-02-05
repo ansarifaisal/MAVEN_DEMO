@@ -28,7 +28,7 @@
 						<form:input path="firstName" class="form-control"
 							placeholder="Enter Name" value="${address.firstName}" />
 						<form:hidden path="id" class="form-control" value="${address.id} " />
-						<form:hidden path="user" value="${user.id}" class="form-control" />
+						<%-- <form:hidden path="user" value="${user.id}" class="form-control" /> --%>
 					</div>
 					<div class="form-group validate">
 						<label for="lastName" class="control-label text-primary">Last
@@ -72,7 +72,7 @@
 					<div class="form-group validate">
 						<label for="country" class="control-label text-primary">Country</label>
 						<form:input path="country" class="form-control" id="country"
-							placeholder="Enter Pincode" value="India" disabled = "disabled" />
+							placeholder="Enter Pincode" value="India" disabled="disabled" />
 					</div>
 
 					<div class="form-group validate">

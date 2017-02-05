@@ -3,7 +3,7 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://www.springframework.org/schema/webflow
                           http://www.springframework.org/schema/webflow/spring-webflow-2.4.xsd">
-                          
+
 	<var name="order" class="com.niit.ecom.entity.Order" />
 	<var name="orderItem" class="com.niit.ecom.entity.OrderItem" />
 	<var name="address" class="com.niit.ecom.entity.Address" />
@@ -18,34 +18,31 @@
 	</on-start>
 
 	<view-state id="start" view="cartWebFlow/addressList" model="flowScope.orderBean">
-		<transition on="addressList" to="chooseAddress" />
+		<transition on="addressList" to="toChooseAddress" />
 	</view-state>
 
-	<action-state id="chooseAddress">
-		<evaluate expression="cartFlow.chooseAddress(flowScope.orderBean)"></evaluate>
+	<action-state id="toChooseAddress">
+		<evaluate
+			expression="cartFlow.chooseAddress(flowScope.orderBean, flowScope.orderBean.addressChoosen)"></evaluate>
 		<transition on="success" to="toOrderSummary" />
-		<transition on="failure" to="start" />
 	</action-state>
 
-	<view-state id="toOrderSummary" view="orderSummary" model="flowScope.order">
-		<transition on="paymentMode" to="paymentMode" />
+	<view-state id="toOrderSummary" view="cartWebFlow/orderSummary"
+		model="flowScope.orderBean">
+		<transition on="payment" to="toPaymentMode" />
 	</view-state>
-
-	<action-state id="paymentMode">
-		<evaluate expression="cartFlow.paymentMode(order)"></evaluate>
-		<transition on="success" to="toOrderConfrim" />
-		<transition on="failure" to="start" />
-	</action-state>
-
-	<view-state id="toOrderConfrim" view="invoice" model="flowScope.order">
-		<transition on="invoice" to="invoice" />
+	<view-state id="toPaymentMode" view="cartWebFlow/paymentMode"
+		model="flowScope.orderBean">
+		<transition on="paymentMode" to="choosePayment" />
 	</view-state>
-
-	<action-state id="invoice">
-		<evaluate expression="cartFlow.addCartItem(order)"></evaluate>
-		<transition on="success" to="toCart" />
+	
+	<action-state id="choosePayment">
+		<evaluate
+			expression="cartFlow.choosePayment(flowScope.orderBean)"></evaluate>
+		<transition on="success" to="toOrders" />
 	</action-state>
 
-	<end-state id="toCart" view="externalRedirect:contextRelative:/user/cart/order/" />
+	<end-state id="toOrders"
+		view="externalRedirect:contextRelative:/user/cart/order/" />
 	<end-state id="toException" view="externalRedirect:contextRelative:403" />
 </flow>

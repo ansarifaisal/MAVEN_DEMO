@@ -52,7 +52,7 @@ public class Order implements Serializable {
 	@Column(name = "PAYMENT_MODE")
 	private String paymentMode;
 	
-	@OneToOne(mappedBy = "order",fetch = FetchType.LAZY)
+	@OneToOne(mappedBy = "order", cascade= CascadeType.REMOVE, fetch = FetchType.LAZY)
 	private OrderAddress orderAddress;
 	
 	/*

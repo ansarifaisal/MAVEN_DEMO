@@ -67,10 +67,12 @@ public class AddressController {
 		modelAndView.addObject("ifUserClickedAddresses", true);
 		return modelAndView;
 	}
-	
+
 	@RequestMapping(value = { "/address/save" }, method = RequestMethod.POST)
-	public String saveAddress(@ModelAttribute Address address) {
+	public String saveAddress(@ModelAttribute Address address, Principal principal) {
+		user = userDAO.getByUserName(principal.getName());
 		if (address.getId() == 0) {
+			address.setUser(user);
 			boolean flag = addressDAO.addAddress(address);
 			if (flag == true) {
 				return "redirect:/user/addresses?op=save&status=success";
@@ -78,6 +80,7 @@ public class AddressController {
 				return "redirect:/user/addresses?op=save&status=fail";
 			}
 		} else {
+			address.setUser(user);
 			boolean flag = addressDAO.updateAddress(address);
 			if (flag == true) {
 				return "redirect:/user/addresses?op=update&status=success";

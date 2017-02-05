@@ -2,7 +2,6 @@ package com.niit.ecom.entity;
 
 import java.io.Serializable;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -11,6 +10,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.Transient;
 
 import org.springframework.stereotype.Component;
 
@@ -65,10 +65,11 @@ public class Address implements Serializable {
 
 	@Column(name = "ADDR_MOBILE_NUMBER")
 	private String mobileNumber;
-	
+
 	@Column(name = "ADDR_DEFAULT")
 	private boolean defaultAddress;
 
+	
 	/*
 	 * Getters and Setters OR Accessors and Mutators
 	 */
@@ -177,12 +178,6 @@ public class Address implements Serializable {
 		this.mobileNumber = mobileNumber;
 	}
 
-	@Override
-	public String toString() {
-		return "Address [id=" + id + ", user=" + user + ", firstName=" + firstName + ", lastName=" + lastName
-				+ ", lineOne=" + lineOne + ", lineTwo=" + lineTwo + ", landmark=" + landmark + ", city=" + city
-				+ ", state=" + state + ", country=" + country + ", pincode=" + pincode + ", mobileNumber="
-				+ mobileNumber + ", defaultAddress=" + defaultAddress + "]";
-	}
 	
+
 }
