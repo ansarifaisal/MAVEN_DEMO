@@ -98,6 +98,7 @@ public class CartFlow {
 		order.setNumberOfOrderItems(orderBean.getCart().getNumberOfCartItems());
 		order.setGrandTotal(orderBean.getCart().getGrandTotal());
 		order.setPaymentMode(orderBean.getPaymentMode());
+		orderDAO.addOrder(order);
 		orderAddress.setFirstName(orderBean.getAddress().getFirstName());
 		orderAddress.setLastName(orderBean.getAddress().getLastName());
 		orderAddress.setLineOne(orderBean.getAddress().getLineOne());
@@ -108,8 +109,7 @@ public class CartFlow {
 		orderAddress.setLandmark(orderBean.getAddress().getLandmark());
 		orderAddress.setMobileNumber(orderBean.getAddress().getMobileNumber());
 		orderAddress.setPincode(orderBean.getAddress().getPincode());
-		order.setOrderAddress(orderAddress);
-		orderDAO.addOrder(order);
+		orderAddress.setOrder(order);
 		orderAddressDAO.addAddress(orderAddress);
 		for (CartItem cartItem : cartItems) {
 			orderItem.setItemPrice(cartItem.getItemPrice());

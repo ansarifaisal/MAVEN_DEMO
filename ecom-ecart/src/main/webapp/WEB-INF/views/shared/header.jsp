@@ -76,7 +76,8 @@
 							<li><a href="${contextPath}/user/changepassword">Change
 									Password</a></li>
 							<li><a href="${contextPath}/user/addresses">Addresses</a></li>
-							<li><a href="#allsuppliers">Wish List</a></li>
+							<li><a href="${contextPath}/user/wishlist/show">Wish List</a></li>
+							<li><a href="${contextPath}/user/wishlist/show">Orders</a></li>
 							<li class="divider" role="separator"></li>
 							<li><a href="${contextPath}/logout">Logout</a></li>
 						</ul></li>

@@ -170,11 +170,13 @@ public class CartController {
 	}
 
 	@RequestMapping(value = "/wishlist/show")
-	public ModelAndView wishList() {
+	public ModelAndView wishList(Principal principal) {
 		ModelAndView modelAndView = new ModelAndView("page");
+		user = userDAO.getByUserName(principal.getName());
+		cart = user.getCart();
 		modelAndView.addObject("title", "WishList");
-
-		modelAndView.addObject("ifUserClickedWhishList", true);
+		modelAndView.addObject("items", cartItemDAO.wishList(cart.getCartId()));
+		modelAndView.addObject("ifUserClickedWishList", true);
 		return modelAndView;
 	}
 
@@ -184,9 +186,7 @@ public class CartController {
 		user = userDAO.getByUserName(principal.getName());
 		product = productDAO.get(id);
 		cart = user.getCart();
-		boolean flag = cartItemDAO.existingCartItem(product.getId(), cart.getCartId());
 		if (product.getId() >= 0) {
-			if (flag == false) {
 				cartItem.setProduct(product);
 				cartItem.setQuantity(0);
 				cartItem.setCart(user.getCart());
@@ -194,21 +194,30 @@ public class CartController {
 				cartItem.setWishList(true);
 				cartItemDAO.addCartItem(cartItem);
 				url = "redirect:/user/wishlist/show?op=add&status=success";
-			} else {
-				
-				product.setQuantity(product.getQuantity() + cartItem.getQuantity());
-				productDAO.updateProduct(product);
-				cartItem.setQuantity(0);
-				cartItem.setWishList(true);
-				cartItemDAO.updateCartItem(cartItem);
-				cartDAO.updateCartAgain(cart);
-				cartDAO.updateCart(cart);
-				url = "redirect:/user/wishlist/show?op=add&status=success";
-			}
 		} else {
 			url = "redirect:/user/wishlist/show?op=add&status=failure";
 		}
 		return url;
+	}
+	
+	@RequestMapping(value = {"/wishlist/move/{id}"})
+	public String moveWhishlist(@PathVariable (name = "id", required = false) int id, Principal principal){
+		user = userDAO.getByUserName(principal.getName());
+		cart = user.getCart();
+		cartItem = cartItemDAO.get(id);
+		product = cartItem.getProduct();
+		
+		product.setQuantity(product.getQuantity() + cartItem.getQuantity());
+		productDAO.updateProduct(product);
+		cartItem.setQuantity(0);
+		cartItem.setTotalPrice(0);
+		cartItem.setWishList(true);
+		cartItemDAO.updateCartItem(cartItem);
+		cartDAO.updateCartAgain(cart);
+		cartDAO.updateCart(cart);
+		
+		return "redirect:/user/wishlist/show?op=move&status=success";
+		
 	}
 
 }

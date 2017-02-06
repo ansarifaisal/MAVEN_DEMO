@@ -18,16 +18,15 @@
 						<%--item column --%>
 						<td class="col-md-7">
 							<div class="col-md-1" style="padding: 0px;">
-								<img src="${images}/moto.jpeg"
+								<img src="${images}/product/${cartItem.product.id}.png"
 									style="height: 100px; width: 50px;">
 							</div>
 							<div class="col-md-11">
 								${cartItem.product.productName}<br />
 								<div class="text-muted">${cartItem.product.description}</div>
 								<div class="text-right">
-									<input type="submit" class="btn btn-info"
-										value="Move To Wishlist"
-										onclick="window.location=${contextPath}/"> <a
+									<a href="${contextPath}/user/wishlist/move/${cartItem.id}"
+										class="btn btn-info">Move To Wishlist</a> <a
 										href="${contextPath}/user/cart/delete/${cartItem.id}"
 										class="btn btn-danger">Remove</a>
 								</div>
@@ -72,8 +71,8 @@
 			&ensp;&#8377;${cart.grandTotal}</div>
 		<div class="text-right">
 			<a href="${contextPath}/" class="btn-lg btn-default">< Continue
-				Shopping</a> <a href="${contextPath}/addressList" class="btn-lg btn-warning">Place
-				Order</a>
+				Shopping</a> <a href="${contextPath}/addressList"
+				class="btn-lg btn-warning">Place Order</a>
 		</div>
 	</div>
 

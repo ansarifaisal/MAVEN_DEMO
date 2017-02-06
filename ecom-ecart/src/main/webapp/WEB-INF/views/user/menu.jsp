@@ -11,7 +11,7 @@
 					<b>My Stuff</b>
 				</div>
 			</div></li>
-			<li id = "wishList"><a href="#test">Wish List</a></li>
+			<li id = "wishList"><a href="${contextPath}/user/wishlist/show">Wish List</a></li>
 			<li><div class="panel-heading">
 				<div class="panel-title">
 					<b>SETTINGS</b>

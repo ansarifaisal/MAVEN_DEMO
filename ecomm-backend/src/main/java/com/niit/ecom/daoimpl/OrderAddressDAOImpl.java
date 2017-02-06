@@ -3,6 +3,7 @@ package com.niit.ecom.daoimpl;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.niit.ecom.dao.OrderAddressDAO;
 import com.niit.ecom.entity.OrderAddress;
@@ -15,6 +16,7 @@ public class OrderAddressDAOImpl implements OrderAddressDAO {
 	
 	
 	@Override
+	@Transactional
 	public boolean addAddress(OrderAddress orderAddress) {
 	try {
 		sessionFactory.getCurrentSession().save(orderAddress);

@@ -1,6 +1,7 @@
 package com.niit.ecom.entity;
 
 import java.io.Serializable;
+import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.Column;
@@ -47,7 +48,7 @@ public class Cart implements Serializable {
 	@OneToOne
 	@JoinColumn(name = "USER_ID")
 	private User user;
-	
+
 	public int getCartId() {
 		return cartId;
 	}
@@ -57,7 +58,7 @@ public class Cart implements Serializable {
 	}
 
 	public Set<CartItem> getCartItems() {
-		return cartItems;
+		return getAcctualCartItem(cartItems);
 	}
 
 	public void setCartItems(Set<CartItem> cartItems) {
@@ -87,8 +88,18 @@ public class Cart implements Serializable {
 	public void setUser(User user) {
 		this.user = user;
 	}
-	
 
-	
-
+	/*
+	 * Filtering CartItems
+	 */
+	public Set<CartItem> getAcctualCartItem(Set<CartItem> cartItems) {
+		Set<CartItem> acctualCartItems = cartItems;
+		Set<CartItem> items = new HashSet<>();
+		for (CartItem item : acctualCartItems) {
+			if (item.isWishList() == false) {
+				items.add(item);
+			}
+		}
+		return items;
+	}
 }

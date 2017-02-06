@@ -90,10 +90,14 @@
 		<c:if test="${ifUserClickedAddresses == true }">
 			<%@include file="user/account.jsp"%>
 		</c:if>
-		
-		
+
+
 		<%--if user clicks on Edit Addresses--%>
 		<c:if test="${ifUserClickedEditAddress == true }">
+			<%@include file="user/account.jsp"%>
+		</c:if>
+		<%--if user clicks on Edit Addresses--%>
+		<c:if test="${ifUserClickedWishList == true }">
 			<%@include file="user/account.jsp"%>
 		</c:if>
 
@@ -121,35 +125,15 @@
 		<c:if test="${ifUserClickedUpdateProduct == true }">
 			<%@include file="admin/admin.jsp"%>
 		</c:if>
-		
-		<%--if user click on addressList --%>
-		<c:if test = "${ifUserClickedAddressList == true }">
-		<%@include file = "cartWebFlow/addressList.jsp" %>
+
+		<%--if user click on Order Summary --%>
+		<c:if test="${ifUserClickedOrderSummary == true }">
+			<%@include file="user/orders.jsp"%>
 		</c:if>
-		
-		<%--if user click on OrderSummary --%>
-		<c:if test = "${ifUserClickedOrderSummary == true }">
-		<%@include file = "cartWebFlow/orderSummary.jsp" %>
-		</c:if>
-		
-		<%--if user click on PaymentMode --%>
-		<c:if test = "${ifUserClickedPaymentMode == true }">
-		<%@include file = "cartWebFlow/paymentMode.jsp" %>
-		</c:if>
-		
+
 		<%--if user click on Invoice --%>
-		<c:if test = "${ifUserClickedInvoice == true }">
-		<%@include file = "cartWebFlow/invoice.jsp" %>
-		</c:if>
-		
-		<%--if user click on ConfirmOrder --%>
-		<c:if test = "${ifUserClickedConfirmOrder == true }">
-		<%@include file = "cartWebFlow/confirmOrder.jsp" %>
-		</c:if>
-		
-		<%--if user click on WhishList --%>
-		<c:if test = "${ifUserClickedConfirmOrder == true }">
-		<%@include file = "user/wishlist.jsp" %>
+		<c:if test="${ifUserClickedInvoice == true }">
+			<%@include file="cartWebFlow/invoice.jsp"%>
 		</c:if>
 
 	</div>

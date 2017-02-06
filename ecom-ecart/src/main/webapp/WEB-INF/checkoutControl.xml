@@ -43,6 +43,6 @@
 	</action-state>
 
 	<end-state id="toOrders"
-		view="externalRedirect:contextRelative:/user/cart/order/" />
+		view="externalRedirect:contextRelative:/user/cart/orders" />
 	<end-state id="toException" view="externalRedirect:contextRelative:403" />
 </flow>
