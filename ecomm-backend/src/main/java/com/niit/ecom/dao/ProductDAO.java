@@ -7,6 +7,7 @@ import com.niit.ecom.entity.Product;
 public interface ProductDAO {
 	Product get(int id);
 	List<Product> list();
+	List<Product> listByCategory(int categoryId);
 	boolean addProduct(Product product);
 	boolean updateProduct(Product product);
 	boolean deleteProduct(Product product);

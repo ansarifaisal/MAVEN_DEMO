@@ -2,9 +2,11 @@ package com.niit.ecom.controller;
 
 import java.security.Principal;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -12,6 +14,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.niit.ecom.dao.AddressDAO;
@@ -59,18 +62,29 @@ public class CartController {
 	@Autowired
 	AddressDAO addressDAO;
 
+	@Autowired
+	HttpSession httpSession;
+
 	/*
 	 * to access cart page
 	 */
 	@RequestMapping(value = { "/cart" })
-	public ModelAndView cart(Principal principal) {
+	public ModelAndView cart(Principal principal, @RequestParam(name = "op", required = false) String operation,
+			@RequestParam(name = "status", required = false) String status) {
 		ModelAndView modelAndView = new ModelAndView("page");
 		user = userDAO.getByUserName(principal.getName());
+		List<CartItem> cartItems = cartItemDAO.list(user.getCart().getCartId());
 		modelAndView.addObject("cartItem", new CartItem());
-		modelAndView.addObject("cartItems", cartItemDAO.list(user.getCart().getCartId()));
-		modelAndView.addObject("cart", cartDAO.get(user.getCart().getCartId()));
+		modelAndView.addObject("cartItems", cartItems);
+		httpSession.setAttribute("noOfCartItem", cartItems.size());
+		modelAndView.addObject("cart", user.getCart());
 		modelAndView.addObject("title", "Cart");
 		modelAndView.addObject("ifUserClickedCart", true);
+		if (operation.equals("add") && status.equals("success")) {
+			modelAndView.addObject("successMsg", "Product Added Successfully!");
+		}else if(operation.equals("add") && status.equals("failure")){
+			modelAndView.addObject("failureMsg", "Fail To Add Product");
+		}
 		return modelAndView;
 	}
 
@@ -187,26 +201,26 @@ public class CartController {
 		product = productDAO.get(id);
 		cart = user.getCart();
 		if (product.getId() >= 0) {
-				cartItem.setProduct(product);
-				cartItem.setQuantity(0);
-				cartItem.setCart(user.getCart());
-				cartItem.setTotalPrice(cartItem.getTotalPrice());
-				cartItem.setWishList(true);
-				cartItemDAO.addCartItem(cartItem);
-				url = "redirect:/user/wishlist/show?op=add&status=success";
+			cartItem.setProduct(product);
+			cartItem.setQuantity(0);
+			cartItem.setCart(user.getCart());
+			cartItem.setTotalPrice(cartItem.getTotalPrice());
+			cartItem.setWishList(true);
+			cartItemDAO.addCartItem(cartItem);
+			url = "redirect:/user/wishlist/show?op=add&status=success";
 		} else {
 			url = "redirect:/user/wishlist/show?op=add&status=failure";
 		}
 		return url;
 	}
-	
-	@RequestMapping(value = {"/wishlist/move/{id}"})
-	public String moveWhishlist(@PathVariable (name = "id", required = false) int id, Principal principal){
+
+	@RequestMapping(value = { "/wishlist/move/{id}" })
+	public String moveWhishlist(@PathVariable(name = "id", required = false) int id, Principal principal) {
 		user = userDAO.getByUserName(principal.getName());
 		cart = user.getCart();
 		cartItem = cartItemDAO.get(id);
 		product = cartItem.getProduct();
-		
+
 		product.setQuantity(product.getQuantity() + cartItem.getQuantity());
 		productDAO.updateProduct(product);
 		cartItem.setQuantity(0);
@@ -215,9 +229,32 @@ public class CartController {
 		cartItemDAO.updateCartItem(cartItem);
 		cartDAO.updateCartAgain(cart);
 		cartDAO.updateCart(cart);
-		
+
 		return "redirect:/user/wishlist/show?op=move&status=success";
-		
+
+	}
+
+	@RequestMapping(value = { "/cart/move/{id}" })
+	public String moveCart(@PathVariable(name = "id", required = false) int id, Principal principal) {
+		String url = null;
+		user = userDAO.getByUserName(principal.getName());
+		cart = user.getCart();
+		cartItem = cartItemDAO.get(id);
+		product = cartItem.getProduct();
+		if (product.getQuantity() > 0) {
+			cartItem.setQuantity(1);
+			cartItem.setTotalPrice(cartItem.getItemPrice());
+			cartItem.setWishList(false);
+			cartItemDAO.updateCartItem(cartItem);
+			product.setQuantity(product.getQuantity() - 1);
+			productDAO.updateProduct(product);
+			cartDAO.updateCartAgain(cart);
+			cartDAO.updateCart(cart);
+			url = "redirect:/user/cart?op=move&status=success";
+		} else {
+			url = "redirect:/user/cart?op=move&status=failure";
+		}
+		return url;
 	}
 
 }

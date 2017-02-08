@@ -47,9 +47,7 @@ $(document)
 						var elm = "#btn_" + $(this).attr('id');
 						$(elm).css('display', 'inline');
 					});
-
-					var pincode = $('#pin').val();
-					$(pincode).replaceWith($('#pin').val(""));
+					
 
 					$('.defaultAddress')
 							.on(

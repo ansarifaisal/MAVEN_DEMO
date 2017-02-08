@@ -25,7 +25,7 @@ public class RegisterFlow {
 		return user;
 	}
 
-	public String addUser(User user, MessageContext messageContext) {
+	public String validateUser(User user, MessageContext messageContext) {
 		String status = "success";
 		User userExists = userDAO.getByUserName(user.getEmail());
 		if (userExists != null) {
@@ -94,14 +94,19 @@ public class RegisterFlow {
 				user.setGender(user.getGender());
 				status = "success";
 			}
-			user.setRole(user.getRole());
-			user.setEnabled(user.isEnabled());
-			cart.setUser(user);
-			user.setCart(cart);
-			// Adding user into the database
-			userDAO.addUser(user);
-
+			
 		}
+		return status;
+	}
+	
+	public String addUser(User user){
+		String status = "success";
+		user.setRole(user.getRole());
+		user.setEnabled(user.isEnabled());
+		cart.setUser(user);
+		user.setCart(cart);
+		// Adding user into the database
+		userDAO.addUser(user);
 		return status;
 	}
 }

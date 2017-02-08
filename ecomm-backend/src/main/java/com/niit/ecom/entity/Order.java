@@ -35,7 +35,7 @@ public class Order implements Serializable {
 	@Column(name = "ORDER_ID")
 	private int id;
 	
-	@OneToMany(mappedBy = "order", cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "order", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	@PrimaryKeyJoinColumn(name = "ORDER_ITEM_ID")
 	private Set<OrderItem> orderItems;
 
@@ -45,14 +45,14 @@ public class Order implements Serializable {
 	@Column(name = "NO_OF_ORDER_ITEMS")
 	private int numberOfOrderItems;
 
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "USER_ID")
 	private User user;
 	
 	@Column(name = "PAYMENT_MODE")
 	private String paymentMode;
 	
-	@OneToOne(mappedBy = "order", cascade= CascadeType.REMOVE, fetch = FetchType.LAZY)
+	@OneToOne(mappedBy = "order", cascade= CascadeType.REMOVE, fetch = FetchType.EAGER)
 	private OrderAddress orderAddress;
 	
 	/*

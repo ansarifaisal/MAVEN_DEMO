@@ -1,3 +1,6 @@
+<%@taglib uri="http://www.springframework.org/security/tags"
+	prefix="sec"%>
+
 <c:if test="${!empty msg}">
 	<div class="alert-msg">
 		<div id="success-alert" class="alert alert-success" role="alert">
@@ -57,14 +60,40 @@
 																	class="img-resize zoom" /></a>
 																<div class="caption">
 																	<p class="title">
-																		<a href="${contextPath}/product/${product.id}">${product.productName }</a>
+																		<a href="${contextPath}/product/${product.id}"">${product.productName }</a>
 																	</p>
 																	<h6 class="text-muted price">Now at
 																		&#8377;${product.price}</h6>
+																	<div class="row nopadding nomargin">
+																		<sec:authorize access="hasAuthority('USER')">
+																			<div class="text-left col-md-6 nopadding nomargin">
+																				<a
+																					href="${contextPath}/user/wishlist/add/${product.id}"
+																					class="btn btn-default"><span
+																					class="glyphicon glyphicon-heart"></span></a>
+																			</div>
+																			<div class="col-md-offset-9 ">
+																				<a href="${contextPath}/user/cart/add/${product.id}"
+																					class="btn btn-default"><span
+																					class="glyphicon glyphicon-shopping-cart"></span></a>
+																			</div>
+																		</sec:authorize>
+																		<sec:authorize access="hasAuthority('ADMIN')">
+																			<div class="text-left col-md-6 nopadding nomargin">
+																				<a
+																					href="${contextPath}/admin/update/product/${product.id}"
+																					class="btn btn-default"><span
+																					class="glyphicon glyphicon-pencil"></span></a>
+																			</div>
+																			<div class="col-md-offset-9 ">
+																				<a href="${contextPath}/admin/delete/product/${product.id}"
+																					class="btn btn-default"><span
+																					class="glyphicon glyphicon-trash"></span></a>
+																			</div>
+																		</sec:authorize>
+																	</div>
 																</div>
-																<div class="text-right">
-																	<a href=""><span class="glyphicon glyphicon-heart"></span></a>
-																</div>
+
 															</div>
 														</div>
 													</div>

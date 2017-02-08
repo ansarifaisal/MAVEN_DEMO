@@ -26,12 +26,13 @@
 					</div>
 				</div>
 			</form>
-			<ul class="nav navbar-nav">
-				<li><a href="${contextPath}/user/cart"><span
-						class="glyphicon glyphicon-shopping-cart"></span> Cart <span
-						class="badge">1</span></a></li>
-
-			</ul>
+			<sec:authorize access="hasAuthority('USER')">
+				<ul class="nav navbar-nav">
+					<li><a href="${contextPath}/user/cart"><span
+							class="glyphicon glyphicon-shopping-cart"></span> Cart <span
+							class="badge">${noOfCartItem}</span></a></li>
+				</ul>
+			</sec:authorize>
 			<ul class="nav navbar-nav navbar-right">
 				<li id="allProduct"><a href="${contextPath}/product/show/all">All
 						Products</a></li>
@@ -42,17 +43,19 @@
 				<%-- Display Controls to all the user--%>
 				<sec:authorize access="isAnonymous()">
 					<li id="login"><a href="${contextPath}/login">Login</a></li>
-					<li id="register"><a href="${contextPath}/register">Sign Up</a></li>
+					<li id="register"><a href="${contextPath}/register">Sign
+							Up</a></li>
 				</sec:authorize>
 
 				<%-- Display Controls To Admin --%>
 				<sec:authorize access="hasAuthority('ADMIN')">
 					<li class="dropdown"><a href="#admin" class="dropdown-toggle"
 						data-toggle="dropdown" role="button" aria-haspopup="true"
-						aria-expanded="false">Admin<span class="caret"></span></a>
+						aria-expanded="false">${firstName} ${lastName}<span
+							class="caret"></span></a>
 						<ul class="dropdown-menu">
 							<li><a href="#allproducts">All Products</a></li>
-							<li><a href="#allsuppliers">All Sellers</a></li>
+							<!-- <li><a href="#allsuppliers">All Sellers</a></li> -->
 							<li class="divider" role="separator"></li>
 							<li><a href="${contextPath}/admin/addproduct">Add
 									Product</a></li>
@@ -68,16 +71,17 @@
 				<sec:authorize access="hasAuthority('USER')">
 					<li class="dropdown"><a href="#userPanel"
 						class="dropdown-toggle" data-toggle="dropdown" role="button"
-						aria-haspopup="true" aria-expanded="false"> User<span
-							class="caret"></span></a>
+						aria-haspopup="true" aria-expanded="false">${firstName}
+							${lastName}<span class="caret"></span>
+					</a>
 						<ul class="dropdown-menu">
-							<li><a
-								href="${contextPath }/user/personalinformation">Account</a></li>
+							<li><a href="${contextPath }/user/personalinformation">Account</a></li>
 							<li><a href="${contextPath}/user/changepassword">Change
 									Password</a></li>
 							<li><a href="${contextPath}/user/addresses">Addresses</a></li>
-							<li><a href="${contextPath}/user/wishlist/show">Wish List</a></li>
-							<li><a href="${contextPath}/user/wishlist/show">Orders</a></li>
+							<li><a href="${contextPath}/user/wishlist/show">Wish
+									List</a></li>
+							<li><a href="${contextPath}/user/cart/order">Orders</a></li>
 							<li class="divider" role="separator"></li>
 							<li><a href="${contextPath}/logout">Logout</a></li>
 						</ul></li>

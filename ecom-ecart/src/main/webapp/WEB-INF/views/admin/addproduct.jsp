@@ -1,3 +1,7 @@
+<script src="${js}/angular.js" type="text/javascript"></script>
+<script src="${js}/productController.js" type="text/javascript"></script>
+
+
 <div class="col-md-9 col-sm-9 col-xs-12">
 	<div class="panel panel-primary">
 		<div class="panel-heading">
@@ -60,7 +64,7 @@
 							class="control-label label-size text-primary">Upload
 							Image</label>
 						<div class="validate">
-							<form:input path="image" type="file" id="uploadFile"/>
+							<form:input path="image" type="file" id="uploadFile" />
 						</div>
 					</div>
 					<div class="form-group">
@@ -89,48 +93,49 @@
 			</div>
 		</div>
 	</div>
-	<table class="table table-hover" id="no-border">
-		<thead>
-			<tr>
-				<td align="center" colspan="4">
-					<form action="" class="form" role="form" id="searchProduct">
-						<div class="form-group">
-							<div class="validate col-sm-11">
-								<input type="text" class="form-control"
-									placeholder="Search for products" id="search" name="search">
+	<div ng-app="myApp">
+		<div ng-controller="ProductListController">
+			<table class="table table-hover" id="no-border">
+				<thead>
+					<tr>
+						<td align="center" colspan="4">
+							<form action="" class="form" role="form" id="searchProduct">
+								<div class="form-group">
+									<div class="validate col-sm-11">
+										<input type="text" class="form-control"
+											placeholder="Search for products"
+											ng-model="searchText.productName">
+									</div>
+								</div>
+							</form>
+						</td>
+					</tr>
+					<tr>
+						<td><strong>Name</strong></td>
+						<td><strong>Price</strong></td>
+						<td><strong>Action</strong></td>
+					</tr>
+				</thead>
+				<tbody>
+					<tr ng-repeat="product in products | filter:searchText">
+						<td>
+							<div class="col-md-1">
+								<img alt="{{product.productName}}" src="${images}/product/{{product.id}}.png"
+									style="height: 100px; width: 75px;">
 							</div>
-							<span class="input-group-btn">
-								<button class="btn btn-default" type="submit">
-									<span class="glyphicon glyphicon-search" id="btn-search"
-										aria-hidden="true"></span>
-								</button>
-							</span>
-						</div>
-					</form>
-				</td>
-			</tr>
-			<tr>
-				<td><strong>Name</strong></td>
-				<td><strong>Price</strong></td>
-				<td><strong>Seller</strong></td>
-				<td><strong>Action</strong></td>
-			</tr>
-		</thead>
-		<tbody>
-			<c:forEach items="${products}" var="product">
-				<tr>
-					<td>${product.productName}</td>
-					<td>${product.price }</td>
-					<td></td>
-					<td><a
-						href="${contextPath}/admin/update/product/${product.id}"
-						class="btn btn-info" data-toggle="tooltip" title="Edit"><span
-							class="glyphicon glyphicon-pencil" style="font-size: 20px;"></span></a>
-						<a href="${contextPath}/admin/delete/product/${product.id}"
-						data-toggle="tooltip" title="Delete" class="btn btn-danger"><span
-							class="glyphicon glyphicon-trash" style="font-size: 20px;"></span></a></td>
-				</tr>
-			</c:forEach>
-		</tbody>
-	</table>
+							<div class="col-md-offset-3"><a ng-href = "${contextPath}/product/{{product.id}}">{{product.productName}}</a></div>
+						</td>
+						<td>{{product.price }}</td>
+						<td><a
+							href="${contextPath}/admin/update/product/{{product.id}}"
+							class="btn btn-primary" data-toggle="tooltip" title="Edit"><span
+								class="glyphicon glyphicon-pencil" style="font-size: 20px;"></span></a>
+							<a href="${contextPath}/admin/delete/product/{{product.id}}"
+							data-toggle="tooltip" title="Delete" class="btn btn-danger"><span
+								class="glyphicon glyphicon-trash" style="font-size: 20px;"></span></a></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
 </div>

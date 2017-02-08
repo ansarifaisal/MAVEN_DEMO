@@ -23,11 +23,11 @@
 			<form:form action="${contextPath}/user/update/address"
 				modelAttribute="user" class="form">
 				<div class="col-md-9 col-sm-9 col-xs-9">
-					<label for="email" class="text-primary label-size">E-Mail</label>
+					<!-- <label for="email" class="text-primary label-size">E-Mail</label>
 					<div class="form-group">
 						<form:input path="email" class="form-control"
 							placeholder="Enter E-Mail"/>
-					</div>
+					</div> -->
 					<form:hidden path="id" value="${user.id}" />
 					<label for="mobile" class="text-primary label-size">Mobile</label>
 

@@ -8,7 +8,7 @@
 <c:set var="contextPath" value="${pageContext.request.contextPath}" />
 <html>
 <head>
-<title>E-Cart - ${title}</title>
+<title>E-Cart - Register</title>
 <script type="text/javascript">
 	window.hoverMenu = '${title}';
 </script>

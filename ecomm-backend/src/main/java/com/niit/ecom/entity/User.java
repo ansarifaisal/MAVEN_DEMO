@@ -11,6 +11,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.PrimaryKeyJoinColumn;
@@ -60,7 +61,7 @@ public class User implements Serializable {
 	private boolean enabled;
 
 	@PrimaryKeyJoinColumn(name = "ORDER_ID")
-	@OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
+	@OneToMany(mappedBy = "user",fetch = FetchType.LAZY)
 	private Set<Order> orders;
 
 	@OneToMany(mappedBy = "user", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
@@ -176,14 +177,6 @@ public class User implements Serializable {
 		this.tempMobileNumber = tempMobileNumber;
 	}
 
-	public Set<Order> getOrders() {
-		return orders;
-	}
-
-	public void setOrders(Set<Order> orders) {
-		this.orders = orders;
-	}
-
 	public Set<Address> getAddress() {
 		return address;
 	}
@@ -191,5 +184,14 @@ public class User implements Serializable {
 	public void setAddress(Set<Address> address) {
 		this.address = address;
 	}
+
+	public Set<Order> getOrders() {
+		return orders;
+	}
+
+	public void setOrders(Set<Order> orders) {
+		this.orders = orders;
+	}
+	
 
 }

@@ -136,6 +136,12 @@
 			<%@include file="cartWebFlow/invoice.jsp"%>
 		</c:if>
 
+		<%--if user click on Invoice --%>
+		<c:if test="${ifUserClickedViewCategory == true }">
+			<%@include file="productByCategory.jsp"%>
+		</c:if>
+
+
 	</div>
 	<div class="container-fluid">
 		<%@include file="./shared/footer.jsp"%>

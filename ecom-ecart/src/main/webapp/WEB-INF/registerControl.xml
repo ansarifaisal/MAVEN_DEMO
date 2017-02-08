@@ -19,16 +19,22 @@
 	</view-state>
 
 	<action-state id="validate">
-		<evaluate expression="registerFlow.addUser(user, messageContext)"></evaluate>
+		<evaluate expression="registerFlow.validateUser(user, messageContext)"></evaluate>
 		<transition on="success" to="confirmDetails" />
 		<transition on="failure" to="start" />
 	</action-state>
 
 	<view-state id="confirmDetails" view="confirmDetails" model="flowScope.user">
 		<transition on="editRegister" to="start" />
-		<transition on="submitRegister" to="toHome" />
+		<transition on="registerUser" to="toRegisterUser" />
 	</view-state>
-
+	
+	<action-state id="toRegisterUser">
+		<evaluate expression="registerFlow.addUser(user)"></evaluate>
+		<transition on="success" to="toHome" />
+		<transition on="failure" to="start" />
+	</action-state>
+	
 	<end-state id="welcome" view="/index" />
 	<end-state id="toHome" view="externalRedirect:contextRelative:/" />
 	<end-state id="toException" view="externalRedirect:contextRelative:403" />

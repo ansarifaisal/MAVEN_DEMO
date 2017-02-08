@@ -1,5 +1,9 @@
 package com.niit.ecom.controller;
 
+import java.security.Principal;
+
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -9,6 +13,8 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.niit.ecom.dao.CategoryDAO;
 import com.niit.ecom.dao.ProductDAO;
+import com.niit.ecom.dao.UserDAO;
+import com.niit.ecom.entity.User;
 
 @Controller
 public class PageController {
@@ -18,17 +24,31 @@ public class PageController {
 	
 	@Autowired
 	private CategoryDAO categoryDAO;
-
+	
+	@Autowired
+	private HttpSession httpSession;
+	
+	@Autowired
+	private User user;
+	
+	@Autowired
+	private UserDAO userDAO;
+	
 	/*
 	 * to access index page
 	 */
 	@RequestMapping(value = { "/", "home", "index", "default" })
-	public ModelAndView index(@RequestParam(name = "login", required = false) String login) {
+	public ModelAndView index(@RequestParam(name = "login", required = false) String login, Principal principal) {
 		ModelAndView modelAndView = new ModelAndView("page");
 		modelAndView.addObject("title", "Home");
 		modelAndView.addObject("ifUserClickedHome", true);
 		modelAndView.addObject("products", productDAO.list());
 		modelAndView.addObject("categories", categoryDAO.list());
+		if(principal != null){
+			user = userDAO.getByUserName(principal.getName());
+			httpSession.setAttribute("firstName", user.getFirstName());
+			httpSession.setAttribute("lastName", user.getLastName());	
+		}
 		if (login != null) {
 			if (login.equals("success")) {
 				modelAndView.addObject("msg", "You Have Successfully Logged In");
@@ -76,6 +96,14 @@ public class PageController {
 		ModelAndView modelAndView = new ModelAndView("page");
 		modelAndView.addObject("title", "All Products");
 		modelAndView.addObject("ifUserClickedListProducts", true);
+		return modelAndView;
+	}
+	
+	@RequestMapping(value = { "/product/category" })
+	public ModelAndView productByCategory() {
+		ModelAndView modelAndView = new ModelAndView("page");
+		modelAndView.addObject("title", "All Products");
+		modelAndView.addObject("ifUserClickedViewCategory", true);
 		return modelAndView;
 	}
 	

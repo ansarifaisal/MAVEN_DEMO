@@ -78,7 +78,7 @@
 						<%--End of Mobile Number Field --%>
 
 						<div class="form-group">
-							<input type="submit" name="_eventId_submitRegister"
+							<input type="submit" name="_eventId_registerUser"
 								class="btn btn-success col-md-3" value="Confirm">
 							<input type="submit" name="_eventId_editRegister"
 								class="btn btn-warning col-md-offset-1 col-md-3" value="Edit">
