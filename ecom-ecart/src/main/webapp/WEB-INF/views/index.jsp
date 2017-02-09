@@ -41,7 +41,8 @@
 							<h3>${category.name }</h3>
 							<br>
 							<div class="btn-group">
-								<button class="btn btn-primary">View All</button>
+								<a href="${contextPath}/product/category/show/${category.id}"
+									class="btn btn-primary">View All</a>
 							</div>
 						</div>
 						<div class="col-md-10">
@@ -86,7 +87,8 @@
 																					class="glyphicon glyphicon-pencil"></span></a>
 																			</div>
 																			<div class="col-md-offset-9 ">
-																				<a href="${contextPath}/admin/delete/product/${product.id}"
+																				<a
+																					href="${contextPath}/admin/delete/product/${product.id}"
 																					class="btn btn-default"><span
 																					class="glyphicon glyphicon-trash"></span></a>
 																			</div>

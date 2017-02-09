@@ -2,6 +2,20 @@
 	<div class="panel panel-body">
 		<c:choose>
 			<c:when test="${not empty items }">
+				<c:if test="${!empty successMsg}">
+					<div class="alert-msg">
+						<div class="alert alert-success" role="alert">
+							<strong>${successMsg}</strong>
+						</div>
+					</div>
+				</c:if>
+				<c:if test="${!empty failureMsg}">
+					<div class="alert-msg">
+						<div class="alert alert-danger" role="alert">
+							<strong>${failureMsg}</strong>
+						</div>
+					</div>
+				</c:if>
 				<c:forEach items="${items }" var="item">
 					<table class="table">
 						<tbody>

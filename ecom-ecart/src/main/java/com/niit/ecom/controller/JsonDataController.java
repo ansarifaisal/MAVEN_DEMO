@@ -39,8 +39,8 @@ public class JsonDataController {
 		return categoryDAO.list();
 	}
 	
-	@RequestMapping(value = {"/product/category/show"})
-	public @ResponseBody List<Product> getProductByCategory(@RequestParam(name = "id", required = false) int categoryId){
+	@RequestMapping(value = {"/data/product/category/{id}"})
+	public @ResponseBody List<Product> getProductByCategory(@PathVariable(name = "id", required = false) int categoryId){
 		return productDAO.listByCategory(categoryId);
 	}
 }

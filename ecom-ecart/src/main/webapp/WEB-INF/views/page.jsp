@@ -140,6 +140,11 @@
 		<c:if test="${ifUserClickedViewCategory == true }">
 			<%@include file="productByCategory.jsp"%>
 		</c:if>
+		
+		<%--if user click on Search Product--%>
+		<c:if test="${ifUserClickedSearchProduct == true }">
+			<%@include file="searchProduct.jsp"%>
+		</c:if>
 
 
 	</div>

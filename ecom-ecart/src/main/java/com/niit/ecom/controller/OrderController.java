@@ -2,9 +2,7 @@ package com.niit.ecom.controller;
 
 import java.security.Principal;
 import java.util.List;
-import java.util.Set;
 
-import org.hibernate.type.OrderedSetType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -12,28 +10,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.niit.ecom.dao.AddressDAO;
-import com.niit.ecom.dao.CartDAO;
-import com.niit.ecom.dao.CartItemDAO;
 import com.niit.ecom.dao.OrderDAO;
-import com.niit.ecom.dao.OrderItemDAO;
 import com.niit.ecom.dao.UserDAO;
-import com.niit.ecom.entity.Address;
-import com.niit.ecom.entity.Cart;
-import com.niit.ecom.entity.CartItem;
 import com.niit.ecom.entity.Order;
-import com.niit.ecom.entity.OrderAddress;
-import com.niit.ecom.entity.OrderItem;
 import com.niit.ecom.entity.User;
 
 @Controller
 @RequestMapping(value = { "/user" })
 public class OrderController {
-
-	@Autowired
-	private Cart cart;
-
-	@Autowired
-	private CartDAO cartDAO;
 
 	@Autowired
 	private User user;
@@ -42,38 +26,20 @@ public class OrderController {
 	private UserDAO userDAO;
 
 	@Autowired
-	private CartItem cartItem;
-
-	@Autowired
-	private CartItemDAO cartItemDAO;
-
-	@Autowired
 	private Order order;
 
 	@Autowired
 	private OrderDAO orderDAO;
 
 	@Autowired
-	private OrderItem orderItem;
-
-	@Autowired
-	private OrderItemDAO orderItemDAO;
-
-	@Autowired
-	private Address address;
-
-	@Autowired
 	private AddressDAO addressDAO;
-
-	@Autowired
-	private OrderAddress orderAddress;
 
 	@RequestMapping(value = { "/cart/order" })
 	public ModelAndView orders(Principal principal) {
 		ModelAndView modelAndView = new ModelAndView("page");
 		user = userDAO.getByUserName(principal.getName());
 		List<Order> orders = orderDAO.list(user.getId());
-		
+
 		modelAndView.addObject("orders", orders);
 		modelAndView.addObject("title", "OrderSummary");
 		modelAndView.addObject("ifUserClickedOrderSummary", true);

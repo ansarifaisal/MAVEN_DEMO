@@ -54,7 +54,7 @@ angularModule.controller('ProductListController', [
 						console.log(error);
 					});
 
-			$scope.sortByASC = function(propertyName) {
+				$scope.sortByASC = function(propertyName) {
 				$scope.propertyName = propertyName;
 				
 				$scope.reverse = false;

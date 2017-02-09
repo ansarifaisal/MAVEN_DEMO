@@ -12,16 +12,16 @@
 			<a class="navbar-brand" href="${contextPath}/">E-Cart</a>
 		</div>
 		<div class="collapse navbar-collapse" id="collapse-1">
-			<form class="navbar-form navbar-left">
+			<form class="navbar-form navbar-left" action="${contextPath}/product/searchProduct" method="GET">
 				<div class="form-group">
 					<div class="input-group">
-						<input type="text" class="form-control"
+						<input type="text" name = "keywords" class="form-control"
 							placeholder="Search for products"> <span
 							class="input-group-btn">
-							<button class="btn btn-default" type="button">
+							<button class="btn btn-default" type="submit">
 								<span class="glyphicon glyphicon-search" id="btn-search"
 									aria-hidden="true"></span>
-							</button>
+							</button> 
 						</span>
 					</div>
 				</div>

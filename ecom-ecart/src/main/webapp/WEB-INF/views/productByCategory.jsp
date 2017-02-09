@@ -1,10 +1,10 @@
 <script src="${js}/angular.js" type="text/javascript"></script>
-<script src="${js}/productByCategory.js" type="text/javascript"></script>
+<script src="${js}/categoryController.js" type="text/javascript"></script>
 <%@taglib uri="http://www.springframework.org/security/tags"
 	prefix="sec"%>
 
 <div ng-app="myApp" ng-cloak>
-	<div ng-controller="ProductByCategory">
+	<div ng-controller="ProductByCategory" ng-init="categoryId = ${categoryId}">
 		<nav class="navbar navbar-default">
 			<ul class="nav navbar-nav">
 				<li><a><strong>Sort By:</strong></a></li>
@@ -27,6 +27,7 @@
 				</li>
 			</ul>
 		</nav>
+		<div ng-show="loading">Loading Data Please Wait....</div>
 		<div ng-repeat="product in products | filter:searchText">
 			<div class="thumbnail thumbnail-setting col-md-3 col-sm-3 col-xs-3">
 				<a ng-href="${contextPath}/product/{{product.id}}"><img

@@ -115,7 +115,6 @@ public class CartFlow {
 			orderItem.setItemPrice(cartItem.getItemPrice());
 			orderItem.setProduct(cartItem.getProduct());
 			orderItem.setQuantity(cartItem.getQuantity());
-			orderItem.setOrder(order);
 			orderItem.setTotalPrice(cartItem.getTotalPrice());
 			orderItem.setOrder(order);
 			orderItems.add(orderItem);

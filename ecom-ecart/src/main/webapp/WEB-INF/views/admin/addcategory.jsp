@@ -7,10 +7,10 @@
 			<div class="panel-title">Add Category</div>
 		</div>
 		<div class="panel-body">
-			<c:if test="${!empty msg}">
+			<c:if test="${!empty successMsg}">
 				<div class="alert-msg">
 					<div id="success-alert" class="alert alert-success" role="alert">
-						<strong>${msg}</strong>
+						<strong>${successMsg}</strong>
 					</div>
 				</div>
 			</c:if>
@@ -64,8 +64,7 @@
 								<div class="form-group">
 									<div class="validate col-sm-11">
 										<input type="text" class="form-control"
-											placeholder="Search for products"
-											ng-model="searchText.name">
+											placeholder="Search for products" ng-model="searchText.name">
 									</div>
 								</div>
 							</form>
@@ -79,7 +78,7 @@
 				</thead>
 				<tbody>
 					<tr ng-repeat="category in categories | filter:searchText">
-						<td><a ng-href = "${contextPath}/category/show/{{category.id}}">{{category.name}}</a></td>
+						<td><a ng-href="${contextPath}/category/show/{{category.id}}">{{category.name}}</a></td>
 						<td>{{category.description}}</td>
 						<td><a
 							ng-href="${contextPath}/admin/update/category/{{category.id}}"

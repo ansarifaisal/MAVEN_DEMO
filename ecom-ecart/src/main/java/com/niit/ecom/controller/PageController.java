@@ -21,19 +21,19 @@ public class PageController {
 
 	@Autowired
 	private ProductDAO productDAO;
-	
+
 	@Autowired
 	private CategoryDAO categoryDAO;
-	
+
 	@Autowired
 	private HttpSession httpSession;
-	
+
 	@Autowired
 	private User user;
-	
+
 	@Autowired
 	private UserDAO userDAO;
-	
+
 	/*
 	 * to access index page
 	 */
@@ -44,10 +44,10 @@ public class PageController {
 		modelAndView.addObject("ifUserClickedHome", true);
 		modelAndView.addObject("products", productDAO.list());
 		modelAndView.addObject("categories", categoryDAO.list());
-		if(principal != null){
+		if (principal != null) {
 			user = userDAO.getByUserName(principal.getName());
 			httpSession.setAttribute("firstName", user.getFirstName());
-			httpSession.setAttribute("lastName", user.getLastName());	
+			httpSession.setAttribute("lastName", user.getLastName());
 		}
 		if (login != null) {
 			if (login.equals("success")) {
@@ -98,15 +98,15 @@ public class PageController {
 		modelAndView.addObject("ifUserClickedListProducts", true);
 		return modelAndView;
 	}
-	
-	@RequestMapping(value = { "/product/category" })
-	public ModelAndView productByCategory() {
+
+	@RequestMapping(value = { "/product/category/show/{id}" })
+	public ModelAndView productByCategory(@PathVariable("id") int id) {
 		ModelAndView modelAndView = new ModelAndView("page");
-		modelAndView.addObject("title", "All Products");
+		modelAndView.addObject("title", "Category");
+		modelAndView.addObject("categoryId", id);
 		modelAndView.addObject("ifUserClickedViewCategory", true);
 		return modelAndView;
 	}
-	
 
 	/*
 	 * to access Login Page
@@ -124,7 +124,16 @@ public class PageController {
 		return modelAndView;
 	}
 
+	/*
+	 * Search For Product
+	 */
 	
+	/*
+	 * @RequestMapping(value = "{/product/productSearch}", method =
+	 * RequestMethod.GET) public ModelAndView searchProduct(){ ModelAndView
+	 * modelAndView = new ModelAndView("page"); return modelAndView; }
+	 */
+
 	/*
 	 * This page is for test
 	 */

@@ -1,7 +1,10 @@
 <%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <spring:url value="/resources/images" var="images" />
 <spring:url value="/resources/css" var="css" />
 <spring:url value="/resources/js" var="js" />
+<%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+<c:set var="contextPath" value="${pageContext.request.contextPath}" />
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
@@ -36,10 +39,10 @@
 									required : true,
 									minlength : 2
 								},
-								confirm_password:{
-									required:true,
-									minlength:2,
-									equalTo: "#password"
+								confirm_password : {
+									required : true,
+									minlength : 2,
+									equalTo : "#password"
 								}
 							},
 							messages : {
@@ -47,22 +50,22 @@
 									required : "Please enter your first name",
 									minlength : "Your first name must consist of at least 2 charachters"
 								},
-								lastname:{
+								lastname : {
 									required : "Please enter your last name",
 									minlength : "Your last name must consist of at least 2 charachters"
 								},
-								username:{
+								username : {
 									required : "Please enter your user name",
 									minlength : "Your user name must consist of at least 2 charachters"
 								},
-								password:{
+								password : {
 									required : "Please enter your password",
 									minlength : "Your password must consist of at least 2 charachters"
 								},
-								confirm_password:{
+								confirm_password : {
 									required : "Please enter your user name",
 									minlength : "Your password must consist of at least 2 charachters",
-									equalTo: "Enter password same as above"
+									equalTo : "Enter password same as above"
 								}
 							},
 							errorElement : "em",
@@ -196,5 +199,26 @@
 			</div>
 		</div>
 	</div>
+	<%-- <form class="navbar-form navbar-left"
+		action="${contextPath}/product/searchProduct">
+		<div class="form-group">
+			<div class="input-group">
+				<input type="text" name="keywords" id="keywords"
+					class="form-control" placeholder="Search for products"> <span
+					class="input-group-btn">
+					<button class="btn btn-default" type="submit">
+						<span class="glyphicon glyphicon-search" id="btn-search"
+							aria-hidden="true"></span>
+					</button>
+				</span>
+			</div>
+		</div>
+	</form> --%>
+	
+	<form:form action = "${contextPath}/product/productSearch">
+		<input name = "keywords"/>
+		<input type ="submit" value = "submit">
+	</form:form>
+
 </body>
 </html>
