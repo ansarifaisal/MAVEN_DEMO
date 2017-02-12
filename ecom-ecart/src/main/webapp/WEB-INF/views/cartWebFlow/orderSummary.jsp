@@ -43,7 +43,7 @@
 				</div>
 				<div class="col-md-2 col-sm-2 col-xs-2">
 					<form:form modelAttribute="orderBean">
-						<input type="submit" name="_eventId_addressList"
+						<input type="submit" name="_eventId_changeAddress"
 							class="btn btn-warning" value="Change Address">
 					</form:form>
 				</div>
@@ -78,11 +78,7 @@
 									<div class="col-md-11">
 										${cartItem.product.productName}<br />
 										<div class="text-muted">${cartItem.product.description}</div>
-										<%-- <div class="text-right">
-											<a href="${contextPath}/user/cart/delete/${cartItem.id}"
-												class="btn btn-danger">Remove</a>
-										</div>
-									</div> --%>
+									</div> 
 								</td>
 								<%--item column Ends here --%>
 

@@ -89,6 +89,23 @@ public class AddressController {
 			}
 		}
 	}
+	
+	@RequestMapping(value = { "/address/saveNewAddress" }, method = RequestMethod.POST)
+	public String saveNewAddress(@ModelAttribute Address address, Principal principal) {
+		user = userDAO.getByUserName(principal.getName());
+		String url = null;
+		if (address.getId() == 0) {
+			address.setUser(user);
+			boolean flag = addressDAO.addAddress(address);
+			if (flag == true) {
+				url = "redirect:/addressList";
+			} else {
+				url = "redirect:/user/cart";
+			}
+		}
+		return url;
+	}
+	
 
 	@RequestMapping(value = { "/address/edit/{id}" }, method = RequestMethod.GET)
 	public ModelAndView editAddress(@PathVariable(name = "id", required = false) int id, Principal principal) {

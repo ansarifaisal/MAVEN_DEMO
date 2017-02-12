@@ -89,40 +89,42 @@
 					</div>
 				</form:form>
 			</div>
-			<div class="col-md-12 col-sm-12 col-xs-12">
-				<h6>
-					<strong>Your Saved Address</strong>
-				</h6>
-			</div>
-			<c:forEach items="${addresses}" var="address">
-				<div class=" col-md-5 col-sm-12 col-xs-12">
-					<div class="thumbnail nopadding default-border">
-						<div class="well no-bottom-margin">
-							<div class="caption">
-								<address>
-									<Strong>${address.firstName} ${address.lastName}</Strong><br>
-									${address.lineOne },<br> ${address.lineTwo },<br>${address.landmark},<br>${address.city}
-									- ${address.pincode}<br> ${address.state}<br> <abbr
-										title="Phone">Ph:</abbr> ${address.mobileNumber}
-								</address>
-								<c:choose>
-									<c:when test="${address.defaultAddress == true }">
-										<input type="radio" name="default" class="defaultAddress"
-											id="${address.id}" checked="checked">Default Address
+			<c:if test="${not empty addresses}">
+				<div class="col-md-12 col-sm-12 col-xs-12">
+					<h6>
+						<strong>Your Saved Address</strong>
+					</h6>
+				</div>
+				<c:forEach items="${addresses}" var="address">
+					<div class=" col-md-5 col-sm-12 col-xs-12">
+						<div class="thumbnail nopadding default-border">
+							<div class="well no-bottom-margin">
+								<div class="caption">
+									<address>
+										<Strong>${address.firstName} ${address.lastName}</Strong><br>
+										${address.lineOne },<br> ${address.lineTwo },<br>${address.landmark},<br>${address.city}
+										- ${address.pincode}<br> ${address.state}<br> <abbr
+											title="Phone">Ph:</abbr> ${address.mobileNumber}
+									</address>
+									<c:choose>
+										<c:when test="${address.defaultAddress == true }">
+											<input type="radio" name="default" class="defaultAddress"
+												id="${address.id}" checked="checked">Default Address
 								</c:when>
-									<c:otherwise>
-										<input type="radio" name="default" class="defaultAddress"
-											id="${address.id}">Default Address
+										<c:otherwise>
+											<input type="radio" name="default" class="defaultAddress"
+												id="${address.id}">Default Address
 								</c:otherwise>
-								</c:choose>
-								<br> <a
-									href="${contextPath}/user/address/edit/${address.id}">Edit</a>
-								| <a href="${contextPath}/user/address/delete/${address.id}">Delete</a>
+									</c:choose>
+									<br> <a
+										href="${contextPath}/user/address/edit/${address.id}">Edit</a>
+									| <a href="${contextPath}/user/address/delete/${address.id}">Delete</a>
+								</div>
 							</div>
 						</div>
 					</div>
-				</div>
-			</c:forEach>
+				</c:forEach>
+			</c:if>
 		</div>
 	</div>
 </div>

@@ -1,5 +1,5 @@
 <script src="${js}/angular.js" type="text/javascript"></script>
-<script src="${js}/categoryController.js" type="text/javascript"></script>
+<script src="${js}/categoryListController.js" type="text/javascript"></script>
 
 <div class="col-md-9 col-sm-9 col-xs-12">
 	<div class="panel panel-primary">
@@ -55,7 +55,7 @@
 		</div>
 	</div>
 	<div ng-app="myApp">
-		<div ng-controller="CategoryListController">
+		<div ng-controller="test">
 			<table class="table table-hover" id="no-border">
 				<thead>
 					<tr>
@@ -77,6 +77,8 @@
 					</tr>
 				</thead>
 				<tbody>
+				
+				<div ng-show = "loading">Loading Data Please Wait!</div>
 					<tr ng-repeat="category in categories | filter:searchText">
 						<td><a ng-href="${contextPath}/category/show/{{category.id}}">{{category.name}}</a></td>
 						<td>{{category.description}}</td>

@@ -4,7 +4,8 @@
 	prefix="sec"%>
 
 <div ng-app="myApp" ng-cloak>
-	<div ng-controller="ProductByCategory" ng-init="categoryId = ${categoryId}">
+	<div ng-controller="ProductByCategory"
+		ng-init="categoryId = ${categoryId}">
 		<nav class="navbar navbar-default">
 			<ul class="nav navbar-nav">
 				<li><a><strong>Sort By:</strong></a></li>
@@ -27,11 +28,14 @@
 				</li>
 			</ul>
 		</nav>
-		<div ng-show="loading">Loading Data Please Wait....</div>
+			<div class="preloader" ng-show="loading">
+				<img src="${images}/preloader.gif">
+			</div>
 		<div ng-repeat="product in products | filter:searchText">
 			<div class="thumbnail thumbnail-setting col-md-3 col-sm-3 col-xs-3">
 				<a ng-href="${contextPath}/product/{{product.id}}"><img
-					alt="#image" ng-src="${images}/product/{{product.id}}.png"
+					alt="{{product.productName}}"
+					ng-src="${images}/product/{{product.id}}.png"
 					class="img-resize zoom" /></a>
 				<div class="caption">
 					<p>

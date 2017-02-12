@@ -1,8 +1,7 @@
+
 package com.niit.ecom.controller;
 
 import java.util.List;
-
-import javax.ws.rs.Path;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -34,7 +33,7 @@ public class JsonDataController {
 		return productDAO.list();
 	}
 	
-	@RequestMapping(value = {"/category/all"})
+	@RequestMapping(value = {"/data/category/all"})
 	public @ResponseBody List<Category> getAllCategory(){
 		return categoryDAO.list();
 	}
@@ -42,5 +41,10 @@ public class JsonDataController {
 	@RequestMapping(value = {"/data/product/category/{id}"})
 	public @ResponseBody List<Product> getProductByCategory(@PathVariable(name = "id", required = false) int categoryId){
 		return productDAO.listByCategory(categoryId);
+	}
+	
+	@RequestMapping(value = {"/data/product/searchProduct"})
+	public @ResponseBody List<Product> searchProduct(@RequestParam(name = "keywords", required = false) String keywords){
+		return productDAO.searchProduct(keywords);
 	}
 }

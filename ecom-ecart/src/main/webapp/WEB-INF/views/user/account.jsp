@@ -24,7 +24,6 @@
 		<c:if test = "${ifUserClickedWishList == true }">
 			<%@include file = "wishlist.jsp" %>
 		</c:if>
-		
-		
+				
 	</div>
 </div>

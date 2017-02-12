@@ -1,6 +1,7 @@
 package com.niit.ecom.controller;
 
 import java.security.Principal;
+import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
@@ -8,12 +9,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.niit.ecom.dao.CartItemDAO;
 import com.niit.ecom.dao.CategoryDAO;
 import com.niit.ecom.dao.ProductDAO;
 import com.niit.ecom.dao.UserDAO;
+import com.niit.ecom.entity.CartItem;
 import com.niit.ecom.entity.User;
 
 @Controller
@@ -24,6 +28,9 @@ public class PageController {
 
 	@Autowired
 	private CategoryDAO categoryDAO;
+
+	@Autowired
+	private CartItemDAO cartItemDAO;
 
 	@Autowired
 	private HttpSession httpSession;
@@ -38,19 +45,24 @@ public class PageController {
 	 * to access index page
 	 */
 	@RequestMapping(value = { "/", "home", "index", "default" })
-	public ModelAndView index(@RequestParam(name = "login", required = false) String login, Principal principal) {
+	public ModelAndView index(@RequestParam(name = "status", required = false) String status, Principal principal) {
 		ModelAndView modelAndView = new ModelAndView("page");
 		modelAndView.addObject("title", "Home");
 		modelAndView.addObject("ifUserClickedHome", true);
 		modelAndView.addObject("products", productDAO.list());
 		modelAndView.addObject("categories", categoryDAO.list());
 		if (principal != null) {
+
 			user = userDAO.getByUserName(principal.getName());
 			httpSession.setAttribute("firstName", user.getFirstName());
 			httpSession.setAttribute("lastName", user.getLastName());
+			List<CartItem> cartItems = cartItemDAO.list(user.getCart().getCartId());
+			if (cartItems != null) {
+				httpSession.setAttribute("noOfCartItem", cartItems.size());
+			}
 		}
-		if (login != null) {
-			if (login.equals("success")) {
+		if (status != null) {
+			if (status.equals("success")) {
 				modelAndView.addObject("msg", "You Have Successfully Logged In");
 			}
 		}
@@ -112,12 +124,12 @@ public class PageController {
 	 * to access Login Page
 	 */
 	@RequestMapping(value = { "/login" })
-	public ModelAndView login(@RequestParam(name = "login", required = false) String login) {
+	public ModelAndView login(@RequestParam(name = "status", required = false) String status) {
 		ModelAndView modelAndView = new ModelAndView("page");
 		modelAndView.addObject("title", "Login");
 		modelAndView.addObject("ifUserClickedLogin", true);
-		if (login != null) {
-			if (login.equals("error")) {
+		if (status != null) {
+			if (status.equals("error")) {
 				modelAndView.addObject("msg", "Oops! Invalid Credentials");
 			}
 		}
@@ -127,12 +139,16 @@ public class PageController {
 	/*
 	 * Search For Product
 	 */
-	
-	/*
-	 * @RequestMapping(value = "{/product/productSearch}", method =
-	 * RequestMethod.GET) public ModelAndView searchProduct(){ ModelAndView
-	 * modelAndView = new ModelAndView("page"); return modelAndView; }
-	 */
+
+	@RequestMapping(value = { "/product/searchProduct" }, method = RequestMethod.GET)
+	public ModelAndView searchProduct(@RequestParam(value = "keywords", required = false) String keywords) {
+		ModelAndView modelAndView = new ModelAndView("page");
+		modelAndView.addObject("title", "Search Product");
+		modelAndView.addObject("keywords", keywords);
+		modelAndView.addObject("ifUserClickedProductSearch", true);
+
+		return modelAndView;
+	}
 
 	/*
 	 * This page is for test

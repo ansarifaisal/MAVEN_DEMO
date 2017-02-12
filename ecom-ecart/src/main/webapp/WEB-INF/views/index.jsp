@@ -56,12 +56,12 @@
 													<div class="item active">
 														<div class="col-md-3 col-sm-3 col-xs-12 thumbnail-setting">
 															<div class="thumbnail">
-																<a href=""><img alt="${product.productName}"
+																<a href="${contextPath}/product/${product.id}"><img alt="${product.productName}"
 																	src="${images}/product/${product.id}.png"
 																	class="img-resize zoom" /></a>
 																<div class="caption">
 																	<p class="title">
-																		<a href="${contextPath}/product/${product.id}"">${product.productName }</a>
+																		<a href="${contextPath}/product/${product.id}">${product.productName }</a>
 																	</p>
 																	<h6 class="text-muted price">Now at
 																		&#8377;${product.price}</h6>

@@ -35,8 +35,8 @@
 		<transition on="failure" to="start" />
 	</action-state>
 	
-	<end-state id="welcome" view="/index" />
-	<end-state id="toHome" view="externalRedirect:contextRelative:/" />
+	<end-state id="welcome" view="/login" />
+	<end-state id="toHome" view="externalRedirect:contextRelative:/login" />
 	<end-state id="toException" view="externalRedirect:contextRelative:403" />
 
 	<global-transitions>

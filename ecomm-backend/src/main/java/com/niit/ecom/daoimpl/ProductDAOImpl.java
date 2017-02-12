@@ -84,4 +84,13 @@ public class ProductDAOImpl implements ProductDAO {
 		return query.list();
 	}
 
+	@Override
+	@Transactional
+	public List<Product> searchProduct(String keywords) {
+		String hql = "FROM PRODUCTS WHERE PRODUCT_NAME LIKE :keywords";
+		Query query = sessionFactory.getCurrentSession().createQuery(hql);
+		query.setParameter("keywords", keywords + "%");
+		return query.list();
+	}
+
 }

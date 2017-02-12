@@ -26,11 +26,12 @@
 <link href="${css}/bootstrap-paper.css" rel="stylesheet" type="text/css">
 <link href="${css}/font-awesome.css" rel="stylesheet" type="text/css">
 <link href="${css}/app.css" rel="stylesheet" type="text/css">
+
 </head>
 <body>
-	<div class="container">
-		<%@include file="./shared/header.jsp"%>
 
+	<%@include file="./shared/header.jsp"%>
+	<div class="container">
 		<%-- if user clicks on home --%>
 		<c:if test="${ifUserClickedHome==true}">
 			<%@include file="index.jsp"%>
@@ -140,14 +141,13 @@
 		<c:if test="${ifUserClickedViewCategory == true }">
 			<%@include file="productByCategory.jsp"%>
 		</c:if>
-		
+
 		<%--if user click on Search Product--%>
-		<c:if test="${ifUserClickedSearchProduct == true }">
+		<c:if test="${ifUserClickedProductSearch == true }">
 			<%@include file="searchProduct.jsp"%>
 		</c:if>
-
-
 	</div>
+	
 	<div class="container-fluid">
 		<%@include file="./shared/footer.jsp"%>
 	</div>

@@ -1,34 +1,3 @@
-///*
-// * All Angular Code Will be here
-// */
-//
-//var productData = [
-//                   	{
-//                   		id:1,
-//                   		name:'apple iphone',
-//                   		description:'Phone for premium user'
-//                   		
-//                   	},
-//                   	{
-//                   		id:2,
-//                   		name:'Samsung S7',
-//                   		description:'Phone for premium user'
-//                   	},
-//                   	{
-//                   		id:3,
-//                   		name:'Micromax Canvas',
-//                   		description:'Phone for Average User'
-//                   	}
-//                   
-//                   ];
-//
-//var app = angular.module("productApp", []);
-//app.controller("ProductListController", function(){	
-//	var me = this;
-//	me.products = productData;
-//});
-//
-
 var angularModule = angular.module("myApp", []);
 
 angularModule.controller('ProductListController', [
@@ -37,6 +6,7 @@ angularModule.controller('ProductListController', [
 		'orderByFilter',
 		function($scope, $http, orderBy) {
 
+			$scope.$emit('LOAD');
 			// set the property for orderBy
 			$scope.propertyName = '';
 			$scope.reverse = '';
@@ -44,9 +14,9 @@ angularModule.controller('ProductListController', [
 			$http.get('/ecom-ecart/product/all').then(
 					// success callback
 					function(response) {
-
 						$scope.products = orderBy(response.data,
 								$scope.propertyName, $scope.reverse);
+						$scope.$emit('UNLOAD');
 
 					},
 					// error callback
@@ -54,15 +24,15 @@ angularModule.controller('ProductListController', [
 						console.log(error);
 					});
 
-				$scope.sortByASC = function(propertyName) {
+			$scope.sortByASC = function(propertyName) {
 				$scope.propertyName = propertyName;
-				
+
 				$scope.reverse = false;
-				
+
 				$scope.products = orderBy($scope.products, $scope.propertyName,
 						$scope.reverse);
 			}
-			
+
 			$scope.sortByDESC = function(propertyName) {
 				$scope.propertyName = propertyName;
 
@@ -73,3 +43,15 @@ angularModule.controller('ProductListController', [
 			}
 
 		} ]);
+
+angularModule.run(function($rootScope) {
+
+	$rootScope.$on('LOAD', function() {
+		$rootScope.loading = true;
+	});
+
+	$rootScope.$on('UNLOAD', function() {
+		$rootScope.loading = false;
+	});
+
+});

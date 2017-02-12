@@ -80,22 +80,25 @@ public class CartController {
 		modelAndView.addObject("cart", user.getCart());
 		modelAndView.addObject("title", "Cart");
 		modelAndView.addObject("ifUserClickedCart", true);
-		if (operation.equals("add") && status.equals("success")) {
-			modelAndView.addObject("successMsg", "Product Added Successfully!");
-		} else if (operation.equals("add") && status.equals("failure")) {
-			modelAndView.addObject("failureMsg", "Fail To Add Product");
-		} else if (operation.equals("delete") && status.equals("success")) {
-			modelAndView.addObject("successMsg", "Product Deleted Successfully!");
-		} else if (operation.equals("delete") && status.equals("failure")) {
-			modelAndView.addObject("failureMsg", "Fail To Deleted Product");
-		} else if (operation.equals("update") && status.equals("success")) {
-			modelAndView.addObject("successMsg", "Product Updated Successfully!");
-		} else if (operation.equals("update") && status.equals("failure")) {
-			modelAndView.addObject("failureMsg", "Fail To Updated Product");
-		} else if (operation.equals("move") && status.equals("success")) {
-			modelAndView.addObject("successMsg", "Product Moved Successfully!");
-		} else if (operation.equals("move") && status.equals("failure")) {
-			modelAndView.addObject("failureMsg", "Fail To Moved Product");
+		if (operation != null) {
+			if (operation.equals("add") && status.equals("success")) {
+				httpSession.setAttribute("noOfCartItem", cartItems.size());
+				modelAndView.addObject("successMsg", "Product Added Successfully!");
+			} else if (operation.equals("add") && status.equals("failure")) {
+				modelAndView.addObject("failureMsg", "Fail To Add Product");
+			} else if (operation.equals("delete") && status.equals("success")) {
+				modelAndView.addObject("successMsg", "Product Deleted Successfully!");
+			} else if (operation.equals("delete") && status.equals("failure")) {
+				modelAndView.addObject("failureMsg", "Fail To Deleted Product");
+			} else if (operation.equals("update") && status.equals("success")) {
+				modelAndView.addObject("successMsg", "Product Updated Successfully!");
+			} else if (operation.equals("update") && status.equals("failure")) {
+				modelAndView.addObject("failureMsg", "Fail To Updated Product");
+			} else if (operation.equals("move") && status.equals("success")) {
+				modelAndView.addObject("successMsg", "Product Moved Successfully!");
+			} else if (operation.equals("move") && status.equals("failure")) {
+				modelAndView.addObject("failureMsg", "Fail To Moved Product");
+			}
 		}
 		return modelAndView;
 	}
@@ -204,12 +207,14 @@ public class CartController {
 		modelAndView.addObject("title", "WishList");
 		modelAndView.addObject("items", cartItemDAO.wishList(cart.getCartId()));
 		modelAndView.addObject("ifUserClickedWishList", true);
-		if (operation.equals("add") && status.equals("success")) {
-			modelAndView.addObject("successMsg", "Product Added In WhishList Successfully!");
-		} else if (operation.equals("add") && status.equals("failure")) {
-			modelAndView.addObject("failureMsg", "Fail To Add Product In WhishList");
-		} else if (operation.equals("move") && status.equals("success")) {
-			modelAndView.addObject("successMsg", "Product Moved Successfully!");
+		if (operation != null) {
+			if (operation.equals("add") && status.equals("success")) {
+				modelAndView.addObject("successMsg", "Product Added In WhishList Successfully!");
+			} else if (operation.equals("add") && status.equals("failure")) {
+				modelAndView.addObject("failureMsg", "Fail To Add Product In WhishList");
+			} else if (operation.equals("move") && status.equals("success")) {
+				modelAndView.addObject("successMsg", "Product Moved Successfully!");
+			}
 		}
 		return modelAndView;
 	}

@@ -33,16 +33,18 @@ public class CategoryController {
 	@RequestMapping(value = { "/addcategory" })
 	public ModelAndView getAddCategoryPage(@RequestParam(name = "op", required = false) String operation,
 			@RequestParam(name = "status", required = false) String status,
-			@RequestParam(name = "id", required = false) int id) {
+			@RequestParam(name = "id", required = false) String id) {
 		ModelAndView modelAndView = new ModelAndView("page");
 		modelAndView.addObject("category", new Category());
 		modelAndView.addObject("title", "Add Category");
 		modelAndView.addObject("categories", categoryDAO.list());
 		modelAndView.addObject("ifUserClickedAddCategory", true);
-		if (operation.equals("add") && status.equals("success")) {
-			modelAndView.addObject("successMsg", "Category Added Successfully!");
-		} else if (operation.equals("delete") && status.equals("success") && id > 0) {
-			modelAndView.addObject("successMsg", "Category Deleted Successfully!");
+		if (operation != null) {
+			if (operation.equals("add") && status.equals("success")) {
+				modelAndView.addObject("successMsg", "Category Added Successfully!");
+			} else if (operation.equals("delete") && status.equals("success") && id != "0") {
+				modelAndView.addObject("successMsg", "Category Deleted Successfully!");
+			}
 		}
 		return modelAndView;
 	}

@@ -7,7 +7,6 @@ angularModule.controller('ProductByCategory', [
 		function($scope, $http, orderBy) {
 			$scope.$watch('categoryId', function() {
 				$scope.$emit('LOAD');
-
 				$scope.propertyName = '';
 				$scope.reverse = '';
 

@@ -29,6 +29,7 @@
 
 	<view-state id="toOrderSummary" view="cartWebFlow/orderSummary"
 		model="flowScope.orderBean">
+		<transition on="changeAddress" to="start" />
 		<transition on="payment" to="toPaymentMode" />
 	</view-state>
 	<view-state id="toPaymentMode" view="cartWebFlow/paymentMode"
