@@ -32,13 +32,13 @@
 					</div>
 				</div>
 				<!-- End of form-group -->
-
+<!-- 
 				<div class="form-group col-md-offset-1">
 					<div class="checkbox">
 						<input type="checkbox">Remember Password
 					</div>
 				</div>
-
+ -->
 				<div class="form-group">
 					<button type="submit" class="btn btn-success col-md-3">
 						Log In <span class="glyphicon glyphicon-log-in"></span>

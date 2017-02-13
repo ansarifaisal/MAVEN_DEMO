@@ -1,5 +1,7 @@
 <%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@taglib uri="http://www.springframework.org/security/tags"
+	prefix="sec"%>
 <spring:url value="/resources/images" var="images" />
 <spring:url value="/resources/css" var="css" />
 <spring:url value="/resources/js" var="js" />
@@ -15,210 +17,151 @@
 <link href="${css}/app.css" rel="stylesheet" type="text/css">
 <link rel="stylesheet" href="${css}/font-awesome.min.css"
 	type="text/css">
+
+<script type="text/javascript">
+	window.hoverMenu = '${title}';
+</script>
 <script type="text/javascript" src="${js}/jquery.js"></script>
 <script type="text/javascript" src="${js}/bootstrap.js"></script>
 <script type="text/javascript" src="${js}/jquery.validate.js"></script>
-
-<script type="text/javascript">
-	$(function() {
-		$('[data-toggle="tooltip"]').tooltip();
-		$('#signupForm').tooltip();
-		$("#signupForm")
-				.validate(
-						{
-							rules : {
-								firstname : {
-									required : true,
-									minlength : 2
-								},
-								lastname : {
-									required : true,
-									minlength : 2
-								},
-								username : {
-									required : true,
-									minlength : 2
-								},
-								confirm_password : {
-									required : true,
-									minlength : 2,
-									equalTo : "#password"
-								}
-							},
-							messages : {
-								firstname : {
-									required : "Please enter your first name",
-									minlength : "Your first name must consist of at least 2 charachters"
-								},
-								lastname : {
-									required : "Please enter your last name",
-									minlength : "Your last name must consist of at least 2 charachters"
-								},
-								username : {
-									required : "Please enter your user name",
-									minlength : "Your user name must consist of at least 2 charachters"
-								},
-								password : {
-									required : "Please enter your password",
-									minlength : "Your password must consist of at least 2 charachters"
-								},
-								confirm_password : {
-									required : "Please enter your user name",
-									minlength : "Your password must consist of at least 2 charachters",
-									equalTo : "Enter password same as above"
-								}
-							},
-							errorElement : "em",
-							errorPlacement : function(error, element) {
-								// Add the `help-block` class to the error element
-								error.addClass("help-block");
-
-								// Add `has-feedback` class to the parent div.form-group
-								// in order to add icons to inputs
-								element.parents(".col-sm-5").addClass(
-										"has-feedback");
-								if (element.prop("type") === "checkbox") {
-									error.insertAfter(element.parent("label"));
-								} else {
-									error.insertAfter(element);
-								}
-
-								// Add the span element, if doesn't exists, and apply the icon classes to it.
-								if (!element.next("span")[0]) {
-									$(
-											"<span class='glyphicon glyphicon-remove form-control-feedback'></span>")
-											.insertAfter(element);
-								}
-							},
-							success : function(label, element) {
-								// Add the span element, if doesn't exists, and apply the icon classes to it.
-								if (!$(element).next("span")[0]) {
-									$(
-											"<span class='glyphicon glyphicon-ok form-control-feedback'></span>")
-											.insertAfter($(element));
-								}
-							},
-							highlight : function(element, errorClass,
-									validClass) {
-								$(element).parents(".col-sm-5").addClass(
-										"has-error").removeClass("has-success");
-								$(element).next("span").addClass(
-										"glyphicon-remove").removeClass(
-										"glyphicon-ok");
-							},
-							unhighlight : function(element, errorClass,
-									validClass) {
-								$(element).parents(".col-sm-5").addClass(
-										"has-success").removeClass("has-error");
-								$(element).next("span")
-										.addClass("glyphicon-ok").removeClass(
-												"glyphicon-remove");
-							}
-						});
-	});
-</script>
+<script type="text/javascript" src="${js}/myScript.js"></script>
 </head>
-
 <body>
-	<div class="container">
-		<div class="panel panel-default">
-			<div class="panel-heading">
-				<h3 class="panel-title">Simple Form</h3>
+	<nav class="navbar navbar-inverse navbar-fixed-top">
+		<div class="container">
+			<div class="navbar-header">
+				<button class="navbar-toggle collapsed " data-toggle="collapse"
+					data-target="#collapse-1" aria-expanded="false">
+					<span class="sr-only">Toggle navigation</span> <span
+						class="icon-bar"></span> <span class="icon-bar"></span> <span
+						class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="${contextPath}/">E-Cart</a>
 			</div>
-			<div class="panel-body">
-				<form data-toggle="validator" id="signupForm" method="post"
-					class="form-horizontal" action="">
-					<div class="form-group has-feedback">
-						<label class="col-sm-4 control-label" for="firstname">First
-							name</label>
-						<div class="col-sm-5">
-							<input type="text" class="form-control" id="firstname"
-								name="firstname" placeholder="First name" />
-						</div>
-					</div>
-
+			<div class="collapse navbar-collapse" id="collapse-1">
+				<form class="navbar-form navbar-left searchForm"
+					action="${contextPath}/product/searchProduct" method="GET">
 					<div class="form-group">
-						<label class="col-sm-4 control-label" for="lastname">Last
-							name</label>
-						<div class="col-sm-5">
-							<input type="text" class="form-control" id="lastname"
-								name="lastname" placeholder="Last name" />
-						</div>
-					</div>
-
-					<div class="form-group">
-						<label class="col-sm-4 control-label" for="username">Username</label>
-						<div class="col-sm-5">
-							<input type="text" class="form-control" id="username"
-								name="username" placeholder="Username" />
-						</div>
-					</div>
-
-					<div class="form-group">
-						<label class="col-sm-4 control-label" for="email">Email</label>
-						<div class="col-sm-5">
-							<input type="text" class="form-control" id="email" name="email"
-								placeholder="Email" />
-						</div>
-					</div>
-
-					<div class="form-group">
-						<label class="col-sm-4 control-label" for="password">Password</label>
-						<div class="col-sm-5">
-							<input type="password" class="form-control" id="password"
-								name="password" placeholder="Password" />
-						</div>
-					</div>
-
-					<div class="form-group">
-						<label class="col-sm-4 control-label" for="confirm_password">Confirm
-							password</label>
-						<div class="col-sm-5">
-							<input type="password" class="form-control" id="confirm_password"
-								name="confirm_password" placeholder="Confirm password" />
-						</div>
-					</div>
-
-					<div class="form-group">
-						<div class="col-sm-5 col-sm-offset-4">
-							<div class="checkbox">
-								<label> <input type="checkbox" id="agree" name="agree"
-									value="agree" />Please agree to our policy
-								</label>
-							</div>
-						</div>
-					</div>
-
-					<div class="form-group">
-						<div class="col-sm-9 col-sm-offset-4">
-							<button type="submit" class="btn btn-primary" name="signup"
-								value="Sign up">Sign up</button>
+						<div class="input-group validate">
+							<input type="text" name="keywords" id="keywords"
+								class="form-control" placeholder="Search for products">
+							<span class="input-group-btn">
+								<button class="btn btn-default" type="submit">
+									<span class="glyphicon glyphicon-search" id="btn-search"
+										aria-hidden="true"></span>
+								</button>
+							</span>
 						</div>
 					</div>
 				</form>
-			</div>
-		</div>
-	</div>
-	<%-- <form class="navbar-form navbar-left"
-		action="${contextPath}/product/searchProduct">
-		<div class="form-group">
-			<div class="input-group">
-				<input type="text" name="keywords" id="keywords"
-					class="form-control" placeholder="Search for products"> <span
-					class="input-group-btn">
-					<button class="btn btn-default" type="submit">
-						<span class="glyphicon glyphicon-search" id="btn-search"
-							aria-hidden="true"></span>
-					</button>
-				</span>
-			</div>
-		</div>
-	</form> --%>
-	
-	<form:form action = "${contextPath}/product/productSearch">
-		<input name = "keywords"/>
-		<input type ="submit" value = "submit">
-	</form:form>
+				<sec:authorize access="hasAuthority('USER')">
+					<ul class="nav navbar-nav">
+						<li><a href="${contextPath}/user/cart"><span
+								class="glyphicon glyphicon-shopping-cart"></span> Cart <span
+								class="badge">${noOfCartItem}</span></a></li>
+					</ul>
+				</sec:authorize>
+				<div class="auto-hide">
+					<ul class="nav navbar-nav ">
+						<li class=""><a>Category <span
+								class="glyphicon glyphicon-resize-vertical"></span>
+						</a></li>
+					</ul>
+				</div>
+				<ul class="nav navbar-nav navbar-right">
+					<li id="allProduct"><a href="${contextPath}/product/show/all">All
+							Products</a></li>
+					<li id="about"><a href="${contextPath}/about">About Us</a></li>
+					<li id="contact"><a href="${contextPath}/contact">Contact
+							Us</a></li>
 
+					<%-- Display Controls to all the user--%>
+					<sec:authorize access="isAnonymous()">
+						<li id="login"><a href="${contextPath}/login">Login</a></li>
+						<li id="register"><a href="${contextPath}/register">Sign
+								Up</a></li>
+					</sec:authorize>
+
+					<%-- Display Controls To Admin --%>
+					<sec:authorize access="hasAuthority('ADMIN')">
+						<li class="dropdown"><a href="#admin" class="dropdown-toggle"
+							data-toggle="dropdown" role="button" aria-haspopup="true"
+							aria-expanded="false">${firstName} ${lastName}<span
+								class="caret"></span></a>
+							<ul class="dropdown-menu">
+								<!-- <li><a href="#allproducts">All Products</a></li>
+							<li><a href="#allsuppliers">All Sellers</a></li> 
+							<li class="divider" role="separator"></li> -->
+								<li><a href="${contextPath}/admin/addproduct">Add
+										Product</a></li>
+								<li><a href="${contextPath}/seller/addseller">Add
+										Seller</a></li>
+								<li><a href="${contextPath}/admin/addcategory">Add
+										Category</a></li>
+								<li class="divider" role="separator"></li>
+								<li><a href="${contextPath}/logout">Logout</a>
+							</ul></li>
+					</sec:authorize>
+
+					<%--Display Controls To User --%>
+					<sec:authorize access="hasAuthority('USER')">
+						<li class="dropdown"><a href="#userPanel"
+							class="dropdown-toggle" data-toggle="dropdown" role="button"
+							aria-haspopup="true" aria-expanded="false">${firstName}
+								${lastName}<span class="caret"></span>
+						</a>
+							<ul class="dropdown-menu">
+								<li><a href="${contextPath }/user/personalinformation">Account</a></li>
+								<li><a href="${contextPath}/user/changepassword">Change
+										Password</a></li>
+								<li><a href="${contextPath}/user/addresses">Addresses</a></li>
+								<li><a href="${contextPath}/user/wishlist/show">Wish
+										List</a></li>
+								<li><a href="${contextPath}/user/cart/order">Orders</a></li>
+								<li class="divider" role="separator"></li>
+								<li><a href="${contextPath}/logout">Logout</a></li>
+							</ul></li>
+					</sec:authorize>
+				</ul>
+			</div>
+		</div>
+	</nav>
+
+	<div class="showNavBar" style="display: none;">
+		<nav class="navbar navbar-inverse">
+			<div class="navbar-header">
+				<button class="navbar-toggle collapsed " data-toggle="collapse"
+					data-target="#collapse-2" aria-expanded="false">
+					<span class="sr-only">Toggle navigation</span> <span
+						class="icon-bar"></span> <span class="icon-bar"></span> <span
+						class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand">Filter:</a>
+			</div>
+
+			<div class="collapse navbar-collapse" id="collapse-2">
+				<ul class="nav navbar-nav" id="">
+					<li id="sortPriceASC" class="sort"><a href="#"
+						ng-click="sortByASC('price')">Price -- Low to High</a></li>
+					<li id="sortPriceDESC" class="sort"><a href="#"
+						ng-click="sortByDESC('price')">Price -- High to Low</a></li>
+					<li id="sortName"><a href="#"
+						ng-click="sortByASC('productName')">Name</a></li>
+					<li id="sortId"><a href="#" ng-click="sortByDESC('id')">Newest
+							First</a></li>
+					<li>
+						<form class="navbar-form navbar-right">
+							<div class="form-group">
+								<input type="text" class="form-control"
+									placeholder="Search For Products"
+									ng-model="searchText.productName">
+							</div>
+						</form>
+					</li>
+				</ul>
+			</div>
+		</nav>
+	</div>
+	<div class="test">Hello</div>
 </body>
 </html>

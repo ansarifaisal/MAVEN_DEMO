@@ -53,7 +53,8 @@ public class OrderController {
 		ModelAndView modelAndView = new ModelAndView("page");
 		modelAndView.addObject("title", "Invoice");
 		modelAndView.addObject("order", order);
-		modelAndView.addObject("address", addressDAO.get(user.getId()));
+		modelAndView.addObject("orderItems", order.getOrderItems());
+		modelAndView.addObject("address",order.getOrderAddress());
 		modelAndView.addObject("ifUserClickedInvoice", true);
 		return modelAndView;
 	}

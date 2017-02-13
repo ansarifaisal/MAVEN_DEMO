@@ -146,10 +146,15 @@
 		<c:if test="${ifUserClickedProductSearch == true }">
 			<%@include file="searchProduct.jsp"%>
 		</c:if>
+
+		<%--if user click on Search Product--%>
+		<c:if test="${ifUserClickedConfirmRegistration == true }">
+			<%@include file="confirmRegistration.jsp"%>
+		</c:if>
 	</div>
+
 	
-	<div class="container-fluid">
 		<%@include file="./shared/footer.jsp"%>
-	</div>
+	
 </body>
 </html>

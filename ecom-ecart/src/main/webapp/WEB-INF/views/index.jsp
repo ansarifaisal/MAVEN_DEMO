@@ -54,7 +54,7 @@
 											<c:forEach items="${products }" var="product">
 												<c:if test="${count < 4 }">
 													<div class="item active">
-														<div class="col-md-3 col-sm-3 col-xs-12 thumbnail-setting">
+														<div class="col-md-3 col-sm-6 col-xs-12 thumbnail-setting">
 															<div class="thumbnail">
 																<a href="${contextPath}/product/${product.id}"><img alt="${product.productName}"
 																	src="${images}/product/${product.id}.png"
@@ -67,13 +67,13 @@
 																		&#8377;${product.price}</h6>
 																	<div class="row nopadding nomargin">
 																		<sec:authorize access="hasAuthority('USER')">
-																			<div class="text-left col-md-6 nopadding nomargin">
+																			<div class="text-left col-md-6 col-sm-6 col-xs-6 nopadding nomargin">
 																				<a
 																					href="${contextPath}/user/wishlist/add/${product.id}"
 																					class="btn btn-default"><span
 																					class="glyphicon glyphicon-heart"></span></a>
 																			</div>
-																			<div class="col-md-offset-9 ">
+																			<div class="text-right ">
 																				<a href="${contextPath}/user/cart/add/${product.id}"
 																					class="btn btn-default"><span
 																					class="glyphicon glyphicon-shopping-cart"></span></a>

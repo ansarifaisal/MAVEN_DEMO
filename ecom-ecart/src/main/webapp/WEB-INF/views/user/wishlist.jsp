@@ -24,7 +24,7 @@
 									<div class="col-md-2" style="padding: 0px;">
 										<img alt="${item.product.productName}"
 											src="${images}/product/${item.product.id}.png"
-											style="height: 150px; width: 100px;">
+											style="height: 150px; width: 75px;">
 									</div>
 								</td>
 

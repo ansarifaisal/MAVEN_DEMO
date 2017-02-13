@@ -19,7 +19,7 @@
 					</div>
 				</c:if>
 
-				<table class="table">
+				<table class="table row">
 					<thead>
 						<tr>
 							<td>ITEM</td>
@@ -33,12 +33,12 @@
 						<c:forEach items="${cartItems}" var="cartItem">
 							<tr>
 								<%--item column --%>
-								<td class="col-md-7">
-									<div class="col-md-1 nopadding">
+								<td class="col-md-7 col-sm-5 col-xs-12">
+									<div class="col-md-1 col-sm-1 col-xs-1 nopadding">
 										<img src="${images}/product/${cartItem.product.id}.png"
-											style="height: 100px; width: 75px;">
+											style="height: 100px; width: 75px; padding-right:20px;">
 									</div>
-									<div class="col-md-11">
+									<div class="col-md-8 col-sm-8 col-xs-8">
 										${cartItem.product.productName}<br />
 										<div class="text-muted">${cartItem.product.description}</div>
 										<div class="text-right">

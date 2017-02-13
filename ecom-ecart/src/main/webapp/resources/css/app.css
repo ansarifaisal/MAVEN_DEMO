@@ -3,8 +3,8 @@ body {
 	padding-top: 75px;
 }
 
-body > .container {
-	padding-bottom :50px; 
+body>.container {
+	padding-bottom: 50px;
 }
 
 /* To apply no padding on element */
@@ -34,10 +34,15 @@ body > .container {
 
 /* Styling footer*/
 .footer {
-	font-size: 0.75em;
+	background: #2196f3;
 	width: 100%;
 	bottom: 0px;
+	color : white;
 	position: fixed;
+}
+
+.footer p{
+	font-size : 16px;
 }
 
 /* Styling Search Button */
@@ -216,12 +221,12 @@ textarea {
 }
 
 #map {
-    width: 100%;
-    height: 400px;
+	width: 100%;
+	height: 400px;
 }
 
-.preloader{
-	background-position : center;
+.preloader {
+	background-position: center;
 	top: 50%;
 	left: 50%;
 	position: fixed;

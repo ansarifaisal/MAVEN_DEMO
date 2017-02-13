@@ -47,7 +47,6 @@ $(document)
 						var elm = "#btn_" + $(this).attr('id');
 						$(elm).css('display', 'inline');
 					});
-					
 
 					$('.defaultAddress')
 							.on(
@@ -58,22 +57,11 @@ $(document)
 												+ elm;
 									});
 
-					/*var check = $('.cAddress').prop('checked');
-					console.log(check);
-					console.log($(check).val());
-					if ($('.cAddress').prop('checked') === true) {
-						debugger;
-						var defaultAddress = $(this).val();
-						console.log(defaultAddress);
-						$('.choose').val(defaultAddress);
-					}*/
-
-					
-					  $('.cAddress').on('change', function(){ 
-						  var chooseAddress = $(this).val();
-						  console.log(chooseAddress);
-					  $('.choose').val(chooseAddress); });
-					 
+					$('.cAddress').on('change', function() {
+						var chooseAddress = $(this).val();
+						console.log(chooseAddress);
+						$('.choose').val(chooseAddress);
+					});
 
 					/*
 					 * Sort nav
@@ -151,7 +139,7 @@ $(document)
 						if (element.prop("type") === "select") {
 							error.insertAfter(element.prop(".gender"));
 						} else if (element.prop("type") === "checkbox") {
-							error.insertAfter(element.parent(".terms"));
+							error.insertAfter(element.parent("#terms"));
 						} else {
 							error.insertAfter(element);
 						}
@@ -665,8 +653,55 @@ $(document)
 										}
 									});
 
+					/*
+					 * Method to Validate Search Form
+					 */
+					
+
+					$('.searchForm')
+							.validate(
+									{
+										rules : {
+											keywords : {
+												required : true,
+												minlength : 2
+											}
+										},
+										messages : {
+											required : "Field Cannot Be Blanked",
+											minlength : "Must Contain Alteast 2 Charachter"
+										},
+										errorElement : "em",
+										errorPlacement : function(error,
+												element) {
+											errorPlacement(error, element);
+										},
+										success : function(label, element) {
+											success(label, element);
+
+										},
+										highlight : function(element,
+												errorClass, validClass) {
+											highlight(element, errorClass,
+													validClass);
+										},
+										unhighlight : function(element,
+												errorClass, validClass) {
+											unhighlight(element, errorClass,
+													validClass);
+										}
+									});
+
 					$(".alert-msg").fadeTo(2000, 500).slideUp('500',
 							function() {
 								$(".alert-msg").slideUp(500);
 							});
+					
+					$('.auto-hide').mouseover(function(){
+						$('.showNavBar').slideDown('500');
+					});
+					$('.showNavBar').mouseleave(function(){
+						$('.showNavBar').slideUp('1000');
+					});
+					
 				});

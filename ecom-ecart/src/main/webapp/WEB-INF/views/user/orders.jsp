@@ -4,7 +4,9 @@
 			<c:forEach items="${orders}" var="order">
 				<div class="panel">
 					<div class="panel-primary">
-						<div class="panel-heading">${order.id }</div>
+						<div class="panel-heading">
+							<a href="${contextPath}/user/cart/order/invoice/${order.id}" class="btn btn-default">View Details</a>
+						</div>
 					</div>
 					<div class="panel-body">
 						<table class="table">

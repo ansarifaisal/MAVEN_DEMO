@@ -95,9 +95,7 @@ CREATE TABLE CART_ITEMS(
 	item_total DECIMAL(8,2) NOT NULL,
 	wishlist boolean NOT NULL, 
 	CONSTRAINT fk_item_cart_id FOREIGN KEY(cart_id)
-	REFERENCES CART(cart_id),
-	CONSTRAINT fk_item_product_id FOREIGN KEY(product_id)
-	REFERENCES PRODUCTS(product_id)
+	REFERENCES CART(cart_id)
 );
 
 
@@ -124,8 +122,6 @@ CREATE TABLE ORDER_ITEMS(
 	item_total DECIMAL(8,2) NOT NULL,
 	CONSTRAINT fk_item_order_id FOREIGN KEY(order_id)
 	REFERENCES orders(order_id),
-	CONSTRAINT fk_order_product_id FOREIGN KEY(product_id)
-	REFERENCES PRODUCTS(product_id)
 );
 
 --ORDER_ADDRESS

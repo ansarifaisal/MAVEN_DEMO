@@ -31,12 +31,12 @@
 	
 	<action-state id="toRegisterUser">
 		<evaluate expression="registerFlow.addUser(user)"></evaluate>
-		<transition on="success" to="toHome" />
+		<transition on="success" to="toConfirmRegistration" />
 		<transition on="failure" to="start" />
 	</action-state>
 	
 	<end-state id="welcome" view="/login" />
-	<end-state id="toHome" view="externalRedirect:contextRelative:/login" />
+	<end-state id="toConfirmRegistration" view="externalRedirect:contextRelative:/confirmRegistration" />
 	<end-state id="toException" view="externalRedirect:contextRelative:403" />
 
 	<global-transitions>

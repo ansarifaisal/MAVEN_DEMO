@@ -1,34 +1,3 @@
-<%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
-<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
-
-<spring:url value="/resources/images" var="images" />
-<spring:url value="/resources/css" var="css" />
-<spring:url value="/resources/js" var="js" />
-<c:set var="contextPath" value="${pageContext.request.contextPath}" />
-<html>
-<head>
-<title>E-Cart - ${title}</title>
-<script type="text/javascript">
-	window.hoverMenu = '${title}';
-</script>
-<!-- import JS Files -->
-<script type="text/javascript" src="${js}/jquery.js"></script>
-<script type="text/javascript" src="${js}/jquery.validate.js"></script>
-<script type="text/javascript" src="${js}/bootstrap.js"></script>
-<script type="text/javascript" src="${js}/myScript.js"></script>
-
-
-<!-- Import CSS Files -->
-<link href="${css}/bootstrap-paper.css" rel="stylesheet" type="text/css">
-<link href="${css}/font-awesome.css" rel="stylesheet" type="text/css">
-<link href="${css}/app.css" rel="stylesheet" type="text/css">
-</head>
-<body>
-	<div class="container">
-		<%@include file="../shared/header.jsp"%>
-
-
 		<div class="panel panel-primary">
 			<div class="panel-heading" style="font-size: 15px;">Order
 				Details</div>
@@ -41,7 +10,7 @@
 									<tbody>
 										<tr>
 											<td>Order ID:</td>
-											<td>${orderBean.order.id}</td>
+											<td>${order.id}</td>
 										</tr>
 										<tr>
 											<td>Amount Paid:</td>
@@ -54,10 +23,10 @@
 								<table class="table">
 									<tr>
 										<td><div class="lead nomargin">${address.firstName}
-												${address.lastName}</div></td>
+												${address.lastName} &nbsp;&nbsp; ${address.mobileNumber } </div></td>
 									</tr>
 									<tr>
-
+										<td>${address.lineOne}, ${address.lineTwo}, ${address.landmark}, ${address.city}, ${address.state} - ${address.pincode } </td>
 									</tr>
 								</table>
 							</td>
@@ -87,20 +56,20 @@
 								<%--item column --%>
 								<td class="col-md-7">
 									<div class="col-md-1" style="padding: 0px;">
-										<img src="${images}/moto.jpeg"
+										<img src="${images}/product/${orderItem.product.id}.png"
 											style="height: 100px; width: 50px;">
 									</div>
 									<div class="col-md-11">
-										${orderItem.product.productName}<br />
+										<a href = "${contextPath}/product/${orderItem.product.id}">${orderItem.product.productName}</a><br />
 										<div class="text-muted">${orderItem.product.description}</div>
 									</div>
 								</td>
 								<td>${orderItem.quantity}</td>
-								<td>${orderItem.itemPrice}</td>
+								<td>&#8377; ${orderItem.itemPrice}</td>
 								<td><div class="text-info">
 										<strong>Free</strong>
 									</div></td>
-								<td>${orderItem.totalPrice }</td>
+								<td>&#8377; ${orderItem.totalPrice }</td>
 							</tr>
 						</c:forEach>
 					</tbody>
@@ -111,5 +80,3 @@
 			</div>
 		</div>
 	</div>
-</body>
-</html>

@@ -117,15 +117,19 @@
 					</tr>
 				</thead>
 				<tbody>
+					<div ng-show="loading">Loading Data Please Wait...</div>
 					<tr ng-repeat="product in products | filter:searchText">
 						<td>
 							<div class="col-md-1">
-								<img alt="{{product.productName}}" src="${images}/product/{{product.id}}.png"
-									style="height: 100px; width: 75px;">
+								<img alt="{{product.productName}}"
+									src="${images}/product/{{product.id}}.png"
+									style="height: 100px; width: 50px;">
 							</div>
-							<div class="col-md-offset-3"><a ng-href = "${contextPath}/product/{{product.id}}">{{product.productName}}</a></div>
+							<div class="col-md-offset-3">
+								<a ng-href="${contextPath}/product/{{product.id}}">{{product.productName}}</a>
+							</div>
 						</td>
-						<td>{{product.price }}</td>
+						<td>&#8377; {{product.price }}</td>
 						<td><a
 							href="${contextPath}/admin/update/product/{{product.id}}"
 							class="btn btn-primary" data-toggle="tooltip" title="Edit"><span

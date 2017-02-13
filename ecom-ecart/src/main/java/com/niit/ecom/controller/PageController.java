@@ -18,6 +18,7 @@ import com.niit.ecom.dao.CategoryDAO;
 import com.niit.ecom.dao.ProductDAO;
 import com.niit.ecom.dao.UserDAO;
 import com.niit.ecom.entity.CartItem;
+import com.niit.ecom.entity.Category;
 import com.niit.ecom.entity.User;
 
 @Controller
@@ -47,12 +48,13 @@ public class PageController {
 	@RequestMapping(value = { "/", "home", "index", "default" })
 	public ModelAndView index(@RequestParam(name = "status", required = false) String status, Principal principal) {
 		ModelAndView modelAndView = new ModelAndView("page");
+		List<Category> categories = categoryDAO.list();
 		modelAndView.addObject("title", "Home");
 		modelAndView.addObject("ifUserClickedHome", true);
 		modelAndView.addObject("products", productDAO.list());
-		modelAndView.addObject("categories", categoryDAO.list());
+		modelAndView.addObject("categoriesList", categories);
+		httpSession.setAttribute("categories", categories);
 		if (principal != null) {
-
 			user = userDAO.getByUserName(principal.getName());
 			httpSession.setAttribute("firstName", user.getFirstName());
 			httpSession.setAttribute("lastName", user.getLastName());
@@ -147,6 +149,18 @@ public class PageController {
 		modelAndView.addObject("keywords", keywords);
 		modelAndView.addObject("ifUserClickedProductSearch", true);
 
+		return modelAndView;
+	}
+
+	/*
+	 * Confirm Registration Page
+	 */
+
+	@RequestMapping(value = { "/confirmRegistration" })
+	public ModelAndView confrimRegistration() {
+		ModelAndView modelAndView = new ModelAndView("page");
+		modelAndView.addObject("title", "Confirm Registration");
+		modelAndView.addObject("ifUserClickedConfirmRegistration", true);
 		return modelAndView;
 	}
 

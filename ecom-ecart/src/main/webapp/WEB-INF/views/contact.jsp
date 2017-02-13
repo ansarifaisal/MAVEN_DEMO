@@ -28,7 +28,20 @@
 		<div class="panel-heading">Get In Touch</div>
 	</div>
 	<div class="panel-body">
-		<div id="map"></div>
+		<div class="row">
+			<div class="col-md-4" style="font-size: medium;">
+				<address>
+					<strong>NIIT 2nd Floor, Sai Plaza, Jawahar Road,<br>Opp.
+						Ghatkopar East Railway Station,<br> Ghatkopar East Saibaba
+						Nagar,<br> Pant Nagar, Ghatkopar East Mumbai,<br>
+						Maharashtra - 400077
+					</strong>
+				</address>
+			</div>
+			<div class="col-sm-offset-4 col-md-offset-4 ">
+				<div id="map"></div>
+			</div>
+		</div>
 	</div>
 </div>
 

@@ -8,7 +8,7 @@
 <c:set var="contextPath" value="${pageContext.request.contextPath}" />
 <html>
 <head>
-<title>E-Cart - ${title}</title>
+<title>E-Cart - Confirm Details</title>
 
 <!-- import JS Files -->
 <script type="text/javascript" src="${js}/jquery.js"></script>
@@ -24,7 +24,6 @@
 </head>
 <body>
 	<div class="container">
-		<%@include file="./shared/header.jsp"%>
 		<div class="row tenpadding">
 			<!-- Panel Created with heading -->
 			<div class="panel panel-primary col-md-8 col-md-offset-2">
@@ -92,9 +91,6 @@
 			<!-- End of panel -->
 		</div>
 		<!-- End of row -->
-	</div>
-	<div class="container-fluid">
-		<%@include file="./shared/footer.jsp"%>
 	</div>
 </body>
 </html>

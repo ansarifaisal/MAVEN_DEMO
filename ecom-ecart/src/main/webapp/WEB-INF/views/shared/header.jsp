@@ -10,18 +10,25 @@
 					class="icon-bar"></span>
 			</button>
 			<a class="navbar-brand" href="${contextPath}/">E-Cart</a>
+			<ul class="nav navbar-nav">
+				<li class="auto-hide"><a>Categories <span
+						class="glyphicon glyphicon-resize-vertical"></span>
+				</a></li>
+			</ul>
 		</div>
+
 		<div class="collapse navbar-collapse" id="collapse-1">
-			<form class="navbar-form navbar-left" action="${contextPath}/product/searchProduct" method="GET">
+			<form class="navbar-form navbar-left searchForm"
+				action="${contextPath}/product/searchProduct" method="GET">
 				<div class="form-group">
-					<div class="input-group">
-						<input type="text" name = "keywords" class="form-control"
-							placeholder="Search for products"> <span
+					<div class="input-group validate">
+						<input type="text" name="keywords" id="keywords"
+							class="form-control" placeholder="Search for products"> <span
 							class="input-group-btn">
 							<button class="btn btn-default" type="submit">
 								<span class="glyphicon glyphicon-search" id="btn-search"
 									aria-hidden="true"></span>
-							</button> 
+							</button>
 						</span>
 					</div>
 				</div>
@@ -33,6 +40,7 @@
 							class="badge">${noOfCartItem}</span></a></li>
 				</ul>
 			</sec:authorize>
+
 			<ul class="nav navbar-nav navbar-right">
 				<li id="allProduct"><a href="${contextPath}/product/show/all">All
 						Products</a></li>
@@ -54,9 +62,9 @@
 						aria-expanded="false">${firstName} ${lastName}<span
 							class="caret"></span></a>
 						<ul class="dropdown-menu">
-							<li><a href="#allproducts">All Products</a></li>
-							<!-- <li><a href="#allsuppliers">All Sellers</a></li> -->
-							<li class="divider" role="separator"></li>
+							<!-- <li><a href="#allproducts">All Products</a></li>
+							<li><a href="#allsuppliers">All Sellers</a></li> 
+							<li class="divider" role="separator"></li> -->
 							<li><a href="${contextPath}/admin/addproduct">Add
 									Product</a></li>
 							<li><a href="${contextPath}/seller/addseller">Add Seller</a></li>
@@ -90,3 +98,27 @@
 		</div>
 	</div>
 </nav>
+
+<div class="showNavBar" style="margin: -10px; display:none;">
+	<div class="container">
+		<nav class="navbar navbar-inverse" >
+			<div class="navbar-header">
+				<button class="navbar-toggle collapsed " data-toggle="collapse"
+					data-target="#collapse-2" aria-expanded="false">
+					<span class="sr-only">Toggle navigation</span> <span
+						class="icon-bar"></span> <span class="icon-bar"></span> <span
+						class="icon-bar"></span>
+				</button>
+			</div>
+
+			<div class="collapse navbar-collapse" id="collapse-2">
+				<ul class="nav navbar-nav">
+					<c:forEach items="${categories}" var="category">
+						<li><a
+							href="${contextPath}/product/category/show/${category.id}">${category.name}</a></li>
+					</c:forEach>
+				</ul>
+			</div>
+		</nav>
+	</div>
+</div>

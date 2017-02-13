@@ -28,7 +28,6 @@ public class ProductDAOImpl implements ProductDAO {
 	public List<Product> list() {
 		String hql = "FROM PRODUCTS";
 		Query query = sessionFactory.getCurrentSession().createQuery(hql);
-		System.out.println(query.list());
 		return query.list();
 	}
 
@@ -54,7 +53,7 @@ public class ProductDAOImpl implements ProductDAO {
 			e.printStackTrace();
 			return false;
 		}
-		
+
 	}
 
 	@Override
@@ -89,7 +88,7 @@ public class ProductDAOImpl implements ProductDAO {
 	public List<Product> searchProduct(String keywords) {
 		String hql = "FROM PRODUCTS WHERE PRODUCT_NAME LIKE :keywords";
 		Query query = sessionFactory.getCurrentSession().createQuery(hql);
-		query.setParameter("keywords", keywords + "%");
+		query.setParameter("keywords", "%" + keywords + "%");
 		return query.list();
 	}
 

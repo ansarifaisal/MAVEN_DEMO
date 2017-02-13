@@ -77,8 +77,7 @@
 					</tr>
 				</thead>
 				<tbody>
-				
-				<div ng-show = "loading">Loading Data Please Wait!</div>
+				<span ng-show = "loading">Loading Data Please Wait!</span>
 					<tr ng-repeat="category in categories | filter:searchText">
 						<td><a ng-href="${contextPath}/category/show/{{category.id}}">{{category.name}}</a></td>
 						<td>{{category.description}}</td>

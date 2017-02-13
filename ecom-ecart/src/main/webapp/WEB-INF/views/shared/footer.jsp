@@ -1,5 +1,6 @@
+<footer class="footer">
+	<p class="text-center">Created And Designed By
+		Faisal Ansari
+	</p>
 
-	<footer class="footer">
-		<hr />
-		&#169; Copyrights, All right Reserved.
-	</footer>
+</footer>
