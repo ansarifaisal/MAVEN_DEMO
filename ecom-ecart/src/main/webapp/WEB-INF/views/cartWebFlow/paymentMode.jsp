@@ -8,7 +8,7 @@
 <c:set var="contextPath" value="${pageContext.request.contextPath}" />
 <html>
 <head>
-<title>E-Cart - ${title}</title>
+<title>E-Cart - Payment Mode</title>
 <script type="text/javascript">
 	window.hoverMenu = '${title}';
 </script>
@@ -26,7 +26,6 @@
 </head>
 <body>
 	<div class="container">
-		<%@include file="../shared/header.jsp"%>
 
 		<div class="panel panel-primary">
 			<div class="panel-heading" style="font-size: 15px;">Payment

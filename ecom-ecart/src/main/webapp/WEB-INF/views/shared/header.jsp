@@ -67,7 +67,7 @@
 							<li class="divider" role="separator"></li> -->
 							<li><a href="${contextPath}/admin/addproduct">Add
 									Product</a></li>
-							<li><a href="${contextPath}/seller/addseller">Add Seller</a></li>
+							<%-- <li><a href="${contextPath}/seller/addseller">Add Seller</a></li> --%>
 							<li><a href="${contextPath}/admin/addcategory">Add
 									Category</a></li>
 							<li class="divider" role="separator"></li>

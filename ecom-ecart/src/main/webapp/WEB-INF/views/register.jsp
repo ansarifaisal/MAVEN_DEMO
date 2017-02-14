@@ -115,7 +115,7 @@
 						</div>
 						<%--End of Mobile Number Field --%>
 
-						<div class="form-group col-md-offset-1">
+					<!-- 	<div class="form-group col-md-offset-1">
 							<div class="checkbox">
 								<div class="validate">
 									<div class="terms">
@@ -124,7 +124,7 @@
 									</div>
 								</div>
 							</div>
-						</div>
+						</div> -->
 						<%--End of Terms And Condition --%>
 
 						<%-- Hidden Fields --%>

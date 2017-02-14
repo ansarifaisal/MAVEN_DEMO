@@ -239,7 +239,8 @@ $(document)
 											},
 											mobileNumber : {
 												required : true,
-												tel : true
+												number : true,
+												maxlength : 10
 											},
 											gender : {
 												required : true
@@ -269,7 +270,9 @@ $(document)
 											},
 											mobileNumber : {
 												required : 'Please, Provide Mobile Number',
-												tel : 'Please, Provide a valid Mobile Number'
+												number : 'This Field Can Contain Only Numbers',
+												maxlength : 'This Field Can Contain Only 10 Numbers'
+												
 											},
 											terms : {
 												required : 'Please, Accept the terms and conditions'
@@ -628,8 +631,8 @@ $(document)
 											},
 											mobileNumber : {
 												required : "Please, Provide Mobile Number",
-												number : "This Field Can Contains Only Charachters",
-												maxlength : "Mobile Number Must Contains 10 Charachters"
+												number : "This Field Can Contains Only Numbers",
+												maxlength : "Mobile Number Must Contains Only 10 Numbers"
 											}
 										},
 										errorElement : "em",

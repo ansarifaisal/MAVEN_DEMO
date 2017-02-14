@@ -1,6 +1,5 @@
 <%@taglib uri="http://www.springframework.org/security/tags"
 	prefix="sec"%>
-
 <c:if test="${!empty msg}">
 	<div class="alert-msg">
 		<div id="success-alert" class="alert alert-success" role="alert">
@@ -8,7 +7,7 @@
 		</div>
 	</div>
 </c:if>
-<div class="row">
+<div class="row col-xs-hidden">
 	<div id="carousel" class="carousel slide" data-ride="carousel">
 		<ol class="carousel-indicators">
 			<li data-target="#carousel" data-slide-to="0" class="active"></li>
@@ -16,23 +15,23 @@
 		</ol>
 		<div class="carousel-inner" role="listbox">
 			<div class="item active">
-				<img src="${images}/1.jpg" alt="image-1" style="width: 100%">
+				<img src="${images}/discount-1.jpg" alt="image-1" style="width: 100%; height: 50%;">
 			</div>
 			<div class="item">
-				<img src="${images}/2.jpg" alt="image-2" style="width: 100%">
+				<img src="${images}/discount-2.jpg" alt="image-2" style="width: 100%; height: 50%;">
 			</div>
 		</div>
 	</div>
 </div>
 
 
-<c:set var="count" value="0" scope="page" />
 
-<c:set var="productCount" value="4" scope="page" />
+
 
 <c:choose>
 	<c:when test="${not empty categories}">
 		<c:forEach items="${categories}" var="category">
+		<c:set var="count" value="0" scope="page" />
 			<div class="row">
 				<div class="panel panel-default">
 					<div class="panel-body">
@@ -47,11 +46,11 @@
 						</div>
 						<div class="col-md-10">
 							<c:choose>
-								<c:when test="${not empty products}">
+								<c:when test="${not empty category.products}">
 									<div class="carousel slide media-carousel"
 										id="media-${category.id}">
 										<div class="carousel-inner">
-											<c:forEach items="${products }" var="product">
+											<c:forEach items="${category.products }" var="product">
 												<c:if test="${count < 4 }">
 													<div class="item active">
 														<div class="col-md-3 col-sm-6 col-xs-12 thumbnail-setting">
@@ -66,7 +65,7 @@
 																	<h6 class="text-muted price">Now at
 																		&#8377;${product.price}</h6>
 																	<div class="row nopadding nomargin">
-																		<sec:authorize access="hasAuthority('USER')">
+																		<sec:authorize access="hasAuthority('USER') or isAnonymous()">
 																			<div class="text-left col-md-6 col-sm-6 col-xs-6 nopadding nomargin">
 																				<a
 																					href="${contextPath}/user/wishlist/add/${product.id}"
@@ -99,19 +98,20 @@
 															</div>
 														</div>
 													</div>
+													
 												</c:if>
 												<c:set var="count" value="${count + 1}" scope="page" />
 											</c:forEach>
 										</div>
 										<!-- Carousel inner -->
 
-										<%-- 							<a data-slide="prev" href="#media-${category.id}"
+										<%-- 	<a data-slide="prev" href="#media-${category.id}"
 											class="left carousel-control" role="button"><span
 											class="fa fa-chevron-circle-left" aria-hidden="true"></span></a>
 										<a data-slide="next" href="#media-${category.id}"
 											class="right carousel-control" role="button"><span
-											class="fa fa-chevron-circle-right" aria-hidden="true"></span></a>
-			 --%>
+											class="fa fa-chevron-circle-right" aria-hidden="true"></span></a> --%>
+
 									</div>
 								</c:when>
 								<c:otherwise>

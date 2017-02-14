@@ -26,7 +26,6 @@
 </head>
 <body>
 	<div class="container">
-		<%@include file="../shared/header.jsp"%>
 		<div class="panel panel-primary">
 			<div class="panel-heading" style="font-size: 15px;">Delivery
 				Address</div>

@@ -9,7 +9,7 @@
 					style="max-height: 50%; max-width: 50%; margin-left: 25%">
 			</div>
 		</div>
-		<sec:authorize access="hasAuthority('USER')">
+		<sec:authorize access="hasAuthority('USER') or isAnonymous()">
 				<a href="${contextPath}/user/cart/add/${product.id}"
 					class="btn btn-warning col-md-5 col-sm-5 col-xs-12" style="margin-right: 10%;"><span
 					class="glyphicon glyphicon-shopping-cart"></span> Add To Cart</a> <a

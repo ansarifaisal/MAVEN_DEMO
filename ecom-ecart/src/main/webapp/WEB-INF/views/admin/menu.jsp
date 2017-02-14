@@ -6,14 +6,14 @@
 			</div>
 		</div>
 		<ul class="nav navbar-pills nav-stacked">
-		<li><div class="panel-heading">
+		<!-- <li><div class="panel-heading">
 				<div class="panel-title">
 					<b>My Stuff</b>
 				</div>
 			</div></li>
 			<li id = "allProducts"><a href="#test">All Products</a></li>
 			<li id = "allSupplier"><a href="#test">All Sellers</a></li>
-			<li><div class="panel-heading">
+		 -->	<li><div class="panel-heading">
 				<div class="panel-title">
 					<b>SETTINGS</b>
 				</div>
